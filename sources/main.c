@@ -5,8 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/22 13:17:38 by educastro         #+#    #+#             */
-/*   Updated: 2024/06/22 13:17:43 by educastro        ###   ########.fr       */
+/*   Created: 2024/06/26 15:43:33 by educastro         #+#    #+#             */
+/*   Updated: 2024/06/26 15:43:55 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/minishell.h"
+
+int main()
+{
+	write(1, "Posto Shell", 12);
+}
