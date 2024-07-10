@@ -6,7 +6,7 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 16:02:33 by educastro         #+#    #+#             */
-/*   Updated: 2024/07/10 19:36:54 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/07/10 19:49:04 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,25 @@
 #include <stdio.h>
 #include <readline/history.h>
 #include <readline/readline.h>
+
+const char* get_token_type_name(t_token_type type) {
+    switch (type) {
+        case WORD:         return "WORD";
+        case QUOTE:        return "QUOTE";
+        case DQUOTE:       return "DQUOTE";
+        case BLOCK:        return "BLOCK";
+        case ARCHIVE:      return "ARCHIVE";
+        case PIPE:         return "PIPE";
+        case HEREDOC:      return "HEREDOC";
+        case REDIR_IN:     return "REDIR_IN";
+        case REDIR_OUT:    return "REDIR_OUT";
+        case REDIR_APPEND: return "REDIR_APPEND";
+        case OR:           return "OR";
+        case AND:          return "AND";
+        case EXEC:         return "EXEC";
+        default:           return "UNKNOWN";
+    }
+}
 
 void	parser(char *line)
 {
@@ -101,7 +120,7 @@ void	parser(char *line)
 	token = head;
 	while (token && !token->is_last)
 	{
-		printf("Type: %d. Data: %s\n", token->type, token->data);
+		printf("Data: %s.\t\tType: %s.\n", token->data, get_token_type_name(token->type));
 		token = token->next;
 	}
 }
