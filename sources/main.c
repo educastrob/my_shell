@@ -6,7 +6,7 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 16:02:33 by educastro         #+#    #+#             */
-/*   Updated: 2024/07/10 19:49:04 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/07/11 19:10:40 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <readline/history.h>
 #include <readline/readline.h>
 
-const char* get_token_type_name(t_token_type type) {
+const char* get_token_type_name(t_token_type type) {  // APENAS PARA TESTES
     switch (type) {
         case WORD:         return "WORD";
         case QUOTE:        return "QUOTE";
@@ -32,6 +32,14 @@ const char* get_token_type_name(t_token_type type) {
         case EXEC:         return "EXEC";
         default:           return "UNKNOWN";
     }
+}
+
+void	token_stack_fill(t_tok *token)
+{
+	token->prev = NULL;
+	token->next = NULL;
+	token->is_last = 0;
+	token->type = 0;
 }
 
 void	parser(char *line)
