@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+         #
+#    By: educastro <educastro@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/10 16:58:43 by fcaldas-          #+#    #+#              #
-#    Updated: 2024/07/10 17:08:05 by fcaldas-         ###   ########.fr        #
+#    Updated: 2024/07/12 11:08:17 by educastro        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:= minishell
 CC			:= gcc
 FLAGS		:= -Wall -Wextra -Werror -g3
-BIN			:= ./bin/
+BIN			:= ./objs/
 SRCS		:= $(addprefix ./sources/, main.c)
 OBJS		:= $(patsubst ./sources/%.c,$(BIN)%.o,$(SRCS))
 LIB			:= ./libft/libft.a
