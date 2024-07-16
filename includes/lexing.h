@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexing.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 13:17:57 by educastro         #+#    #+#             */
-/*   Updated: 2024/07/16 19:25:10 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/07/16 19:42:51 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,7 @@
 # define LEXING_H
 
 // libs
-# include "../libft/libft.h"
-# include <stdlib.h>
-# include <unistd.h>
-# include <signal.h>
-# include "fcntl.h"
-# include <readline/history.h>
-# include <readline/readline.h>
-# include <signal.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <sys/stat.h>
-# include <sys/wait.h>
-# include <termios.h>
-# include <unistd.h>
+# include "minishell.h"
 
 // enums
 enum e_token

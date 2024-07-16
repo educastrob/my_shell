@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/26 16:02:33 by educastro         #+#    #+#             */
-/*   Updated: 2024/07/16 19:37:22 by edcastro         ###   ########.fr       */
+/*   Created: 2024/07/16 19:40:49 by edcastro          #+#    #+#             */
+/*   Updated: 2024/07/16 19:43:38 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/lexing.h"
+#ifndef	MINISHELL_H
+# define MINISHELL_H
 
-int	main(int argc __attribute__((unused)), \
-	char **argv __attribute__((unused)), char **envp __attribute__((unused)))
-{
-	char	*line;
+// libs
+# include "../libft/libft.h"
+# include <stdlib.h>
+# include <unistd.h>
+# include <signal.h>
+# include "fcntl.h"
+# include <readline/history.h>
+# include <readline/readline.h>
+# include <signal.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <sys/stat.h>
+# include <sys/wait.h>
+# include <termios.h>
+# include <unistd.h>
+# include "lexing.h"
 
-	while (1)
-	{
-		line = readline("minishell$ ");
-		// parser(line);
-		printf("line: %s\n", line);
-	}
-}
+#endif
