@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   lexing.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 13:17:57 by educastro         #+#    #+#             */
-/*   Updated: 2024/07/10 18:55:51 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/07/16 18:58:52 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#ifndef LEXING_H
+# define LEXING_H
 
 // libs
 # include "../libft/libft.h"
@@ -29,31 +29,47 @@
 # include <termios.h>
 # include <unistd.h>
 
-
-typedef enum e_token_type
+// enums
+enum e_token
 {
 	WORD,
-	QUOTE,
-	DQUOTE,
-	BLOCK,
-	ARCHIVE,
 	PIPE,
-	HEREDOC,
-	REDIR_IN,
-	REDIR_OUT,
-	REDIR_APPEND,
+	REDIRECT_INPUT,
+	REDIRECT_HEREDOC,
+	REDIRECT_OUTPUT,
+	REDIRECT_OUTPUT_APPEND,
 	OR,
 	AND,
-	EXEC
-}					t_token_type;
+	OPEN_PARENTHESIS,
+	CLOSE_PARENTHESIS,
+	EXPRESSION,
+	COMMAND,
+	SUBSHELL
+};
 
-typedef struct		s_tok
+// structs
+typedef struct		s_token
 {
-	t_token_type	type;
-	char			*data;
-	struct s_tok	*prev;
-	struct s_tok	*next;
-	int				is_last;
-}					t_tok;
+	char			*lexeme;
+	int				type;
+}	t_token;
+
+typedef struct		s_token_list
+{
+	t_token_list	*next;
+	t_token			token;
+}	t_token_list;
+
+typedef struct		s_aux_token
+{
+	int		i;
+	int		lexeme_length;
+	int		str_length;
+}	t_aux_token
+
+// get_states.c
+int		get_token_type(int state)
+// tokenizer.c
+t_token_list	*token_create_node(char *lexeme, int token_type);
 
 #endif
