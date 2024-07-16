@@ -6,7 +6,7 @@
 #    By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/10 16:58:43 by fcaldas-          #+#    #+#              #
-#    Updated: 2024/07/10 17:08:05 by fcaldas-         ###   ########.fr        #
+#    Updated: 2024/07/16 19:17:59 by fcaldas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ BIN			:= ./bin/
 SRCS		:= $(addprefix ./sources/, main.c)
 OBJS		:= $(patsubst ./sources/%.c,$(BIN)%.o,$(SRCS))
 LIB			:= ./libft/libft.a
-HEADERS		:= -I ./include/minishell.h -I ./libft
+INCLUDES	:= -I ./includes/ -I ./libft
 #NAME_BONUS	:= pipex_bonus
 #SRCS_BONUS	:= $(addprefix ./bonus/src/,)
 #OBJS_BONUS	:= $(patsubst ./%.c,$(BIN_BONUS)%.o,$(SRCS_BONUS))
@@ -38,7 +38,7 @@ libft/libft.a:
 	@make -sC ./libft 
 
 $(BIN)%.o: ./sources/%.c
-	@$(CC) $(FLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)\n"
+	@$(CC) $(FLAGS) -o $@ -c $< $(INCLUDES) && printf "Compiling: $(notdir $<)\n"
 
 $(NAME): $(OBJS)
 	@$(CC) $(OBJS) $(HEADERS) -o $(NAME) $(LIB) -lreadline
