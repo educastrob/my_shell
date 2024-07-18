@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/16 19:40:49 by edcastro          #+#    #+#             */
-/*   Updated: 2024/07/18 15:53:51 by fcaldas-         ###   ########.fr       */
+/*   Created: 2023/08/08 12:52:21 by fcaldas-          #+#    #+#             */
+/*   Updated: 2023/08/08 15:02:24 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	MINISHELL_H
-# define MINISHELL_H
+#include "../libft.h"
 
-// libs
-# include "../libft/libft.h"
-# include <stdlib.h>
-# include <unistd.h>
-# include <signal.h>
-# include "fcntl.h"
-# include <readline/history.h>
-# include <readline/readline.h>
-# include <signal.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <sys/stat.h>
-# include <sys/wait.h>
-# include <termios.h>
-# include <unistd.h>
-# include "lexing.h"
+t_list	*ft_lstnew(void *content)
+{
+	t_list	*node1;
 
-#endif
+	node1 = malloc(sizeof(t_list));
+	if (!node1)
+		return (NULL);
+	node1->content = content;
+	node1->next = NULL;
+	return (node1);
+}

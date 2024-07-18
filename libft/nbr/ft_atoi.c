@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/16 19:40:49 by edcastro          #+#    #+#             */
-/*   Updated: 2024/07/18 15:53:51 by fcaldas-         ###   ########.fr       */
+/*   Created: 2023/07/20 14:26:51 by fcaldas-          #+#    #+#             */
+/*   Updated: 2023/07/25 19:10:06 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	MINISHELL_H
-# define MINISHELL_H
+#include "../libft.h"
 
-// libs
-# include "../libft/libft.h"
-# include <stdlib.h>
-# include <unistd.h>
-# include <signal.h>
-# include "fcntl.h"
-# include <readline/history.h>
-# include <readline/readline.h>
-# include <signal.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <sys/stat.h>
-# include <sys/wait.h>
-# include <termios.h>
-# include <unistd.h>
-# include "lexing.h"
+int	ft_atoi(const char *s)
+{
+	int	sign;
+	int	res;
 
-#endif
+	res = 0;
+	sign = 1;
+	while (*s == ' ' || (*s >= 9 && *s <= 13))
+	{
+		s++;
+	}
+	if (*s == '-' || *s == '+')
+	{
+		if (*s == '-')
+			sign = sign * -1;
+		s++;
+	}
+	while (*s >= '0' && *s <= '9')
+	{
+		res = (res * 10) + (*s - '0');
+		s++;
+	}
+	return (res * sign);
+}

@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/16 19:40:49 by edcastro          #+#    #+#             */
-/*   Updated: 2024/07/18 15:53:51 by fcaldas-         ###   ########.fr       */
+/*   Created: 2023/08/04 16:38:33 by fcaldas-          #+#    #+#             */
+/*   Updated: 2023/08/04 16:55:46 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	MINISHELL_H
-# define MINISHELL_H
+#include "../libft.h"
 
-// libs
-# include "../libft/libft.h"
-# include <stdlib.h>
-# include <unistd.h>
-# include <signal.h>
-# include "fcntl.h"
-# include <readline/history.h>
-# include <readline/readline.h>
-# include <signal.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <sys/stat.h>
-# include <sys/wait.h>
-# include <termios.h>
-# include <unistd.h>
-# include "lexing.h"
+void	ft_putnbr_fd(int n, int fd)
+{
+	long int	ln;
 
-#endif
+	ln = n;
+	if (ln < 0)
+	{
+		ln *= -1;
+		ft_putchar_fd('-', fd);
+	}
+	if (ln > 9)
+	{
+		ft_putnbr_fd((ln / 10), fd);
+		ft_putchar_fd((ln % 10 + '0'), fd);
+	}
+	else
+		ft_putchar_fd((ln + '0'), fd);
+}

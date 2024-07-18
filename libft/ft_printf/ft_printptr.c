@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_printptr_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/16 19:40:49 by edcastro          #+#    #+#             */
-/*   Updated: 2024/07/18 15:53:51 by fcaldas-         ###   ########.fr       */
+/*   Created: 2023/09/29 16:52:55 by fcaldas-          #+#    #+#             */
+/*   Updated: 2023/09/29 20:27:06 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	MINISHELL_H
-# define MINISHELL_H
+#include "../libft.h"
 
-// libs
-# include "../libft/libft.h"
-# include <stdlib.h>
-# include <unistd.h>
-# include <signal.h>
-# include "fcntl.h"
-# include <readline/history.h>
-# include <readline/readline.h>
-# include <signal.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <sys/stat.h>
-# include <sys/wait.h>
-# include <termios.h>
-# include <unistd.h>
-# include "lexing.h"
+int	ft_printptr(unsigned long num)
+{
+	char	*base;
+	int		print_len;
 
-#endif
+	base = HEXA_LOW;
+	print_len = 0;
+	if (num == 0)
+		return (ft_printstr("(nil)"));
+	if (num >= 16)
+		print_len += ft_printptr(num / 16);
+	else
+		print_len += ft_printstr(LOW_HASH);
+	print_len += ft_printchar(base[num % 16]);
+	return (print_len);
+}

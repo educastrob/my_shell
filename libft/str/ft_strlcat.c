@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/16 19:40:49 by edcastro          #+#    #+#             */
-/*   Updated: 2024/07/18 15:53:51 by fcaldas-         ###   ########.fr       */
+/*   Created: 2023/07/25 13:38:42 by fcaldas-          #+#    #+#             */
+/*   Updated: 2023/07/25 14:04:00 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	MINISHELL_H
-# define MINISHELL_H
+#include "../libft.h"
 
-// libs
-# include "../libft/libft.h"
-# include <stdlib.h>
-# include <unistd.h>
-# include <signal.h>
-# include "fcntl.h"
-# include <readline/history.h>
-# include <readline/readline.h>
-# include <signal.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <sys/stat.h>
-# include <sys/wait.h>
-# include <termios.h>
-# include <unistd.h>
-# include "lexing.h"
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
+{
+	size_t	s;
+	size_t	d;
+	size_t	s_len;
+	size_t	d_len;
 
-#endif
+	s_len = ft_strlen(src);
+	d_len = ft_strlen(dst);
+	d = d_len;
+	s = 0;
+	while (src[s] && d < size - 1 && size)
+	{
+		dst[d] = src[s];
+		d++;
+		s++;
+	}
+	dst[d] = '\0';
+	if (size < d_len)
+		return (s_len + size);
+	else
+		return (d_len + s_len);
+}
