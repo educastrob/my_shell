@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 13:17:57 by educastro         #+#    #+#             */
-/*   Updated: 2024/07/18 16:52:59 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/07/18 19:08:59 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,12 @@ typedef struct			s_aux_token
 }	t_aux_token;
 
 // get_states.c
-int		get_token_type(int state);
+int				get_token_type(int state);
 
 // tokenizer.c
-t_token_list	*get_token_list(char *str)
+t_token_list	*get_token_list(char *str);
+
+// utils.c
+int		is_whitespace(char c);
 
 #endif
