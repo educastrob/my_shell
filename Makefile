@@ -16,21 +16,9 @@ FLAGS		:= -Wall -Wextra -Werror -g3
 BIN			:= ./objs/
 SRCS		:= $(addprefix ./sources/, main.c)
 OBJS		:= $(patsubst ./sources/%.c,$(BIN)%.o,$(SRCS))
-LIB			:= ./libft/libft.a
+LIB		:= ./libft/libft.a
 HEADERS		:= -I ./include/minishell.h -I ./libft
-#NAME_BONUS	:= pipex_bonus
-#SRCS_BONUS	:= $(addprefix ./bonus/src/,)
-#OBJS_BONUS	:= $(patsubst ./%.c,$(BIN_BONUS)%.o,$(SRCS_BONUS))
-#BIN_BONUS	:= ./bin/
-#HEADERS_BONUS:= -I ./bonus/include/pipex_bonus.h -I ./libft
 
-# ifdef WITH_BONUS
-# 	SRC = $(SRCS_BONUS)
-# 	OBJS = $(OBJS_BONUS)
-# 	BIN = $(BIN_BONUS)
-# 	NAME = $(NAME_BONUS)
-# 	HEADER = $(HEADERS_BONUS)
-# endif
 
 all: libft/libft.a $(BIN) $(NAME)
 
