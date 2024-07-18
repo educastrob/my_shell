@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexing.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 13:17:57 by educastro         #+#    #+#             */
-/*   Updated: 2024/07/18 16:19:42 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/07/18 16:32:27 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ typedef struct			s_aux_token
 
 // get_states.c
 int		get_token_type(int state);
+
 // tokenizer.c
-t_token_list	*token_create_node(char *lexeme, int token_type);
+t_token_list	*get_token_list(char *str)
 
 #endif
