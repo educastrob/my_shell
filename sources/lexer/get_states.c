@@ -6,11 +6,11 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:44:40 by edcastro          #+#    #+#             */
-/*   Updated: 2024/07/16 18:58:58 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/07/16 19:45:58 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/lexing.h"
+#include "lexing.h"
 
 int		get_token_type(int state)
 {
