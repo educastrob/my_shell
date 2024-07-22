@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_states.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:44:40 by edcastro          #+#    #+#             */
-/*   Updated: 2024/07/18 17:59:53 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/07/22 20:56:33 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ int		get_token_type(int state)
 	return (type);
 }
 
-int		get_next_state_1(char c)
+int		get_state_1(char c)
 {
 	int	next_state;
 
-	if (is_whitespace(c))
+	if (is_whitespace(c) || c == '\0')
 		next_state = 1;
 	else if (c == '(')
 		next_state = 20;
@@ -69,12 +69,72 @@ int		get_next_state_1(char c)
 	return (next_state);
 }
 
+int		get_state_40(char c)
+{
+	int	state;
+
+	if (c == '|')
+		state = 41;
+	else if (c != '|')
+		state = 42;
+	else
+		state = -1;
+	return (state);
+}
+
+int		get_state_50(char c)
+{
+	int	state;
+
+	if (c == '&')
+		state = 51;
+	else if (c != '&')
+		state = -1;
+	else
+		state = -1;
+	return (state);
+}
+
+int		get_state_60(char c)
+{
+	int	state;
+
+	if (c == '<')
+		state = 61;
+	else if (c != '<')
+		state = 62;
+	else
+		state = -1;
+	return (state);
+}
+
+int		get_state_70(char c)
+{
+	int	state;
+
+	if (c == '>')
+		state = 71;
+	else if (c != '>')
+		state = 72;
+	else
+		state = -1;
+	return (state);
+}
+
 int		get_next_state(int state, char c)
 {
 	int	next_state;
 
 	if (state == 1)
-		next_state = get_next_state_1(c);
+		next_state = get_state_1(c);
+	else if (state == 40)
+		next_state = get_state_40(c);
+	else if (state == 50)
+		next_state = get_state_50(c);
+	else if (state == 60)
+		next_state = get_state_60(c);
+	else if (state == 70)
+		next_state = get_state_70(c);
 	else
 		next_state = -1;
 	return (next_state);
