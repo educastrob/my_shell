@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 16:02:33 by educastro         #+#    #+#             */
-/*   Updated: 2024/07/18 16:53:51 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/07/22 20:32:01 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../includes/minishell.h"
+#include "../includes/lexing.h"
 
 int	main(int argc __attribute__((unused)), \
 	char **argv __attribute__((unused)), char **envp __attribute__((unused)))
@@ -20,7 +21,7 @@ int	main(int argc __attribute__((unused)), \
 	while (1)
 	{
 		line = readline("minishell$ ");
-		tokenizer(line);
+		get_token_list(line);
 		printf("line: %s\n", line);
 	}
 }

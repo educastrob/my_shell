@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 19:40:49 by edcastro          #+#    #+#             */
-/*   Updated: 2024/07/18 16:53:15 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/07/22 20:29:42 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 // libs
 # include "../libft/libft.h"
+# include "lexing.h"
 # include <stdlib.h>
 # include <unistd.h>
 # include <signal.h>
@@ -28,6 +29,5 @@
 # include <sys/wait.h>
 # include <termios.h>
 # include <unistd.h>
-# include "lexing.h"
 
 #endif

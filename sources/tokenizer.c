@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:26:39 by edcastro          #+#    #+#             */
-/*   Updated: 2024/07/18 16:53:42 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/07/18 19:08:46 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,37 @@ static t_token_list	*token_create_node(char *lexeme, int token_type)
 	return (new_token);
 }
 
+static void	add_token_to_list(t_token_list **token_list, char *lexeme, int token_type)
+{
+	t_token_list	*current;
+
+	if (!*token_list)
+	{
+		*token_list = token_create_node(lexeme, token_type);
+		return ;
+	}
+	current = *token_list;
+	while (current->next)
+		current = current->next;
+	current->next = token_create_node(lexeme, token_type);
+}
+
+static void	token_clear_list(t_token_list **token_list)
+{
+	t_token_list	*current;
+	t_token_list	*next;
+
+	current = *token_list;
+	while (current)
+	{
+		next = current->next;
+		free(current->token.lexeme);
+		free(current);
+		current = next;
+	}
+	*token_list = NULL;
+}
+
 t_token_list	*get_token_list(char *str)
 {
 	t_token_list	*token_list;
@@ -36,7 +67,7 @@ t_token_list	*get_token_list(char *str)
 	token_list = NULL;
 	while (aux.i <= aux.str_length)
 	{
-		aux.state = token_get_next_state(aux.state, str[aux.i]);
+		aux.token_type = get_token_type(aux.state);
 		if (aux.state != 1)
 			aux.lexeme_length += 1;
 		if (aux.state == -1)
@@ -44,8 +75,6 @@ t_token_list	*get_token_list(char *str)
 			token_clear_list(&token_list);
 			break ;
 		}
-		if (token_state_is_final(aux.state))
-			aux_token_state_final(&aux, str, &token_list);
 		aux.i++;
 	}
 	return (token_list);
