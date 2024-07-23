@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexing.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 13:17:57 by educastro         #+#    #+#             */
-/*   Updated: 2024/07/18 19:08:59 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/07/23 13:10:30 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,33 @@ typedef struct			s_aux_token
 	int					i;
 	int					lexeme_length;
 	int					str_length;
+	char				*lexeme;
 }	t_aux_token;
 
 // get_states.c
+int				token_state_is_final(int state);
 int				get_token_type(int state);
+int				token_state_requires_backtrack(int state);
+int				token_get_next_state(int state, char c);
+int				get_state_1(char c);
+int				get_state_40(char c);
+int				get_state_50(char c);
+int				get_state_60(char c);
+int				get_state_70(char c);
+int				get_state_80(char c);
+int				get_state_81(char c);
+int				get_state_82(char c);
+int				get_next_state(int state, char c);
+
 
 // tokenizer.c
 t_token_list	*get_token_list(char *str);
+t_token_list	*token_get_sublist(t_token_list *token_lst, int start, int lst_len);
+void			token_final_state(t_aux_token *aux, t_token_list **token_list, char *str);
+
 
 // utils.c
 int		is_whitespace(char c);
+int		is_metacharacter(char c);
 
 #endif
