@@ -6,11 +6,32 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:26:39 by edcastro          #+#    #+#             */
-/*   Updated: 2024/07/23 13:18:23 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/07/23 18:10:44 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexing.h"
+
+static const char *get_token_type_string(enum e_token type)
+{
+    switch (type)
+    {
+        case WORD: return "WORD";
+        case PIPE: return "PIPE";
+        case REDIRECT_INPUT: return "REDIRECT_INPUT";
+        case REDIRECT_HEREDOC: return "REDIRECT_HEREDOC";
+        case REDIRECT_OUTPUT: return "REDIRECT_OUTPUT";
+        case REDIRECT_OUTPUT_APPEND: return "REDIRECT_OUTPUT_APPEND";
+        case OR: return "OR";
+        case AND: return "AND";
+        case OPEN_PARENTHESIS: return "OPEN_PARENTHESIS";
+        case CLOSE_PARENTHESIS: return "CLOSE_PARENTHESIS";
+        case EXPRESSION: return "EXPRESSION";
+        case COMMAND: return "COMMAND";
+        case SUBSHELL: return "SUBSHELL";
+        default: return "UNKNOWN";
+    }
+}
 
 static t_token_list	*token_create_node(char *lexeme, int token_type)
 {
@@ -96,16 +117,14 @@ void	token_final_state(t_aux_token *aux, t_token_list **token_list, char *str)
 	aux->state = 1;	
 }
 
-static void	print_token_list(t_token_list *token_list) // ============ TEST
+static void print_token_list(t_token_list *token_list) 
 {
-	t_token_list	*current;
-
-	current = token_list;
-	while (current)
-	{
-		printf("lexeme: %s, type: %d\n", current->token.lexeme, current->token.type);
-		current = current->next;
-	}
+    t_token_list *current = token_list;
+    while (current)
+    {
+        printf("lexeme: %s, type: %s\n", current->token.lexeme, get_token_type_string(current->token.type));
+        current = current->next;
+    }
 }
 
 t_token_list	*get_token_list(char *str)
@@ -121,7 +140,7 @@ t_token_list	*get_token_list(char *str)
 	token_list = NULL;
 	while (aux.i <= aux.str_length)
 	{
-		aux.token_type = get_token_type(aux.state);
+		aux.state = token_get_next_state(aux.state, str[aux.i]);
 		if (aux.state != 1)
 			aux.lexeme_length += 1;
 		if (aux.state == -1)
@@ -129,6 +148,8 @@ t_token_list	*get_token_list(char *str)
 			token_clear_list(&token_list);
 			break ;
 		}
+		if (token_state_is_final(aux.state))
+			token_final_state(&aux, &token_list, str);
 		aux.i++;
 	}
 	printf("1o token: %s\n", token_list->token.lexeme); // ============ TEST
