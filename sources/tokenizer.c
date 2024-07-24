@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:26:39 by edcastro          #+#    #+#             */
-/*   Updated: 2024/07/18 19:08:46 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/07/24 16:44:32 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,20 +38,46 @@ static void	add_token_to_list(t_token_list **token_list, char *lexeme, int token
 	current->next = token_create_node(lexeme, token_type);
 }
 
-static void	token_clear_list(t_token_list **token_list)
+t_token_list	*token_get_sublist(t_token_list *token_lst, int start, int lst_len)
 {
-	t_token_list	*current;
-	t_token_list	*next;
+	int	i;
+	t_token_list	*sublist;
+	t_token_list	*aux;
 
-	current = *token_list;
-	while (current)
+	i = 0;
+	sublist = NULL;
+	aux = token_lst;
+	while (aux && i < start)
 	{
-		next = current->next;
-		free(current->token.lexeme);
-		free(current);
-		current = next;
+		aux = aux->next;
+		i++;
 	}
-	*token_list = NULL;
+	i = 0;
+	while (aux && i < lst_len)
+	{
+		add_token_to_list(&sublist, ft_strdup(aux->token.lexeme), aux->token.type);
+		aux = aux->next;
+		i++;
+	}
+	return (sublist);
+}
+
+void	token_final_state(t_aux_token *aux, t_token_list **token_list, char *str)
+{
+	if (token_state_requires_backtrack(aux->state))
+	{
+		aux->i -= 1;
+		aux->lexeme_length -= 1;
+	}
+	aux->token_type = get_token_type(aux->state);
+	if (aux->token_type == WORD)
+		aux->lexeme = ft_substr(str, aux->i - (aux->lexeme_length - 1), \
+		aux->lexeme_length);
+	else
+		aux->lexeme = NULL;
+	add_token_to_list(token_list, aux->lexeme, aux->token_type);
+	aux->lexeme_length = 0;
+	aux->state = 1;	
 }
 
 t_token_list	*get_token_list(char *str)
@@ -67,7 +93,7 @@ t_token_list	*get_token_list(char *str)
 	token_list = NULL;
 	while (aux.i <= aux.str_length)
 	{
-		aux.token_type = get_token_type(aux.state);
+		aux.state = token_get_next_state(aux.state, str[aux.i]);
 		if (aux.state != 1)
 			aux.lexeme_length += 1;
 		if (aux.state == -1)
@@ -75,7 +101,10 @@ t_token_list	*get_token_list(char *str)
 			token_clear_list(&token_list);
 			break ;
 		}
+		if (token_state_is_final(aux.state))
+			token_final_state(&aux, &token_list, str);
 		aux.i++;
 	}
+	print_token_list(token_list); // ============ TEST
 	return (token_list);
 }
