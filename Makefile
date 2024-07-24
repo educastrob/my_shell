@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+         #
+#    By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/10 16:58:43 by fcaldas-          #+#    #+#              #
-#    Updated: 2024/07/23 13:00:01 by fcaldas-         ###   ########.fr        #
+#    Updated: 2024/07/24 16:43:22 by edcastro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME		:= minishell
 CC			:= gcc
 FLAGS		:= -Wall -Wextra -Werror -g3
 BIN			:= ./bin/
-SRCS		:= $(addprefix ./sources/, main.c tokenizer.c utils.c get_states.c) 
+SRCS		:= $(addprefix ./sources/, get_states.c main.c token_states_1.c token_states_2.c tokenizer.c utils.c tests.c)
 OBJS		:= $(patsubst ./sources/%.c,$(BIN)%.o,$(SRCS))
 LIB			:= ./libft/libft.a
 INCLUDES	:= -I ./includes/ -I ./libft

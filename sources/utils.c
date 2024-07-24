@@ -3,14 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 17:52:58 by edcastro          #+#    #+#             */
-/*   Updated: 2024/07/23 13:10:22 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/07/24 16:09:52 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexing.h"
+
+void	token_clear_list(t_token_list **token_list)
+{
+	t_token_list	*current;
+	t_token_list	*next;
+
+	current = *token_list;
+	while (current)
+	{
+		next = current->next;
+		free(current->token.lexeme);
+		free(current);
+		current = next;
+	}
+	*token_list = NULL;
+}
 
 int		is_whitespace(char c)
 {
