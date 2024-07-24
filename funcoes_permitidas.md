@@ -47,3 +47,5 @@ Funções Permitidas:
 - `strerror`: Retorna a descrição do último erro ocorrido.
 - `isatty`: Testa se um descritor de arquivo está associado a um terminal.
 - Funções relacionadas a terminais: `tgetent`, `tgetflag`, `tgetnum`, `tgetstr`, `tgoto`, `tputs`, `ttyslot`.
+
+## end
