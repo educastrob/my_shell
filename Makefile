@@ -6,7 +6,7 @@
 #    By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/10 16:58:43 by fcaldas-          #+#    #+#              #
-#    Updated: 2024/07/24 17:32:12 by fcaldas-         ###   ########.fr        #
+#    Updated: 2024/07/24 18:20:42 by fcaldas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ libft/libft.a:
 	@make -sC ./libft 
 
 $(BIN)%.o: ./sources/%.c
+	@mkdir -p $(dir $@)
 	@$(CC) $(FLAGS) -o $@ -c $< $(INCLUDES) && printf "Compiling: $(notdir $<)\n"
 
 $(NAME): $(OBJS)
