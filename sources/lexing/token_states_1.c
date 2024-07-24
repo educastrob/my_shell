@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   change_states_1.c                                  :+:      :+:    :+:   */
+/*   token_states_1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:11:55 by edcastro          #+#    #+#             */
-/*   Updated: 2024/07/24 16:19:49 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/07/24 17:00:09 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexing.h"
 
-int		get_state_1(char c)
+int	get_state_1(char c)
 {
 	int	next_state;
 
@@ -40,7 +40,7 @@ int		get_state_1(char c)
 	return (next_state);
 }
 
-int		get_state_40(char c)
+int	get_state_40(char c)
 {
 	int	state;
 
@@ -53,7 +53,7 @@ int		get_state_40(char c)
 	return (state);
 }
 
-int		get_state_50(char c)
+int	get_state_50(char c)
 {
 	int	state;
 
@@ -66,7 +66,7 @@ int		get_state_50(char c)
 	return (state);
 }
 
-int		get_state_60(char c)
+int	get_state_60(char c)
 {
 	int	state;
 
@@ -79,7 +79,7 @@ int		get_state_60(char c)
 	return (state);
 }
 
-int		get_state_70(char c)
+int	get_state_70(char c)
 {
 	int	state;
 
