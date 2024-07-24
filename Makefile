@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/10 16:58:43 by fcaldas-          #+#    #+#              #
-#    Updated: 2024/07/24 18:03:56 by edcastro         ###   ########.fr        #
+#    Updated: 2024/07/24 18:20:42 by fcaldas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,16 +14,19 @@ NAME		:= minishell
 CC			:= gcc
 FLAGS		:= -Wall -Wextra -Werror -g3
 BIN			:= ./bin/
-SRCS		:= $(addprefix ./sources/, main.c) \
-				$(addprefix ./sources/lexing/, tokenizer.c utils.c get_states.c token_states_1.c token_states_2.c tests.c)
-OBJS		:= $(patsubst ./sources/%.c,$(BIN)%.o,$(SRCS))
+
+SRCS		:= ./sources/main.c \
+				./sources/lexing/tokenizer.c ./sources/lexing/token_states_1.c ./sources/lexing/token_states_2.c \
+				./sources/lexing/get_states.c ./sources/lexing/utils.c ./sources/lexing/tests.c
+OBJS		:= ${SRCS:./sources/%.c=./bin/%.o}
+
 LIB			:= ./libft/libft.a
 INCLUDES	:= -I ./includes/ -I ./libft
 
 
 # RULES
 
-all: libft/libft.a $(BIN) $(NAME)
+all: $(LIB) $(BIN) $(NAME)
 
 libft/libft.a:
 	@make -sC ./libft 
@@ -33,11 +36,11 @@ $(BIN)%.o: ./sources/%.c
 	@$(CC) $(FLAGS) -o $@ -c $< $(INCLUDES) && printf "Compiling: $(notdir $<)\n"
 
 $(NAME): $(OBJS)
-	@$(CC) $(OBJS) $(HEADERS) -o $(NAME) $(LIB) -lreadline
+	@$(CC) $(OBJS) -o $(NAME) $(LIB) -lreadline 
 
 $(BIN):
 	@mkdir -p $(BIN)
-
+	@mkdir -p $(BIN)/lexing
 
 clean:
 	rm -rf $(BIN)
