@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 05:11:02 by educastro         #+#    #+#             */
-/*   Updated: 2024/08/21 13:08:09 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/08/21 13:21:28 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		add_env(char *name, char *value)
 	t_env	*new_node;
 	t_env	*env;
 
-	env = my_env(NULL);
+	env = *my_env(NULL);
 	if (!(new_node = malloc(sizeof(t_env))))
 		return (1);
 	new_node->name = ft_strdup(name);
@@ -32,7 +32,7 @@ int		add_env(char *name, char *value)
 			env = env->next;
 		env->next = new_node;
 	}
-	return (0)
+	return (0);
 }
 
 // percorre o env e retorna todas as variaveis de ambiente alocadas.
@@ -44,7 +44,7 @@ int		init_env(char **envp)
 	int		i;
 	int		j;
 
-	env = my_env(NULL);
+	env = *my_env(NULL);
 	i = 0;
 	while (envp[i])
 	{
@@ -67,7 +67,7 @@ t_env	*get_env(char *name)
 {
 	t_env	*env;
 
-	env = my_env(NULL);
+	env = *my_env(NULL);
 	if (!name || !env || !name[0])
 		return (NULL);
 	while (env)
@@ -80,13 +80,13 @@ t_env	*get_env(char *name)
 }
 
 // retorna o valor (como uma string) da variável de ambiente correspondente ao nome passado como parâmetro se uma correspondência for encontrada, ou um ponteiro nulo se nenhuma variável de ambiente for encontrada.
-t_env	*get_env_value(char *name)
+char	*get_env_value(char *name)
 {
 	t_env	*env;
 
-	env = my_env(NULL);
+	env = *my_env(NULL);
 	if (!name || !env || !name[0])
-		return (NULL)
+		return (NULL);
 	while (env)
 	{
 		if (!(ft_strncmp(env->name, name, ft_strlen(name))))
@@ -102,7 +102,7 @@ void	*free_all_env(void)
 	t_env	*tmp;
 	t_env	*env;
 
-	env = my_env(NULL);
+	env = *my_env(NULL);
 	while (env)
 	{
 		free(env->name);
