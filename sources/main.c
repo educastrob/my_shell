@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 16:02:33 by educastro         #+#    #+#             */
-/*   Updated: 2024/07/23 13:12:51 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/08/14 18:29:05 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ int	main(int argc __attribute__((unused)), \
 		line = readline("minishell$ ");
 		token_list = get_token_list(line);
 		printf("line: %s\n", line);
+		printf("token: %s | type: %d", token_list->token.lexeme, token_list->token.type);
 	}
 }
