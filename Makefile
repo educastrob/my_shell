@@ -6,7 +6,7 @@
 #    By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/10 16:58:43 by fcaldas-          #+#    #+#              #
-#    Updated: 2024/07/24 18:03:56 by edcastro         ###   ########.fr        #
+#    Updated: 2024/08/21 13:11:30 by edcastro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ CC			:= gcc
 FLAGS		:= -Wall -Wextra -Werror -g3
 BIN			:= ./bin/
 SRCS		:= $(addprefix ./sources/, main.c) \
-				$(addprefix ./sources/lexing/, tokenizer.c utils.c get_states.c token_states_1.c token_states_2.c tests.c)
+				$(addprefix ./sources/lexing/, tokenizer.c utils.c get_states.c token_states_1.c token_states_2.c token_tests.c) \
+				$(addprefix ./sources/expander/, envp_list.c utils.c) 
 OBJS		:= $(patsubst ./sources/%.c,$(BIN)%.o,$(SRCS))
 LIB			:= ./libft/libft.a
 INCLUDES	:= -I ./includes/ -I ./libft

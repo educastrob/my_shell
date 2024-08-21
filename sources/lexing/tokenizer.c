@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:26:39 by edcastro          #+#    #+#             */
-/*   Updated: 2024/07/24 16:44:32 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/08/21 12:48:24 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,5 @@ t_token_list	*get_token_list(char *str)
 			token_final_state(&aux, &token_list, str);
 		aux.i++;
 	}
-	print_token_list(token_list); // ============ TEST
 	return (token_list);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
+/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 18:37:12 by educastro         #+#    #+#             */
-/*   Updated: 2024/08/21 05:11:58 by educastro        ###   ########.fr       */
+/*   Updated: 2024/08/21 13:08:45 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,22 @@
 # include "minishell.h"
 
 // structs
-typedef struct	s_envp_list
+typedef struct	s_env
 {
 	char				*key;
 	char				*value;
-	struct s_envp_list	*next;
-}				t_envp_list;
+	struct s_env	*next;
+}				t_env;
 
-// functions
-t_envp_list	*get_envp_list(char **envp);
+
+// envp_list.c
+int		add_env(t_env **env, char *name, char *value);
+int		init_env(t_env **env, char **envp);
+t_env	*get_env(t_env **env, char *name);
+t_env	*get_env_value(char *name);
+void	*free_all_env(void);
+
+// utils.c
+t_env **my_env(t_env *env);
 
 #endif

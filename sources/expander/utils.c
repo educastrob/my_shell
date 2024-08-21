@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/26 16:02:33 by educastro         #+#    #+#             */
-/*   Updated: 2024/08/21 12:49:04 by edcastro         ###   ########.fr       */
+/*   Created: 2024/08/21 12:02:37 by edcastro          #+#    #+#             */
+/*   Updated: 2024/08/21 12:07:01 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "expander.h"
 
-int	main(int argc __attribute__((unused)), \
-	char **argv __attribute__((unused)), char **envp __attribute__((unused)))
+// permite compartilhar uma unica instancia do env para o código inteiro.
+t_env **my_env(t_env *env)
 {
-	char	*line;
-	t_token_list	*token_list;
-
-	while (1)
-	{
-		line = readline("minishell$ ");
-		token_list = get_token_list(line);
-		printf("line: %s\n", line);
-		print_token_list(token_list); // ============ TOKEN TEST
-	}
+	static t_env *env_total;
+	
+	if (env_total == NULL)
+		env_total = env;
+	return (&env_total);
 }
