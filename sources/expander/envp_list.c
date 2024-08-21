@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   expander.h                                         :+:      :+:    :+:   */
+/*   envp_list.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/14 18:37:12 by educastro         #+#    #+#             */
-/*   Updated: 2024/08/21 05:11:58 by educastro        ###   ########.fr       */
+/*   Created: 2024/08/21 05:11:02 by educastro         #+#    #+#             */
+/*   Updated: 2024/08/21 07:10:56 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXPANDER_H
-# define EXPANDER_H
+#include "expander.h"
 
-// libs
-# include "minishell.h"
-
-// structs
-typedef struct	s_envp_list
+t_envp_list	*get_envp_list(char *key, char *value)
 {
-	char				*key;
-	char				*value;
-	struct s_envp_list	*next;
-}				t_envp_list;
-
-// functions
-t_envp_list	*get_envp_list(char **envp);
-
-#endif
+	t_envp_list		*new_node;
+	
+	new_node = malloc(sizeof(t_envp_list));
+	new_node->key = ft_strdup(key);
+	new_node->value = ft_strdup(value);
+	new_node->next = NULL;
+}
