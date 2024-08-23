@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/16 19:40:49 by edcastro          #+#    #+#             */
-/*   Updated: 2024/08/22 14:52:45 by fcaldas-         ###   ########.fr       */
+/*   Created: 2024/07/24 18:19:00 by fcaldas-          #+#    #+#             */
+/*   Updated: 2024/08/22 18:16:53 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	MINISHELL_H
-# define MINISHELL_H
+#ifndef PARSING_H
+# define PARSING_H
 
-// libs
-# include "../libft/libft.h"
-
-# include "parsing.h"
+# include "minishell.h"
 # include "lexing.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <signal.h>
-# include "fcntl.h"
-# include <readline/history.h>
-# include <readline/readline.h>
-# include <signal.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <sys/stat.h>
-# include <sys/wait.h>
-# include <termios.h>
-# include <unistd.h>
+void	check_syntax(t_token_list *token_list);
+
+typedef struct s_command
+{
+	int					type;
+	char				*content;
+	struct s_command	*next;
+	struct s_command	*prev;
+}	t_command;
 
 #endif

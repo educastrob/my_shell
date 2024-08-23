@@ -3,7 +3,7 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/10 16:58:43 by fcaldas-          #+#    #+#              #
 #    Updated: 2024/08/23 16:10:01 by edcastro         ###   ########.fr        #
@@ -16,6 +16,7 @@ FLAGS		:= -Wall -Wextra -Werror -g3
 BIN			:= ./bin/
 SRCS		:= $(addprefix ./sources/, main.c) \
 				$(addprefix ./sources/lexing/, tokenizer.c utils.c get_states.c token_states_1.c token_states_2.c token_tests.c) \
+        $(addprefix ./sources/parsing/, syntax.c) \
 				$(addprefix ./sources/expander/, env_func1.c env_func2.c utils.c) 
 OBJS		:= $(patsubst ./sources/%.c,$(BIN)%.o,$(SRCS))
 LIB			:= ./libft/libft.a
