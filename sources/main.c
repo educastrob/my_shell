@@ -6,7 +6,7 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 16:02:33 by educastro         #+#    #+#             */
-/*   Updated: 2024/08/22 18:13:14 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/08/23 17:06:03 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main(int argc __attribute__((unused)), \
 		line = readline("minishell$ ");
 		token_list = get_token_list(line);
 		check_syntax(token_list);
+		print_token_list(token_list); // ============ TEST
 		printf("line: %s\n", line);
 	}
 }
