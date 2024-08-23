@@ -3,32 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
+/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 16:02:33 by educastro         #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/08/23 17:06:03 by fcaldas-         ###   ########.fr       */
-=======
-/*   Updated: 2024/08/14 18:29:05 by educastro        ###   ########.fr       */
->>>>>>> 8ead91a2042d5704b6de60a7fef058f31dee22d0
+/*   Updated: 2024/08/23 17:03:54 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "minishell.h"
+#include "expander.h"
+#include "lexing.h"
 
 int	main(int argc __attribute__((unused)), \
-	char **argv __attribute__((unused)), char **envp __attribute__((unused)))
+	char **argv __attribute__((unused)), char **envp)
 {
-	char	*line;
+	char			*line;
 	t_token_list	*token_list;
+
+
+	// ============ ENV TEST
+	t_env 			*env;
+	(void)envp;
+	env = *my_env(NULL);
+	init_env(envp);
+	add_env("$DUDU", "42");
+	printf("ENV DUDU VALUE: %s\n", get_env_value("DUDU"));
+	free_all_env();
 
 	while (1)
 	{
 		line = readline("minishell$ ");
 		token_list = get_token_list(line);
 		check_syntax(token_list);
-		print_token_list(token_list); // ============ TEST
 		printf("line: %s\n", line);
-		printf("token: %s | type: %d", token_list->token.lexeme, token_list->token.type);
+		print_token_list(token_list); // ============ TOKEN TEST
 	}
 }
