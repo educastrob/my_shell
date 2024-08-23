@@ -6,12 +6,11 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 16:02:33 by educastro         #+#    #+#             */
-/*   Updated: 2024/07/23 13:12:51 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/08/22 18:13:14 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
-#include "../includes/lexing.h"
 
 int	main(int argc __attribute__((unused)), \
 	char **argv __attribute__((unused)), char **envp __attribute__((unused)))
@@ -23,6 +22,7 @@ int	main(int argc __attribute__((unused)), \
 	{
 		line = readline("minishell$ ");
 		token_list = get_token_list(line);
+		check_syntax(token_list);
 		printf("line: %s\n", line);
 	}
 }

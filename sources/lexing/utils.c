@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 17:52:58 by edcastro          #+#    #+#             */
-/*   Updated: 2024/07/24 17:00:55 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/08/22 17:05:38 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int	is_whitespace(char c)
 
 int	is_metacharacter(char c)
 {
-	if (c == '|' || c == '<' || c == '>' || c == '&' || c == '\'' 
-		|| c == '\"' || c == '(' || c == ')' || is_whitespace(c))
+	if (c == '|' || c == '<' || c == '>' || c == '\'' 
+		|| c == '\"' || is_whitespace(c))
 		return (1);
 	return (0);
 }

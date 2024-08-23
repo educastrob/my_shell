@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexing.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 13:17:57 by educastro         #+#    #+#             */
-/*   Updated: 2024/07/24 16:36:55 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/08/22 18:18:01 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct			s_token
 typedef struct			s_token_list
 {
 	struct s_token_list	*next;
+	struct s_token_list	*prev;
 	t_token				token;
 }	t_token_list;
 

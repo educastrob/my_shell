@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_states.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:44:40 by edcastro          #+#    #+#             */
-/*   Updated: 2024/07/24 16:35:01 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/08/22 17:15:18 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,8 @@ int		get_token_type(int state)
 {
 	int	type;
 
-	if (state == 20)
-		type = OPEN_PARENTHESIS;
-	else if (state == 30)
-		type = CLOSE_PARENTHESIS;
-	else if (state == 41)
-		type = OR;
-	else if (state == 42)
+	if (state == 40)
 		type = PIPE;
-	else if (state == 51)
-		type = AND;
 	else if (state == 61)
 		type = REDIRECT_HEREDOC;
 	else if (state == 62)
@@ -43,8 +35,7 @@ int		get_token_type(int state)
 
 int		token_state_requires_backtrack(int state)
 {
-	if (state == 42
-		|| state == 62
+	if (state == 62
 		|| state == 72
 		|| state == 83)
 		return (1);
@@ -53,11 +44,7 @@ int		token_state_requires_backtrack(int state)
 
 int		token_state_is_final(int state)
 {
-	if (state == 20
-		|| state == 30
-		|| state == 41
-		|| state == 42
-		|| state == 51
+	if ( state == 40 
 		|| state == 61
 		|| state == 62
 		|| state == 71
@@ -73,10 +60,6 @@ int		token_get_next_state(int state, char c)
 
 	if (state == 1)
 		next_state = get_state_1(c);
-	else if (state == 40)
-		next_state = get_state_40(c);
-	else if (state == 50)
-		next_state = get_state_50(c);
 	else if (state == 60)
 		next_state = get_state_60(c);
 	else if (state == 70)
