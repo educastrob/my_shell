@@ -6,7 +6,7 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 18:19:00 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/08/22 18:16:53 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/08/23 18:46:55 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@
 # include "minishell.h"
 # include "lexing.h"
 
-void	check_syntax(t_token_list *token_list);
+# define TRUE 1
+# define FALSE 0
+
+int	check_syntax(t_token_list *token_list);
 
 typedef struct s_command
 {

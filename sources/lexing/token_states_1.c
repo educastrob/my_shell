@@ -6,11 +6,11 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:11:55 by edcastro          #+#    #+#             */
-/*   Updated: 2024/08/22 17:12:54 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/08/23 18:44:32 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lexing.h"
+#include "minishell.h"
 
 int	get_state_1(char c)
 {

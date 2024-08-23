@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tests.c                                            :+:      :+:    :+:   */
+/*   token_tests.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:13:14 by edcastro          #+#    #+#             */
-/*   Updated: 2024/07/24 16:30:44 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/08/23 18:44:22 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lexing.h"
+#include "minishell.h"
 
 const char *get_token_type_string(enum e_token type)
 {
@@ -22,13 +22,6 @@ const char *get_token_type_string(enum e_token type)
         case REDIRECT_HEREDOC: return "REDIRECT_HEREDOC";
         case REDIRECT_OUTPUT: return "REDIRECT_OUTPUT";
         case REDIRECT_OUTPUT_APPEND: return "REDIRECT_OUTPUT_APPEND";
-        case OR: return "OR";
-        case AND: return "AND";
-        case OPEN_PARENTHESIS: return "OPEN_PARENTHESIS";
-        case CLOSE_PARENTHESIS: return "CLOSE_PARENTHESIS";
-        case EXPRESSION: return "EXPRESSION";
-        case COMMAND: return "COMMAND";
-        case SUBSHELL: return "SUBSHELL";
         default: return "UNKNOWN";
     }
 }

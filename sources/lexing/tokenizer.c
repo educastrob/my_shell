@@ -6,11 +6,11 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:26:39 by edcastro          #+#    #+#             */
-/*   Updated: 2024/08/21 12:48:24 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/08/23 18:44:15 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lexing.h"
+#include "minishell.h"
 
 static t_token_list	*token_create_node(char *lexeme, int token_type)
 {

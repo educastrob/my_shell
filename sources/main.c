@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 16:02:33 by educastro         #+#    #+#             */
-/*   Updated: 2024/08/23 17:03:54 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/08/23 18:35:37 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,11 @@ int	main(int argc __attribute__((unused)), \
 	{
 		line = readline("minishell$ ");
 		token_list = get_token_list(line);
-		check_syntax(token_list);
-		printf("line: %s\n", line);
-		print_token_list(token_list); // ============ TOKEN TEST
+		if (check_syntax(token_list))
+			print_token_list(token_list); 
+		
+
+		// ================ TESTS
+		// printf("line: %s\n", line);
 	}
 }

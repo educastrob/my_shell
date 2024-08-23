@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   token_states_2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:19:51 by edcastro          #+#    #+#             */
-/*   Updated: 2024/07/24 17:00:17 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/08/23 18:44:30 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lexing.h"
+#include "minishell.h"
 
 int	get_state_80(char c)
 {

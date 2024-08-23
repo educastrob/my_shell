@@ -6,7 +6,7 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 13:17:57 by educastro         #+#    #+#             */
-/*   Updated: 2024/08/23 17:02:08 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/08/23 18:48:06 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,12 @@
 // enums
 enum e_token
 {
-	WORD,
+	WORD = 1,
 	PIPE,
-	REDIRECT_INPUT,
-	REDIRECT_HEREDOC,
 	REDIRECT_OUTPUT,
 	REDIRECT_OUTPUT_APPEND,
-	OR,
-	AND,
-	OPEN_PARENTHESIS,
-	CLOSE_PARENTHESIS,
-	EXPRESSION,
-	COMMAND,
-	SUBSHELL
+	REDIRECT_INPUT,
+	REDIRECT_HEREDOC,
 };
 
 // structs

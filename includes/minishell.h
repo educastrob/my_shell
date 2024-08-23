@@ -6,7 +6,7 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 19:40:49 by edcastro          #+#    #+#             */
-/*   Updated: 2024/08/22 14:52:45 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/08/23 18:42:49 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 # include "parsing.h"
 # include "lexing.h"
+# include "expander.h"
 
 # include <stdlib.h>
 # include <unistd.h>
