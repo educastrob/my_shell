@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   envp_list.c                                        :+:      :+:    :+:   */
+/*   env_func1.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 05:11:02 by educastro         #+#    #+#             */
-/*   Updated: 2024/08/21 13:21:28 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/08/23 16:51:16 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ int		add_env(char *name, char *value)
 	t_env	*env;
 
 	env = *my_env(NULL);
+	if (get_env(name))
+	{
+		update_env(name, value);
+		return (0);
+	}
 	if (!(new_node = malloc(sizeof(t_env))))
 		return (1);
 	new_node->name = ft_strdup(name);
@@ -58,7 +63,7 @@ int		init_env(char **envp)
 		free(value);
 		i++;
 	}
-	// add_env(&env, "PIPESTATUS", "0");
+	add_env("PIPESTATUS", "0");
 	return (0);
 }
 
