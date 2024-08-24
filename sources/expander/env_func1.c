@@ -6,50 +6,46 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 05:11:02 by educastro         #+#    #+#             */
-/*   Updated: 2024/08/23 16:51:16 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/08/24 17:05:30 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expander.h"
 
-// cria os nodes na lista encadeada.
-int		add_env(char *name, char *value)
+int		add_env(t_env **env, char *name, char *value)
 {
-	t_env	*new_node;
-	t_env	*env;
+	t_env	*new;
+	t_env	*tmp;
 
-	env = *my_env(NULL);
-	if (get_env(name))
+	tmp = *env;
+	if (get_env(env, name))
 	{
-		update_env(name, value);
+		actualise_env(env, name, value);
 		return (0);
 	}
-	if (!(new_node = malloc(sizeof(t_env))))
+	if (!(new = malloc(sizeof(t_env))))
 		return (1);
-	new_node->name = ft_strdup(name);
-	new_node->value = ft_strdup(value);
-	new_node->next = NULL;
+	new->name = ft_strdup(name);
+	new->value = ft_strdup(value);
+	new->next = NULL;
 	if (env == NULL)
-		env = new_node;
-	else
 	{
-		while (env->next != NULL)
-			env = env->next;
-		env->next = new_node;
+		env = &new;
+		return (0);
 	}
+	while (tmp->next != NULL)
+		env = &tmp->next;
+	tmp->next = new;
 	return (0);
 }
 
-// percorre o env e retorna todas as variaveis de ambiente alocadas.
-int		init_env(char **envp)
+int		init_env(t_env **env, char *envp[])
 {
-	t_env	*env;
-	char	*name;
 	char	*value;
+	char	*name;
 	int		i;
 	int		j;
 
-	env = *my_env(NULL);
 	i = 0;
 	while (envp[i])
 	{
@@ -58,63 +54,59 @@ int		init_env(char **envp)
 			j++;
 		name = ft_substr(envp[i], 0, j);
 		value = ft_substr(envp[i], j + 1, ft_strlen(envp[i]));
-		add_env(name, value);
+		add_env(env, name, value);
 		free(name);
 		free(value);
 		i++;
 	}
-	add_env("PIPESTATUS", "0");
+	add_env(env, "PIPESTATUS", "0");
 	return (0);
 }
 
-// retorna o link da lista cujo nome é igual ao passado no parâmetro.
-t_env	*get_env(char *name)
+t_env	*get_env(t_env **env, char *name)
 {
-	t_env	*env;
+	t_env *tmp;
 
-	env = *my_env(NULL);
-	if (!name || !env || !name[0])
+	tmp = *env;
+	if (!name || !tmp)
 		return (NULL);
-	while (env)
+	while (tmp)
 	{
-		if (!(ft_strncmp(env->name, name, ft_strlen(name))))
-			return (env);
-		env = env->next;
+		if (!ft_strncmp(tmp->name, name, ft_strlen(name)))
+			return (tmp);
+		tmp = tmp->next;
 	}
 	return (NULL);
 }
 
-// retorna o valor (como uma string) da variável de ambiente correspondente ao nome passado como parâmetro se uma correspondência for encontrada, ou um ponteiro nulo se nenhuma variável de ambiente for encontrada.
-char	*get_env_value(char *name)
+char	*get_env_value(t_env **env, char *name)
 {
-	t_env	*env;
+	t_env *tmp;
 
-	env = *my_env(NULL);
-	if (!name || !env || !name[0])
+	tmp = *env;
+	if (!name || !tmp || !name[0])
 		return (NULL);
-	while (env)
+	while (tmp)
 	{
-		if (!(ft_strncmp(env->name, name, ft_strlen(name))))
-			return (env->value);
-		env = env->next;
+		if (!ft_strncmp(tmp->name, name, ft_strlen(name)))
+			return (tmp->value);
+		tmp = tmp->next;
 	}
 	return (NULL);
 }
 
-// free all
-void	*free_all_env(void)
+void	*free_all_env(t_env **env)
 {
 	t_env	*tmp;
-	t_env	*env;
 
-	env = *my_env(NULL);
+	tmp = *env;
 	while (env)
 	{
-		free(env->name);
-		free(env->value);
-		tmp = env->next;
+		free((*env)->name);
+		free((*env)->value);
+		tmp = (*env)->next;
 		free(env);
-		env = tmp;
+		env = &tmp;
 	}
 	return (env);
 }

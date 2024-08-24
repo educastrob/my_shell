@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 16:08:11 by edcastro          #+#    #+#             */
-/*   Updated: 2024/08/23 16:43:58 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/08/24 16:15:04 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,10 @@ void	*free_env(t_env *env)
 	return (env);
 }
 
-t_env	*init_env_update(char *name, char *value)
+t_env	*init_actualise(t_env *env, char *name, char *value)
 {
-	t_env	*env;
-	t_env	*new;
+	t_env *new;
 
-	env = *my_env(NULL);
 	if (!(new = malloc(sizeof(t_env))))
 		return (new);
 	new->name = ft_strdup(name);
@@ -41,26 +39,28 @@ t_env	*init_env_update(char *name, char *value)
 	return (new);
 }
 
-int		update_env(char *name, char *value)
+int		actualise_env(t_env **env, char *name, char *value)
 {
-	t_env	*env;
+	t_env	*ret;
 	t_env	*new;
 
-	env = *my_env(NULL);
-	if (!(new = init_env_update(name, value)))
+	ret = *env;
+	if (!(new = init_actualise(*env, name, value)))
 		return (0);
 	while (env)
 	{
-		if (env->next && !ft_strncmp(env->next->name, name, ft_strlen(name)))
+		if ((*env)->next && !ft_strncmp((*env)->next->name, name,
+			ft_strlen(name)))
 		{
-			new->next = env->next->next;
-			free_env(env->next);
-			env->next = new;
+			new->next = (*env)->next->next;
+			free_env((*env)->next);
+			(*env)->next = new;
 			break ;
 		}
-		env = env->next;
+		env = &(*env)->next;
 	}
-	if (env == NULL)
+	if (*env == NULL)
 		free_env(new);
+	*env = ret;
 	return (0);
 }

@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   env_tests.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/21 12:02:37 by edcastro          #+#    #+#             */
-/*   Updated: 2024/08/24 15:20:40 by edcastro         ###   ########.fr       */
+/*   Created: 2024/08/23 19:08:19 by edcastro          #+#    #+#             */
+/*   Updated: 2024/08/24 16:16:21 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "minishell.h"
 #include "expander.h"
 
-// permite compartilhar uma unica instancia do env para o código inteiro.
-// t_env **my_env(t_env *env)
-// {
-// 	static t_env *env_total;
-	
-// 	if (env_total == NULL)
-// 		env_total = env;
-// 	return (&env_total);
-// }
+void print_env(t_env **env)
+{
+    while (env) {
+        printf("%s=%s\n", (*env)->name, (*env)->value);
+        env = &(*env)->next;
+    }
+}
