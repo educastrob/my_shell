@@ -15,6 +15,8 @@ SRCS = \
 	lst/ft_lstiter.c\
 	lst/ft_lstlast.c\
 	lst/ft_lstmap.c\
+	lst/ft_lstnew.c\
+	lst/ft_lstsize.c\
 	\
 	mem/ft_memset.c \
 	mem/ft_bzero.c \
