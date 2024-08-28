@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 05:11:02 by educastro         #+#    #+#             */
-/*   Updated: 2024/08/28 12:04:20 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/08/28 15:22:28 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_env	*add_env(t_list *envs, char *name, char *value)
 	return (env);
 }
 
-// aloca um link da lista contendo name e value separados por '=' (complementa create_envs())
+// cria um node contendo name e value separados por '=' (complementa create_envs())
 static t_env	*new_env(char *envp)
 {
 	t_env	*env;
@@ -49,7 +49,7 @@ t_list	*create_envs(char **envp)
 	t_list	*envs;
 	
 	envs = NULL;
-	if (*envp != NULL)
+	while (*envp != NULL)
 	{
 		ft_lstadd_back(&envs, ft_lstnew(new_env(*envp)));
 		envp++;

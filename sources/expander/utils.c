@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 12:02:37 by edcastro          #+#    #+#             */
-/*   Updated: 2024/08/28 13:08:01 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/08/28 15:11:53 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	print_env(t_minishell *minishell)
 	{
 		env = envs->content;
 		if (env->value != NULL)
-			ft_printf("%s=%s\n", env->name, env->value);
+			printf("%s=%s   ----->   Adicionado ao endereço: %p\n", env->name, env->value, envs->content);
 		envs = envs->next;
 	}
 	return (EXIT_SUCCESS);
