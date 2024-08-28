@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 19:40:49 by edcastro          #+#    #+#             */
-/*   Updated: 2024/08/24 15:22:06 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/08/28 13:02:52 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,19 @@
 # include <sys/wait.h>
 # include <termios.h>
 # include <unistd.h>
+
+// enums
+enum	e_bool
+{
+	FALSE,
+	TRUE
+};
+
+// structs
+typedef struct	s_minishell
+{
+	t_list		*tokens;
+	t_list		*envs;
+}				t_minishell;
 
 #endif
