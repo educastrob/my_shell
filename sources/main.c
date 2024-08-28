@@ -6,24 +6,24 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 16:02:33 by educastro         #+#    #+#             */
-/*   Updated: 2024/08/24 16:15:29 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/08/28 13:07:50 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../includes/minishell.h"
 
 int	main(int argc __attribute__((unused)), \
-	char **argv __attribute__((unused)), char *envp[])
+	char **argv __attribute__((unused)), char **envp)
 {
-	t_env			**env = NULL;
 	char			*line;
 	t_token_list	*token_list;
-
+	t_minishell		*minishell;
 
 	// ============ ENV TEST
-	init_env(env, envp);
-	print_env(env);
-	free_all_env(env);
+
+
+	minishell = init_minishell(envp);
+    print_env(minishell);
 
 	while (1)
 	{
