@@ -6,107 +6,53 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 05:11:02 by educastro         #+#    #+#             */
-/*   Updated: 2024/08/24 17:05:30 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/08/28 12:04:20 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "expander.h"
+#include "../../includes/expander.h"
 
-int		add_env(t_env **env, char *name, char *value)
+// adiciona um novo env
+t_env	*add_env(t_list *envs, char *name, char *value)
 {
-	t_env	*new;
-	t_env	*tmp;
+	t_env	*env;
 
-	tmp = *env;
-	if (get_env(env, name))
-	{
-		actualise_env(env, name, value);
-		return (0);
-	}
-	if (!(new = malloc(sizeof(t_env))))
-		return (1);
-	new->name = ft_strdup(name);
-	new->value = ft_strdup(value);
-	new->next = NULL;
+	env = ft_calloc(1, sizeof(t_env));
 	if (env == NULL)
-	{
-		env = &new;
-		return (0);
-	}
-	while (tmp->next != NULL)
-		env = &tmp->next;
-	tmp->next = new;
-	return (0);
-}
-
-int		init_env(t_env **env, char *envp[])
-{
-	char	*value;
-	char	*name;
-	int		i;
-	int		j;
-
-	i = 0;
-	while (envp[i])
-	{
-		j = 0;
-		while (envp[i][j] && envp[i][j] != '=')
-			j++;
-		name = ft_substr(envp[i], 0, j);
-		value = ft_substr(envp[i], j + 1, ft_strlen(envp[i]));
-		add_env(env, name, value);
-		free(name);
-		free(value);
-		i++;
-	}
-	add_env(env, "PIPESTATUS", "0");
-	return (0);
-}
-
-t_env	*get_env(t_env **env, char *name)
-{
-	t_env *tmp;
-
-	tmp = *env;
-	if (!name || !tmp)
-		return (NULL);
-	while (tmp)
-	{
-		if (!ft_strncmp(tmp->name, name, ft_strlen(name)))
-			return (tmp);
-		tmp = tmp->next;
-	}
-	return (NULL);
-}
-
-char	*get_env_value(t_env **env, char *name)
-{
-	t_env *tmp;
-
-	tmp = *env;
-	if (!name || !tmp || !name[0])
-		return (NULL);
-	while (tmp)
-	{
-		if (!ft_strncmp(tmp->name, name, ft_strlen(name)))
-			return (tmp->value);
-		tmp = tmp->next;
-	}
-	return (NULL);
-}
-
-void	*free_all_env(t_env **env)
-{
-	t_env	*tmp;
-
-	tmp = *env;
-	while (env)
-	{
-		free((*env)->name);
-		free((*env)->value);
-		tmp = (*env)->next;
-		free(env);
-		env = &tmp;
-	}
+		return (env);
+	env->name = ft_strdup(name);
+	if (value == NULL)
+		env->value = NULL;
+	else
+		env->value = ft_strdup(value);
+	ft_lstadd_back(&envs, ft_lstnew(env));
 	return (env);
+}
+
+// aloca um link da lista contendo name e value separados por '=' (complementa create_envs())
+static t_env	*new_env(char *envp)
+{
+	t_env	*env;
+	char	*first_equal;
+	
+	env = ft_calloc(1, sizeof(t_env));
+	first_equal = ft_strchr(envp, '=');
+	*first_equal = '\0';
+	env->name = ft_strdup(envp);
+	env->value = ft_strdup(first_equal + 1);
+	return (env);
+}
+
+// itera sobre todos o envp e aloca um por um.
+t_list	*create_envs(char **envp)
+{
+	t_list	*envs;
+	
+	envs = NULL;
+	if (*envp != NULL)
+	{
+		ft_lstadd_back(&envs, ft_lstnew(new_env(*envp)));
+		envp++;
+	}
+	return (envs);
 }
