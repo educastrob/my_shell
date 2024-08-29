@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.h                                          :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/24 18:19:00 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/08/28 20:20:38 by fcaldas-         ###   ########.fr       */
+/*   Created: 2024/08/29 17:41:39 by edcastro          #+#    #+#             */
+/*   Updated: 2024/08/29 19:33:56 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSING_H
-# define PARSING_H
+#include "../../includes/minishell.h"
 
-# include "minishell.h"
-# include "lexing.h"
-
-# define TRUE 1
-# define FALSE 0
-
-char	*check_syntax(t_token_list *token_list);
-
-typedef struct s_command
+int	pwd(void)
 {
-	char				*name;
-	char				**argv;
-	struct s_command	*next;
-	struct s_command	*prev;
-}	t_command;
+	char	*path;
 
-#endif
+	path = getcwd(NULL, 0);
+	if (path == NULL)
+	{
+		perror("pwd: ");
+		return (EXIT_FAILURE);
+	}
+	ft_printf("%s\n", path);
+	free(path);
+	return (EXIT_SUCCESS);
+}

@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 18:37:12 by educastro         #+#    #+#             */
-/*   Updated: 2024/08/23 16:45:06 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/08/29 17:45:31 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,30 @@
 
 // libs
 # include "minishell.h"
+#include "../libft/libft.h"
+
+typedef struct s_minishell t_minishell;
 
 // structs
 typedef struct	s_env
 {
-	char				*name;
-	char				*value;
-	struct s_env		*next;
+	char		*name;
+	char		*value;
 }				t_env;
 
-
 // env_func1.c
-int		add_env(char *name, char *value);
-int		init_env(char **envp);
-t_env	*get_env(char *name);
-char	*get_env_value(char *name);
-void	*free_all_env(void);
+t_env	*add_env(t_list *envs, char *name, char *value);
+t_list	*create_envs(char **envp);
+t_env	*update_env(t_list *envs, char *name, char *value);
+t_env	*export_env(t_minishell *minishell, char *name, char *value);
 
 // env_func2.c
-void	*free_env(t_env *env);
-t_env	*init_env_update(char *name, char *value);
-int		update_env(char *name, char *value);
+t_env	*find_env(t_list *envs, char *name);
+char	*find_env_value(t_list *envs, char *name);
+t_list	*find_env_element(t_list *envs, char *name);
+void	uptade_pwd_env(t_list *envs);
 
 // utils.c
-t_env **my_env(t_env *env);
+t_minishell     *init_minishell(char **envp);
 
 #endif

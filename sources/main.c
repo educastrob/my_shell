@@ -6,13 +6,11 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 16:02:33 by educastro         #+#    #+#             */
-/*   Updated: 2024/08/29 16:34:21 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/08/29 19:33:01 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-#include "expander.h"
-#include "lexing.h"
+#include "../includes/minishell.h"
 
 void	ft_perror(char *error)
 {
@@ -64,20 +62,16 @@ int	main(int argc __attribute__((unused)), \
 	char			*line;
 	t_token_list	*token_list;
 	int				i;
-
+	t_minishell		*minishell;
 	i = 1;
-	// ============ ENV TEST
-	t_env 			*env;
-	(void)envp;
-	env = *my_env(NULL);
-	init_env(envp);
-	add_env("$DUDU", "42");
-	printf("ENV DUDU VALUE: %s\n", get_env_value("DUDU"));
-	free_all_env();
+	minishell = init_minishell(envp);
+    env(minishell); // ============ ENV TEST
 	while (i)
 	{
 		line = readline("minishell$ ");
 		token_list = get_token_list(line);
+		printf("line: %s\n", line);
+		print_token_list(token_list); // ============ TOKEN TEST
 		if (token_list)
 			if (!handle_error(check_syntax(token_list)))
 				print_token_list(token_list);

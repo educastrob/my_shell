@@ -1,23 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_lstrm.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/21 12:02:37 by edcastro          #+#    #+#             */
-/*   Updated: 2024/08/28 15:44:45 by edcastro         ###   ########.fr       */
+/*   Created: 2023/08/08 16:25:31 by fcaldas-          #+#    #+#             */
+/*   Updated: 2024/08/29 17:49:48 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/expander.h"
+#include "../libft.h"
 
-// inicializa o envp
-t_minishell     *init_minishell(char **envp)
+t_list	*ft_lstrm(t_list *lst, t_list *rm_element, void (*del)(void *))
 {
-    t_minishell *minishell;
+	t_list	*head;
+	t_list	*prev;
 
-    minishell = ft_calloc(1, sizeof(t_minishell));
-    minishell->envs = create_envs(envp);
-    return (minishell);
+	if (lst == rm_element)
+	{
+		head = lst->next;
+		ft_lstdelone(lst, del);
+		return (head);
+	}
+	head = lst;
+	while (lst != NULL)
+	{
+		prev = lst;
+		lst = lst->next;
+		if (lst == rm_element)
+		{
+			prev->next = lst->next;
+			ft_lstdelone(lst, del);
+			break ;
+		}
+	}
+	return (head);
 }
