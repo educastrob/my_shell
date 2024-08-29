@@ -1,32 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.h                                          :+:      :+:    :+:   */
+/*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/24 18:19:00 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/08/28 20:20:38 by fcaldas-         ###   ########.fr       */
+/*   Created: 2024/08/29 19:22:50 by fcaldas-          #+#    #+#             */
+/*   Updated: 2024/08/29 19:27:50 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSING_H
-# define PARSING_H
+#include "minishell.h"
 
-# include "minishell.h"
-# include "lexing.h"
-
-# define TRUE 1
-# define FALSE 0
-
-char	*check_syntax(t_token_list *token_list);
-
-typedef struct s_command
+t_command	*parse(t_token_list *tokens)
 {
-	char				*name;
-	char				**argv;
-	struct s_command	*next;
-	struct s_command	*prev;
-}	t_command;
 
-#endif
+}

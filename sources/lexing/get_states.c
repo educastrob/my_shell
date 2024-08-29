@@ -6,7 +6,7 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:44:40 by edcastro          #+#    #+#             */
-/*   Updated: 2024/08/23 18:44:36 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/08/29 17:02:26 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int		token_state_is_final(int state)
 	return (0);
 }
 
-int		token_get_next_state(int state, char c)
+int		token_get_next_state(int state, char c, int *token_type)
 {
 	int	next_state;
 
