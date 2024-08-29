@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/21 12:02:37 by edcastro          #+#    #+#             */
-/*   Updated: 2024/08/28 15:44:45 by edcastro         ###   ########.fr       */
+/*   Created: 2024/08/28 15:43:55 by edcastro          #+#    #+#             */
+/*   Updated: 2024/08/29 17:46:19 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/expander.h"
+#include "../../includes/minishell.h"
 
-// inicializa o envp
-t_minishell     *init_minishell(char **envp)
+int	env(t_minishell *minishell)
 {
-    t_minishell *minishell;
+	t_list	*envs;
+	t_env	*env;
 
-    minishell = ft_calloc(1, sizeof(t_minishell));
-    minishell->envs = create_envs(envp);
-    return (minishell);
+	envs = minishell->envs;
+	while (envs != NULL)
+	{
+		env = envs->content;
+		if (env->value != NULL)
+			printf("%s=%s\n", env->name, env->value);
+		envs = envs->next;
+	}
+	return (EXIT_SUCCESS);
 }

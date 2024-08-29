@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 05:11:02 by educastro         #+#    #+#             */
-/*   Updated: 2024/08/28 15:22:28 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/08/29 17:37:40 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,30 @@ t_list	*create_envs(char **envp)
 		envp++;
 	}
 	return (envs);
+}
+
+// atualiza o env
+t_env	*update_env(t_list *envs, char *name, char *value)
+{
+	t_env	*env;
+
+	env = find_env(envs, name);
+	if (env == NULL)
+		return (NULL);
+	if (value == NULL)
+		return (env);
+	if (value != NULL)
+		free(env->value);
+	env->value = ft_strdup(value);
+	return (env);
+}
+
+t_env	*export_env(t_minishell *minishell, char *name, char *value)
+{
+	t_env	*env;
+
+	env = update_env(minishell->envs, name, value);
+	if (env == NULL)
+		return (add_env(minishell->envs, name, value));
+	return (env);
 }

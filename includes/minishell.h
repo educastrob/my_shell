@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 19:40:49 by edcastro          #+#    #+#             */
-/*   Updated: 2024/08/28 15:20:53 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/08/29 17:46:24 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,9 @@ typedef struct	s_minishell
 	t_list		*tokens;
 	t_list		*envs;
 }				t_minishell;
+
+// builtins
+int	env(t_minishell *minishell);
+int	pwd(void);
 
 #endif
