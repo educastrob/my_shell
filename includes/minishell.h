@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 19:40:49 by edcastro          #+#    #+#             */
-/*   Updated: 2024/08/29 17:46:24 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/08/29 20:00:36 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@
 # include <termios.h>
 # include <unistd.h>
 
+typedef struct s_token_list t_token_list;
+
 // enums
 enum	e_bool
 {
@@ -42,8 +44,8 @@ enum	e_bool
 // structs
 typedef struct	s_minishell
 {
-	t_list		*tokens;
-	t_list		*envs;
+	t_token_list	*tokens;
+	t_list			*envs;
 }				t_minishell;
 
 // builtins

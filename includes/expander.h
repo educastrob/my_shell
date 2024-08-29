@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 18:37:12 by educastro         #+#    #+#             */
-/*   Updated: 2024/08/29 17:45:31 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/08/29 20:05:49 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@ t_list	*find_env_element(t_list *envs, char *name);
 void	uptade_pwd_env(t_list *envs);
 
 // utils.c
-t_minishell     *init_minishell(char **envp);
+t_minishell	*init_minishell(char **envp);
 
 #endif
