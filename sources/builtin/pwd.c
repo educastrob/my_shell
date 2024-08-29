@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/21 12:02:37 by edcastro          #+#    #+#             */
-/*   Updated: 2024/08/28 15:44:45 by edcastro         ###   ########.fr       */
+/*   Created: 2024/08/29 17:41:39 by edcastro          #+#    #+#             */
+/*   Updated: 2024/08/29 17:42:04 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/expander.h"
+#include "../../includes/minishell.h"
 
-// inicializa o envp
-t_minishell     *init_minishell(char **envp)
+int	pwd(void)
 {
-    t_minishell *minishell;
+	char	*path;
 
-    minishell = ft_calloc(1, sizeof(t_minishell));
-    minishell->envs = create_envs(envp);
-    return (minishell);
+	path = getcwd(NULL, 0);
+	if (path == NULL)
+	{
+		perror("pwd: ");
+		return (EXIT_FAILURE);
+	}
+	ft_printf("%s\n", path);
+	free(path);
+	return (EXIT_SUCCESS);
 }

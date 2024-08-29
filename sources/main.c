@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 16:02:33 by educastro         #+#    #+#             */
-/*   Updated: 2024/08/28 15:14:45 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/08/29 17:46:44 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,8 @@ int	main(int argc __attribute__((unused)), \
 	t_token_list	*token_list;
 	t_minishell		*minishell;
 
-	// ============ ENV TEST
-
-
 	minishell = init_minishell(envp);
-    print_env(minishell);
+    env(minishell); // ============ ENV TEST
 
 	while (1)
 	{
