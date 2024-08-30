@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 19:40:49 by edcastro          #+#    #+#             */
-/*   Updated: 2024/08/29 20:00:36 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/08/30 18:58:33 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 // libs
 # include "../libft/libft.h"
 # include "expander.h"
-# include "lexing.h"
+# include "tokenizer.h"
 
 # include <stdlib.h>
 # include <unistd.h>

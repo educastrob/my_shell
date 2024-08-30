@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexing.h                                           :+:      :+:    :+:   */
+/*   tokenizer.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 13:17:57 by educastro         #+#    #+#             */
-/*   Updated: 2024/08/23 17:02:08 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/08/30 18:59:36 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,8 @@ enum e_token
 	REDIRECT_OUTPUT_APPEND,
 	OR,
 	AND,
-	OPEN_PARENTHESIS,
-	CLOSE_PARENTHESIS,
 	EXPRESSION,
 	COMMAND,
-	SUBSHELL
 };
 
 // structs

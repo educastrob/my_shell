@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tests.c                                            :+:      :+:    :+:   */
+/*   token_tests.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:13:14 by edcastro          #+#    #+#             */
-/*   Updated: 2024/07/24 16:30:44 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/08/30 19:36:20 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lexing.h"
+#include "tokenizer.h"
 
 const char *get_token_type_string(enum e_token type)
 {
@@ -24,11 +24,8 @@ const char *get_token_type_string(enum e_token type)
         case REDIRECT_OUTPUT_APPEND: return "REDIRECT_OUTPUT_APPEND";
         case OR: return "OR";
         case AND: return "AND";
-        case OPEN_PARENTHESIS: return "OPEN_PARENTHESIS";
-        case CLOSE_PARENTHESIS: return "CLOSE_PARENTHESIS";
         case EXPRESSION: return "EXPRESSION";
         case COMMAND: return "COMMAND";
-        case SUBSHELL: return "SUBSHELL";
         default: return "UNKNOWN";
     }
 }

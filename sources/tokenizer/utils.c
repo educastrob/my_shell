@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 17:52:58 by edcastro          #+#    #+#             */
-/*   Updated: 2024/08/22 17:05:38 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/08/30 18:58:48 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lexing.h"
+#include "tokenizer.h"
 
 void	token_clear_list(t_token_list **token_list)
 {
