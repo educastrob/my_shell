@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 13:17:57 by educastro         #+#    #+#             */
-/*   Updated: 2024/08/30 18:59:36 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/08/30 22:50:10 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "minishell.h"
 
 // enums
-enum e_token
+enum e_token_type
 {
 	WORD,
 	PIPE,
@@ -25,8 +25,6 @@ enum e_token
 	REDIRECT_HEREDOC,
 	REDIRECT_OUTPUT,
 	REDIRECT_OUTPUT_APPEND,
-	OR,
-	AND,
 	EXPRESSION,
 	COMMAND,
 };
@@ -83,8 +81,8 @@ void	token_clear_list(t_token_list **token_list);
 int		is_whitespace(char c);
 int		is_metacharacter(char c);
 
-// tests.c (TEMPORARY)
-const char *get_token_type_string(enum e_token type);
+// token_tests.c (TEMPORARY)
+const char *get_token_type_string(enum e_token_type type);
 void print_token_list(t_token_list *token_list);
 
 #endif
