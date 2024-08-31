@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 16:02:33 by educastro         #+#    #+#             */
-/*   Updated: 2024/08/29 20:04:52 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/08/30 21:24:13 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	main(int argc __attribute__((unused)), \
 	char **argv __attribute__((unused)), char **envp)
 {
 	char			*line;
+	t_token_list	*token_list;
 	t_minishell		*minishell;
 
 	minishell = init_minishell(envp);
@@ -24,8 +25,8 @@ int	main(int argc __attribute__((unused)), \
 	while (TRUE)
 	{
 		line = readline("minishell$ ");
-		minishell->tokens = get_token_list(line);
+		token_list = get_token_list(line);
 		printf("line: %s\n", line);
-		print_token_list(minishell->tokens); // ============ TOKEN TEST
+		print_token_list(token_list); // ============ TOKEN TEST
 	}
 }
