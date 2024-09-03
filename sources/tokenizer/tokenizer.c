@@ -6,7 +6,7 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:26:39 by edcastro          #+#    #+#             */
-/*   Updated: 2024/09/03 16:34:25 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/09/03 16:39:50 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ t_token_list	*get_token_list(char *str)
 	token_list = NULL;
 	while (aux.i <= aux.str_length)
 	{
-		aux.state = token_get_next_state(aux.state, str[aux.i], &aux.token_type);
+		aux.state = token_get_next_state(aux.state, str[aux.i]);
 		if (aux.state != 1)
 			aux.lexeme_length += 1;
 		if (aux.state == -1)
