@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexing.h                                           :+:      :+:    :+:   */
+/*   tokenizer.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 13:17:57 by educastro         #+#    #+#             */
-/*   Updated: 2024/08/29 18:15:13 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/09/03 16:23:44 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "minishell.h"
 
 // enums
-enum e_token
+enum e_token_type
 {
 	WORD = 1,
 	PIPE,
@@ -79,8 +79,8 @@ void	token_clear_list(t_token_list **token_list);
 int		is_whitespace(char c);
 int		is_metacharacter(char c);
 
-// tests.c (TEMPORARY)
-const char *get_token_type_string(enum e_token type);
+// token_tests.c (TEMPORARY)
+const char *get_token_type_string(enum e_token_type type);
 void print_token_list(t_token_list *token_list);
 
 #endif

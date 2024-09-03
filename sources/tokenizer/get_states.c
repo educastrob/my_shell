@@ -6,11 +6,11 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:44:40 by edcastro          #+#    #+#             */
-/*   Updated: 2024/08/29 17:02:26 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/09/03 16:30:30 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "tokenizer.h"
 
 int		get_token_type(int state)
 {

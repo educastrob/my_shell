@@ -6,7 +6,7 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 19:40:49 by edcastro          #+#    #+#             */
-/*   Updated: 2024/08/29 19:31:20 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/09/03 16:31:39 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 // libs
 # include "../libft/libft.h"
 # include "expander.h"
-# include "lexing.h"
-# include "expander.h"
+# include "parsing.h"
+# include "tokenizer.h"
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -33,6 +33,10 @@
 # include <termios.h>
 # include <unistd.h>
 
+// typedefs
+typedef struct s_token_list t_token_list;
+typedef struct s_tree t_tree;
+
 // enums
 enum	e_bool
 {
@@ -43,7 +47,7 @@ enum	e_bool
 // structs
 typedef struct	s_minishell
 {
-	t_list		*tokens;
+	t_tree		*tree;
 	t_list		*envs;
 }				t_minishell;
 

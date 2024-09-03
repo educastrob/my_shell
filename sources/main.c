@@ -6,7 +6,7 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 16:02:33 by educastro         #+#    #+#             */
-/*   Updated: 2024/08/29 19:33:01 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/09/03 16:31:06 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ int	main(int argc __attribute__((unused)), \
 	i = 1;
 	minishell = init_minishell(envp);
     env(minishell); // ============ ENV TEST
-	while (i)
+
+	while (TRUE)
 	{
 		line = readline("minishell$ ");
 		token_list = get_token_list(line);

@@ -6,13 +6,13 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:13:14 by edcastro          #+#    #+#             */
-/*   Updated: 2024/08/23 18:44:22 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/09/03 16:35:51 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "tokenizer.h"
 
-const char *get_token_type_string(enum e_token type)
+const char *get_token_type_string(enum e_token_type type)
 {
     switch (type)
     {
