@@ -6,7 +6,7 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 16:02:33 by educastro         #+#    #+#             */
-/*   Updated: 2024/09/03 16:40:59 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/09/04 19:44:24 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ int	main(int argc __attribute__((unused)), \
 	t_minishell		*minishell;
 	i = 1;
 	minishell = init_minishell(envp);
-    env(minishell); // ============ ENV TEST
-
+    // env(minishell);
+	// pwd();
 	while (TRUE)
 	{
 		line = readline("minishell$ ");
