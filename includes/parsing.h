@@ -6,7 +6,7 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 19:38:39 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/09/03 16:23:13 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/09/04 21:15:59 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ typedef struct s_tree
 }	t_tree;
 
 char	*check_syntax(t_token_list *token_list);
+char	**command_args(t_token_list *token_list);
 
 #endif

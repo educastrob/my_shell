@@ -6,7 +6,7 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 19:40:49 by edcastro          #+#    #+#             */
-/*   Updated: 2024/09/03 16:31:39 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/09/04 21:02:54 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,6 @@ typedef struct	s_minishell
 // builtins
 int	env(t_minishell *minishell);
 int	pwd(void);
+int	ft_echo(char **args);
 
 #endif

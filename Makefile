@@ -6,7 +6,7 @@
 #    By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/10 16:58:43 by fcaldas-          #+#    #+#              #
-#    Updated: 2024/09/03 16:30:48 by fcaldas-         ###   ########.fr        #
+#    Updated: 2024/09/04 21:18:30 by fcaldas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,8 @@ BIN			:= ./bin/
 SRCS		:= $(addprefix ./sources/, main.c) \
 				$(addprefix ./sources/tokenizer/, tokenizer.c utils.c get_states.c token_states_1.c token_states_2.c token_tests.c) \
 				$(addprefix ./sources/expander/, env_func1.c env_func2.c utils.c) \
-				$(addprefix ./sources/parser/, syntax.c) \
-				$(addprefix ./sources/builtin/, env.c pwd.c) 
+				$(addprefix ./sources/parsing/, syntax.c command_list.c) \
+				$(addprefix ./sources/builtin/, env.c pwd.c echo.c) 
 OBJS		:= $(patsubst ./sources/%.c,$(BIN)%.o,$(SRCS))
 LIB			:= ./libft/libft.a
 INCLUDES	:= -I ./includes/ -I ./libft
