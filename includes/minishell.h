@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 19:40:49 by edcastro          #+#    #+#             */
-/*   Updated: 2024/09/04 21:02:54 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/09/05 23:25:20 by nasser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,9 @@ enum	e_bool
 // structs
 typedef struct	s_minishell
 {
-	t_tree		*tree;
-	t_list		*envs;
+	t_tree			*tree;
+	t_list			*envs;
+	t_token_list	*token_list;
 }				t_minishell;
 
 // builtins
