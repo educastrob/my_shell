@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 19:22:50 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/08/29 19:27:50 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/09/05 22:35:57 by nasser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_command	*parse(t_token_list *tokens)
+t_token_list	*parse(t_token_list *tokens)
 {
 
 }
