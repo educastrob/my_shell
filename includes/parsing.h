@@ -6,7 +6,7 @@
 /*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 19:38:39 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/09/04 16:04:08 by educastro        ###   ########.fr       */
+/*   Updated: 2024/09/12 18:06:33 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ typedef struct s_aux_tree
 
 // get_tree.c
 t_tree	*get_tree(t_token_list *token_list, t_minishell *data);
+void	*free_tree(t_tree **tree);
+void	*free_tree_all(t_tree **tree);
 
 // make_tree.c
 t_tree	*make_tree(t_token_list *token_list, t_minishell *data);
