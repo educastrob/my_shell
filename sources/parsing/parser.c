@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/29 17:41:39 by edcastro          #+#    #+#             */
-/*   Updated: 2024/08/29 19:33:56 by fcaldas-         ###   ########.fr       */
+/*   Created: 2024/08/29 19:22:50 by fcaldas-          #+#    #+#             */
+/*   Updated: 2024/08/29 19:27:50 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
-int	pwd(void)
+t_command	*parse(t_token_list *tokens)
 {
-	char	*path;
 
-	path = getcwd(NULL, 0);
-	if (path == NULL)
-	{
-		perror("pwd: ");
-		return (EXIT_FAILURE);
-	}
-	ft_printf("%s\n", path);
-	free(path);
-	return (EXIT_SUCCESS);
 }

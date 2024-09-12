@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:26:39 by edcastro          #+#    #+#             */
-/*   Updated: 2024/08/30 18:58:43 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/09/03 16:39:50 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,29 +38,29 @@ static void	add_token_to_list(t_token_list **token_list, char *lexeme, int token
 	current->next = token_create_node(lexeme, token_type);
 }
 
-t_token_list	*token_get_sublist(t_token_list *token_lst, int start, int lst_len)
-{
-	int	i;
-	t_token_list	*sublist;
-	t_token_list	*aux;
+// t_token_list	*token_get_sublist(t_token_list *token_lst, int start, int lst_len)
+// {
+// 	int	i;
+// 	t_token_list	*sublist;
+// 	t_token_list	*aux;
 
-	i = 0;
-	sublist = NULL;
-	aux = token_lst;
-	while (aux && i < start)
-	{
-		aux = aux->next;
-		i++;
-	}
-	i = 0;
-	while (aux && i < lst_len)
-	{
-		add_token_to_list(&sublist, ft_strdup(aux->token.lexeme), aux->token.type);
-		aux = aux->next;
-		i++;
-	}
-	return (sublist);
-}
+// 	i = 0;
+// 	sublist = NULL;
+// 	aux = token_lst;
+// 	while (aux && i < start)
+// 	{
+// 		aux = aux->next;
+// 		i++;
+// 	}
+// 	i = 0;
+// 	while (aux && i < lst_len)
+// 	{
+// 		add_token_to_list(&sublist, ft_strdup(aux->token.lexeme), aux->token.type);
+// 		aux = aux->next;
+// 		i++;
+// 	}
+// 	return (sublist);
+// }
 
 void	token_final_state(t_aux_token *aux, t_token_list **token_list, char *str)
 {

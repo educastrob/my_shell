@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_tests.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
+/*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:13:14 by edcastro          #+#    #+#             */
-/*   Updated: 2024/09/12 14:49:43 by educastro        ###   ########.fr       */
+/*   Updated: 2024/09/03 16:35:51 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ const char *get_token_type_string(enum e_token_type type)
         case REDIRECT_HEREDOC: return "REDIRECT_HEREDOC";
         case REDIRECT_OUTPUT: return "REDIRECT_OUTPUT";
         case REDIRECT_OUTPUT_APPEND: return "REDIRECT_OUTPUT_APPEND";
-        case EXPRESSION: return "EXPRESSION";
-        case COMMAND: return "COMMAND";
         default: return "UNKNOWN";
     }
 }
