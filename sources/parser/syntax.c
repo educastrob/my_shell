@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntax.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 18:52:47 by edcastro          #+#    #+#             */
-/*   Updated: 2024/08/30 18:53:09 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/09/12 14:40:43 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 char	*check_syntax(t_token_list *tokens)
 {
 	t_token_list	*current;
-	int	type;
 	
 	current = tokens;
-	type = current->token.type;
 	if (current->token.type == PIPE)
 		return ("syntax error: unexpected operator at start of the line\n");
 	while (current)

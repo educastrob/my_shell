@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEXING_H
-# define LEXING_H
+#ifndef TOKENIZER_H
+# define TOKENIZER_H
 
 // libs
 # include "minishell.h"
@@ -75,12 +75,19 @@ t_token_list	*token_get_sublist(t_token_list *token_lst, int start, int lst_len)
 void			token_final_state(t_aux_token *aux, t_token_list **token_list, char *str);
 
 // utils.c
-void	token_clear_list(t_token_list **token_list);
-int		is_whitespace(char c);
-int		is_metacharacter(char c);
+void		token_clear_list(t_token_list **token_list);
+int			is_whitespace(char c);
+int			is_metacharacter(char c);
+
+// utils_list.c
+void			token_join_lists(t_token_list **dest, t_token_list *source);
+int				token_list_size(t_token_list *token_list);
+void			token_back_one_node(t_token_list *tok_lst, t_token_list **node_to_back);
+t_token_list	*invert_list(t_token_list *head);
+t_token_list	*token_get_node_index(t_token_list *token_list, int index);
 
 // token_tests.c (TEMPORARY)
-const char *get_token_type_string(enum e_token_type type);
-void print_token_list(t_token_list *token_list);
+const char 		*get_token_type_string(enum e_token_type type);
+void 			print_token_list(t_token_list *token_list);
 
 #endif
