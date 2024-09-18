@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 16:02:33 by educastro         #+#    #+#             */
-/*   Updated: 2024/09/05 23:30:10 by nasser           ###   ########.fr       */
+/*   Updated: 2024/09/18 17:23:16 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ int	main(int argc __attribute__((unused)), \
 			{
 				args = command_args(minishell->token_list);
 				args = expand_args(args);
+				print_token_list(minishell->token_list);
 				if (args && args[0])
 				{
 					// printf("args[0]: %s\n", args[0]);
