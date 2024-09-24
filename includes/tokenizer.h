@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 13:17:57 by educastro         #+#    #+#             */
-/*   Updated: 2024/09/03 16:39:47 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/09/23 22:22:30 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ enum e_token_type
 	REDIRECT_OUTPUT_APPEND,
 	REDIRECT_INPUT,
 	REDIRECT_HEREDOC,
+	COMMAND,
 };
 
 // structs
