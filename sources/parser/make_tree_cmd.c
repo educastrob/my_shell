@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   make_tree_cmd.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/24 15:43:44 by edcastro          #+#    #+#             */
+/*   Updated: 2024/09/24 15:49:15 by edcastro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/parsing.h"
 
 // Função que adiciona redirecionamentos à lista
@@ -16,7 +28,7 @@ static void	put_redirect_on_list(t_aux_tree *aux_tree)
 }
 
 // Função para processar redirecionamentos e construir a árvore
-static void	make_redirects(t_tree **tree, t_token_list *redir_list, t_token_list *args)
+static void	make_redirects(t_tree **tree, t_token_list *redir_list, t_token_list *args, t_minishell *data)
 {
 	char	*str;
 
@@ -27,7 +39,7 @@ static void	make_redirects(t_tree **tree, t_token_list *redir_list, t_token_list
 	// Tratamento para HEREDOC
 	if ((*tree)->type == REDIRECT_HEREDOC)
 	{
-		str = create_here_doc(); // Função para criar o HEREDOC (você deve implementar)
+		str = create_here_doc(redir_list->next->token.lexeme, data); // Função para criar o HEREDOC (você deve implementar)
 		(*tree)->left->command = get_token_list(str); // Obtém a lista de tokens do HEREDOC
 		free(str);
 	}
@@ -48,8 +60,14 @@ static void	make_redirects(t_tree **tree, t_token_list *redir_list, t_token_list
 		free_tree(tree);
 }
 
+static void	init_values(t_aux_tree *aux_tree, t_token_list *token_list)
+{
+	ft_bzero(aux_tree, sizeof(t_aux_tree));
+	aux_tree->aux = token_list;
+}
+
 // Função principal que cria a árvore de execução de comandos
-t_exec_tree	*make_tree_cmd(t_token_list *token_list, t_minishell *data)
+t_tree	*make_tree_cmd(t_token_list *token_list, t_minishell *data)
 {
 	t_aux_tree	aux_tree;
 	t_tree		*tree;
@@ -86,7 +104,7 @@ t_exec_tree	*make_tree_cmd(t_token_list *token_list, t_minishell *data)
 	else
 	{
 		// Se houver redirecionamentos, cria a árvore com tratamento adequado
-		make_redirects(&tree, aux_tree.redir_list, aux_tree.args);
+		make_redirects(&tree, aux_tree.redir_list, aux_tree.args, data);
 	}
 
 	// Limpa as listas temporárias

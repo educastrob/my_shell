@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 19:38:39 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/09/24 15:22:21 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/09/24 15:50:31 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,13 @@ void	*free_tree_all(t_tree **tree);
 t_tree	*make_tree(t_token_list *token_list, t_minishell *data);
 
 // make_tree_cmd.c
-t_tree	*make_tree_cmd(t_token *token_list, t_minishell *data);
+t_tree	*make_tree_cmd(t_token_list *token_list, t_minishell *data);
 
-// syntax.c
-char	*check_syntax(t_token_list *token_list);
+// here_doc.c
+void	print_error_message(char *delimiter);
+void	write_on_file(int fd, char *line, int need_to_expand, t_env *envp_list);
+void	here_doc_fork(char *file_name, char *delimiter, t_env *envp_list);
+char	*create_here_doc_name(char *delimiter);
+char	*create_here_doc(char *delimiter, t_minishell *data);
 
 #endif
