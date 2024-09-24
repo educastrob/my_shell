@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
+/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 13:17:57 by educastro         #+#    #+#             */
-/*   Updated: 2024/09/23 22:22:30 by educastro        ###   ########.fr       */
+/*   Updated: 2024/09/24 14:09:33 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ enum e_token_type
 {
 	WORD = 1,
 	PIPE,
-	REDIRECT_OUTPUT,
-	REDIRECT_OUTPUT_APPEND,
 	REDIRECT_INPUT,
 	REDIRECT_HEREDOC,
+	REDIRECT_OUTPUT,
+	REDIRECT_OUTPUT_APPEND,
 	COMMAND,
 };
 

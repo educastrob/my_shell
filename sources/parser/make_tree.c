@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:12:53 by educastro         #+#    #+#             */
-/*   Updated: 2024/09/13 19:12:57 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/09/24 13:57:11 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ t_tree			*make_tree(t_token_list *token_list, t_minishell *data)
 	else
 	{
 		free(aux_tree.tree);
-		aux_tree.aux = invert_list(token_list); // precisa inverter
+		aux_tree.aux = invert_list(token_get_sublist(token_list, 0, \
+										token_list_size(token_list)));
 		aux_tree.tree = make_tree_cmd(); // para comandos simples
 		token_clear_list(&aux_tree.aux);
 		return (aux_tree.tree);

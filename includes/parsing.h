@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
+/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 19:38:39 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/09/23 22:20:53 by educastro        ###   ########.fr       */
+/*   Updated: 2024/09/24 14:17:50 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,9 @@ void	*free_tree_all(t_tree **tree);
 
 // make_tree.c
 t_tree	*make_tree(t_token_list *token_list, t_minishell *data);
+
+// make_tree_cmd.c
+t_tree	*make_tree_cmd(t_token *token_list, t_minishell *data);
 
 // make_tree_cmd_recursive.c
 t_tree		*make_tree_cmd_recursive(t_token_list *redir_list, t_token_list *args, t_minishell *data);
