@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 19:40:49 by edcastro          #+#    #+#             */
-/*   Updated: 2024/09/25 16:18:41 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/09/25 19:08:50 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include "environment.h"
 # include "parsing.h"
 # include "tokenizer.h"
+# include "expander.h"
+# include "executor.h"
 
 # include <stdlib.h>
 # include <unistd.h>
