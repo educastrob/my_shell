@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 19:38:39 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/09/24 15:50:31 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/09/25 16:18:53 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define PARSING_H
 
 # include "minishell.h"
-# include "expander.h"
+# include "environment.h"
 # include "tokenizer.h"
 
 typedef struct s_token_list t_token_list;
