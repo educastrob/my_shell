@@ -6,11 +6,11 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 12:02:37 by edcastro          #+#    #+#             */
-/*   Updated: 2024/08/29 20:12:25 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/09/25 16:11:41 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/expander.h"
+#include "../../includes/environment.h"
 
 static void	create_pwd_env(t_minishell *minishell);
 
