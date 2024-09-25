@@ -6,11 +6,11 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 16:08:11 by edcastro          #+#    #+#             */
-/*   Updated: 2024/09/25 16:14:14 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/09/25 17:09:44 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/environment.h"
+#include "../../includes/expander.h"
 
 // retorna a estrutura env(name, value) pelo nome
 t_env	*find_env(t_list *envs, char *name)
