@@ -3,14 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: educastro <educastro@student.42.fr>        +#+  +:+       +#+         #
+#    By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/10 16:58:43 by fcaldas-          #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2024/09/25 16:21:11 by fcaldas-         ###   ########.fr        #
-=======
-#    Updated: 2024/09/23 22:21:44 by educastro        ###   ########.fr        #
->>>>>>> main
+#    Updated: 2024/09/25 17:14:09 by fcaldas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,15 +16,9 @@ FLAGS		:= -Wall -Wextra -Werror -g3
 BIN			:= ./bin/
 SRCS		:= $(addprefix ./sources/, main.c) \
 				$(addprefix ./sources/tokenizer/, tokenizer.c utils.c get_states.c token_states_1.c token_states_2.c token_tests.c) \
-<<<<<<< HEAD
 				$(addprefix ./sources/environment/, env_func1.c env_func2.c utils.c) \
 				$(addprefix ./sources/parsing/, syntax.c command_list.c) \
 				$(addprefix ./sources/builtin/, env.c pwd.c echo.c) 
-=======
-				$(addprefix ./sources/expander/, env_func1.c env_func2.c utils.c) \
-				$(addprefix ./sources/parser/, get_tree.c make_tree.c make_tree_cmd_recursive.c syntax.c) \
-				$(addprefix ./sources/builtin/, env.c pwd.c) 
->>>>>>> main
 OBJS		:= $(patsubst ./sources/%.c,$(BIN)%.o,$(SRCS))
 LIB			:= ./libft/libft.a
 INCLUDES	:= -I ./includes/ -I ./libft
