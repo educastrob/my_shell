@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_tree.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
+/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:20:14 by educastro         #+#    #+#             */
-/*   Updated: 2024/09/12 18:06:04 by educastro        ###   ########.fr       */
+/*   Updated: 2024/09/24 15:35:12 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 t_tree	*get_tree(t_token_list *token_list, t_minishell *data)
 {
 	t_tree			*tree;
-	t_token_list	*inverted_list = ft_strdup(token_list);
+	t_token_list	*inverted_list;
 
+	inverted_list = invert_list(token_get_sublist(token_list, 0, \
+			token_list_size(token_list)));
 	tree = make_tree(inverted_list, data);
 	token_clear_list(&inverted_list);
 	return (tree);
