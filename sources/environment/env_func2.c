@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   env_func2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 16:08:11 by edcastro          #+#    #+#             */
-/*   Updated: 2024/08/29 17:53:48 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/09/25 16:14:14 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/expander.h"
+#include "../../includes/environment.h"
 
 // retorna a estrutura env(name, value) pelo nome
 t_env	*find_env(t_list *envs, char *name)

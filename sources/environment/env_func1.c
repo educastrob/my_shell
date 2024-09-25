@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   env_func1.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 05:11:02 by educastro         #+#    #+#             */
-/*   Updated: 2024/08/29 17:37:40 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/09/25 16:14:05 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/expander.h"
+#include "../../includes/environment.h"
 
 // adiciona um novo env
 t_env	*add_env(t_list *envs, char *name, char *value)
