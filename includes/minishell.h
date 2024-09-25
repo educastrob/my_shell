@@ -47,12 +47,14 @@ enum	e_bool
 // structs
 typedef struct	s_minishell
 {
-	t_tree		*tree;
-	t_list		*envs;
+	t_tree			*tree;
+	t_list			*envs;
+	t_token_list	*token_list;
 }				t_minishell;
 
 // builtins
 int	env(t_minishell *minishell);
 int	pwd(void);
+int	ft_echo(char **args);
 
 #endif
