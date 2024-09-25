@@ -3,15 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   environment.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 18:37:12 by educastro         #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/09/25 18:43:34 by edcastro         ###   ########.fr       */
+=======
+/*   Updated: 2024/09/25 17:07:07 by fcaldas-         ###   ########.fr       */
+>>>>>>> 595c50609bb96446aa16bdef772d4cf4724245b2
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ENVIRONMENT_H
-# define ENVIRONMENT_H
+#ifndef EXPANDER_H
+# define EXPANDER_H
 
 // libs
 # include "minishell.h"
