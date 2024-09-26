@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 15:43:48 by edcastro          #+#    #+#             */
-/*   Updated: 2024/09/25 19:11:25 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/09/26 17:57:45 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	heredoc_fork(char *file_name, char *delimiter, t_env *envp_list)
 	fd = open(file_name, O_CREAT | O_RDWR | O_TRUNC, 0644);
 	while (1)
 	{
-		line = readline("> ");
+		line = readline("heredoc> ");
 		if (!line || ft_strncmp(line, delimiter_without_quotes, -1) == 0)
 		{
 			if (!line && g_signal == 0)
@@ -92,7 +92,7 @@ char	*create_heredoc(char *delimiter, t_minishell *data)
 	char	*file_name;
 
 	file_name = create_heredoc_name(delimiter);
-	// heredoc_signals();
+	heredoc_signals();
 	here_doc_fork(file_name, delimiter, data->envp_list);
 	if (g_signal == SIGINT)
 	{
@@ -100,6 +100,6 @@ char	*create_heredoc(char *delimiter, t_minishell *data)
 		free(file_name);
 		file_name = NULL;
 	}
-	// execution_signals(1);
+	execution_signals(1);
 	return (file_name);
 }
