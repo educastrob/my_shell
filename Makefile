@@ -6,7 +6,7 @@
 #    By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/10 16:58:43 by fcaldas-          #+#    #+#              #
-#    Updated: 2024/09/25 18:51:48 by edcastro         ###   ########.fr        #
+#    Updated: 2024/09/26 16:37:57 by edcastro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ SRCS		:= $(addprefix ./sources/, main.c) \
 				$(addprefix ./sources/environment/, env_func1.c env_func2.c utils.c) \
 				$(addprefix ./sources/parser/, get_tree.c make_tree.c make_tree_cmd.c here_doc.c) \
 				$(addprefix ./sources/builtin/, env.c pwd.c) \
-				$(addprefix ./sources/expander/, expand_heredoc.c utils.c) 
+				$(addprefix ./sources/expander/, expand_heredoc.c utils.c) \
+				$(addprefix ./sources/executor/, signals.c signal_handler.c signals_macros.c) 
 OBJS		:= $(patsubst ./sources/%.c,$(BIN)%.o,$(SRCS))
 LIB			:= ./libft/libft.a
 INCLUDES	:= -I ./includes/ -I ./libft

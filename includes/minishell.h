@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 19:40:49 by edcastro          #+#    #+#             */
-/*   Updated: 2024/09/25 19:08:50 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/09/26 16:22:25 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,11 @@
 # include <termios.h>
 # include <unistd.h>
 
+// global
+extern volatile int	g_signal;
+
 // typedefs
+typedef struct s_env t_env;
 typedef struct s_token_list t_token_list;
 typedef struct s_tree t_tree;
 
