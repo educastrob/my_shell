@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 18:42:26 by edcastro          #+#    #+#             */
-/*   Updated: 2024/09/25 20:01:50 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/09/27 23:51:27 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 // libs
 # include "minishell.h"
 # include "environment.h"
+# include "parsing.h"
+# include "tokenizer.h"
+# include "executor.h"
 # include "../libft/libft.h"
 
 // structs

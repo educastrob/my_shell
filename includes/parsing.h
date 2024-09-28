@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 19:38:39 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/09/25 19:08:23 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/09/27 23:51:30 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include "minishell.h"
 # include "environment.h"
 # include "tokenizer.h"
+# include "expander.h"
+# include "executor.h"
 
 // typedefs
 typedef struct s_token_list t_token_list;

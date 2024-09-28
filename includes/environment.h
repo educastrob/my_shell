@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   environment.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 18:37:12 by educastro         #+#    #+#             */
-/*   Updated: 2024/09/26 16:09:39 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/09/27 23:51:35 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 // libs
 # include "minishell.h"
+# include "parsing.h"
+# include "tokenizer.h"
+# include "expander.h"
+# include "executor.h"
 # include "../libft/libft.h"
 
 typedef struct s_minishell t_minishell;
