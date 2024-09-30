@@ -1,48 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   environment.h                                      :+:      :+:    :+:   */
+/*   executor.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 18:37:12 by educastro         #+#    #+#             */
-/*   Updated: 2024/09/27 23:51:35 by educastro        ###   ########.fr       */
+/*   Updated: 2024/09/27 23:51:40 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXPANDER_H
-# define EXPANDER_H
+#ifndef EXECUTOR_H
+# define EXECUTOR_H
 
 // libs
 # include "minishell.h"
+# include "environment.h"
 # include "parsing.h"
 # include "tokenizer.h"
 # include "expander.h"
-# include "executor.h"
 # include "../libft/libft.h"
 
-typedef struct s_minishell t_minishell;
 
-// structs
-typedef struct	s_env
-{
-	char		*name;
-	char		*value;
-}				t_env;
+// signals.c
+void	sig_handler_heredoc(int signal __attribute__((unused)));
+void	sig_handler_sigint(int signal __attribute__((unused)));
+void	sig_handler_redo_readline(int signal __attribute__((unused)));
 
-// env_func1.c
-t_env	*add_env(t_list *envs, char *name, char *value);
-t_list	*create_envs(char **envp);
-t_env	*update_env(t_list *envs, char *name, char *value);
-t_env	*export_env(t_minishell *minishell, char *name, char *value);
+// signals_handler.c
+void	init_signals(void);
+void	heredoc_signals(void);
+void	execution_signals(int pid);
 
-// env_func2.c
-t_env	*find_env(t_list *envs, char *name);
-char	*find_env_value(t_list *envs, char *name);
-t_list	*find_env_element(t_list *envs, char *name);
-void	uptade_pwd_env(t_list *envs);
+// signals_macros.c
+int		term_by_signal(int status);
+int		term_normaly(int status);
+int		exit_status(int status);
+int		term_signal(int status);
+int		get_return_value(int status);
 
-// utils.c
-t_minishell	*init_minishell(char **envp);
 
 #endif

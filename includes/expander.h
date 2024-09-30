@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   environment.h                                      :+:      :+:    :+:   */
+/*   expander.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/14 18:37:12 by educastro         #+#    #+#             */
-/*   Updated: 2024/09/27 23:51:35 by educastro        ###   ########.fr       */
+/*   Created: 2024/09/25 18:42:26 by edcastro          #+#    #+#             */
+/*   Updated: 2024/09/27 23:51:27 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,34 +15,33 @@
 
 // libs
 # include "minishell.h"
+# include "environment.h"
 # include "parsing.h"
 # include "tokenizer.h"
-# include "expander.h"
 # include "executor.h"
 # include "../libft/libft.h"
 
-typedef struct s_minishell t_minishell;
-
 // structs
-typedef struct	s_env
+typedef struct	s_str_list
 {
-	char		*name;
-	char		*value;
-}				t_env;
+	char				*str;
+	struct s_str_list	*next;
+}				t_str_list;
 
-// env_func1.c
-t_env	*add_env(t_list *envs, char *name, char *value);
-t_list	*create_envs(char **envp);
-t_env	*update_env(t_list *envs, char *name, char *value);
-t_env	*export_env(t_minishell *minishell, char *name, char *value);
+// expand_heredoc.c
+char	*expand_heredoc(char *str, t_env *envp_list);
 
-// env_func2.c
-t_env	*find_env(t_list *envs, char *name);
-char	*find_env_value(t_list *envs, char *name);
-t_list	*find_env_element(t_list *envs, char *name);
-void	uptade_pwd_env(t_list *envs);
+// string_list.c
+void	add_letter_list(t_str_list **lst, char letter);
+int		size_list(t_str_list *lst);
+void	add_string_to_list(t_str_list **lst, char *str);
+void	clear_str_list(t_str_list **head);
+char	*create_string_from_list(t_str_list *lst);
 
 // utils.c
-t_minishell	*init_minishell(char **envp);
+int		ternary(int condition, int if_true, int if_false);
+int		is_valid_var(char letter);
+char	*remove_quotes(char	*delimiter);
+
 
 #endif

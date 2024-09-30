@@ -3,23 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 19:38:39 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/09/25 16:18:53 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/09/27 23:51:30 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
 # define PARSING_H
 
+// libs
 # include "minishell.h"
 # include "environment.h"
 # include "tokenizer.h"
+# include "expander.h"
+# include "executor.h"
 
+// typedefs
 typedef struct s_token_list t_token_list;
 typedef struct s_minishell t_minishell;
 
+// structs
 typedef struct s_tree
 {
 	int				type;
@@ -55,8 +60,8 @@ t_tree	*make_tree_cmd(t_token_list *token_list, t_minishell *data);
 // here_doc.c
 void	print_error_message(char *delimiter);
 void	write_on_file(int fd, char *line, int need_to_expand, t_env *envp_list);
-void	here_doc_fork(char *file_name, char *delimiter, t_env *envp_list);
-char	*create_here_doc_name(char *delimiter);
-char	*create_here_doc(char *delimiter, t_minishell *data);
+void	heredoc_fork(char *file_name, char *delimiter, t_env *envp_list);
+char	*create_heredoc_name(char *delimiter);
+char	*create_heredoc(char *delimiter, t_minishell *data);
 
 #endif

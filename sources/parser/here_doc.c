@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 15:43:48 by edcastro          #+#    #+#             */
-/*   Updated: 2024/09/24 15:50:19 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/09/30 19:38:08 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	write_on_file(int fd, char *line, int need_to_expand, \
 
 	if (need_to_expand)
 	{
-		expanded_line = expand_string_heredoc(line, envp_list);
+		expanded_line = expand_heredoc(line, envp_list);
 		ft_putendl_fd(expanded_line, fd);
 		free(expanded_line);
 	}
@@ -43,7 +43,7 @@ void	write_on_file(int fd, char *line, int need_to_expand, \
 		ft_putendl_fd(line, fd);
 }
 
-void	here_doc_fork(char *file_name, char *delimiter, t_env *envp_list)
+void	heredoc_fork(char *file_name, char *delimiter, t_env *envp_list)
 {
 	int		fd;
 	int		need_to_expand;
@@ -69,7 +69,7 @@ void	here_doc_fork(char *file_name, char *delimiter, t_env *envp_list)
 	close(fd);
 }
 
-char	*create_here_doc_name(char *delimiter)
+char	*create_heredoc_name(char *delimiter)
 {
 	int				length;
 	char			*prefix;
@@ -87,11 +87,11 @@ char	*create_here_doc_name(char *delimiter)
 	return (file_name);
 }
 
-char	*create_here_doc(char *delimiter, t_minishell *data)
+char	*create_heredoc(char *delimiter, t_minishell *data)
 {
 	char	*file_name;
 
-	file_name = create_here_doc_name(delimiter);
+	file_name = create_heredoc_name(delimiter);
 	heredoc_signals();
 	here_doc_fork(file_name, delimiter, data->envp_list);
 	if (g_signal == SIGINT)
