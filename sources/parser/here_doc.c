@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 15:43:48 by edcastro          #+#    #+#             */
-/*   Updated: 2024/09/26 17:57:45 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/09/30 19:38:08 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	heredoc_fork(char *file_name, char *delimiter, t_env *envp_list)
 	fd = open(file_name, O_CREAT | O_RDWR | O_TRUNC, 0644);
 	while (1)
 	{
-		line = readline("heredoc> ");
+		line = readline("> ");
 		if (!line || ft_strncmp(line, delimiter_without_quotes, -1) == 0)
 		{
 			if (!line && g_signal == 0)
