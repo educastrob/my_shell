@@ -6,12 +6,11 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 17:00:14 by edcastro          #+#    #+#             */
-/*   Updated: 2024/09/26 18:42:23 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/09/30 21:07:21 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
 
 // verifica se o processo foi encerrado por um sinal
 int	term_by_signal(int status)
@@ -43,7 +42,7 @@ int	get_return_value(int status)
 	if (term_by_signal(status))
 	{
 		if (term_signal(status) == SIGQUIT)
-			ft_putendl_fd(RED"QUIT"RST " (core dumped)", STDERR_FILENO);
+			ft_putendl_fd("QUIT" " (core dumped)", STDERR_FILENO);
 		return (term_signal(status) + 128);
 	}
 	return (exit_status(status));

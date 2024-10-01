@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
+/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 18:37:12 by educastro         #+#    #+#             */
-/*   Updated: 2024/09/27 23:51:40 by educastro        ###   ########.fr       */
+/*   Updated: 2024/09/30 20:33:26 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,16 @@
 # include "expander.h"
 # include "../libft/libft.h"
 
+// structs
+typedef struct s_cmd_for_fork
+{
+	int		fd_redir;
+	int		args_num;
+	int		ret_code;
+	char	*cmd;
+	char	**argv;
+	char	**envp;
+}	t_cmd_for_fork;
 
 // signals.c
 void	sig_handler_heredoc(int signal __attribute__((unused)));
