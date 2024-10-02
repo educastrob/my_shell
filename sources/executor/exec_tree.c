@@ -6,13 +6,13 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 20:33:38 by edcastro          #+#    #+#             */
-/*   Updated: 2024/09/30 21:07:45 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/02 20:45:01 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static int	execute_simple_command(t_exec_tree *tree, t_minishell *data)
+static int	execute_simple_command(t_tree *tree, t_minishell *data)
 {
 	int	pid;
 	int	ret_code;
