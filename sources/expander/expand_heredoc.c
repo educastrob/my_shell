@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_heredoc.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 18:39:48 by edcastro          #+#    #+#             */
-/*   Updated: 2024/09/25 19:56:27 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/08 16:18:42 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	expand_variable_heredoc(char *str, int *i, t_str_list **new_str, \
 				break ;
 		}
 		key = ft_substr(str, (*i) - j, j);
-		expanded = search_value(envp_list, key);
+		expanded = find_env_value(envp_list, key);
 		add_string_to_list(new_str, expanded);
 		free(key);
 		free(expanded);

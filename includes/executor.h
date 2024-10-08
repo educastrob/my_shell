@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 18:37:12 by educastro         #+#    #+#             */
-/*   Updated: 2024/09/30 20:33:26 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/08 16:39:09 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_cmd_for_fork
 	char	*cmd;
 	char	**argv;
 	char	**envp;
-}	t_cmd_for_fork;
+}				t_cmd_for_fork;
 
 // signals.c
 void	sig_handler_heredoc(int signal __attribute__((unused)));

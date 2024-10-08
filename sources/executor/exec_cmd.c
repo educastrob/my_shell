@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   exec_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 20:43:17 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/02 20:45:12 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/07 15:38:58 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int	exec_cmd(t_exec_tree *tree, t_minishell *data)
+int	exec_cmd(t_tree *tree, t_minishell *data)
 {
 	int	pid;
 	int	ret_code;

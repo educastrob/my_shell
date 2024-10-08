@@ -6,7 +6,7 @@
 /*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 19:40:49 by edcastro          #+#    #+#             */
-/*   Updated: 2024/09/27 23:55:45 by educastro        ###   ########.fr       */
+/*   Updated: 2024/10/08 16:08:27 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,10 @@
 extern volatile int	g_signal;
 
 // typedefs
-typedef struct s_env t_env;
-typedef struct s_token_list t_token_list;
-typedef struct s_tree t_tree;
+typedef struct s_env		t_env;
+typedef struct s_token_list	t_token_list;
+typedef struct s_tree		t_tree;
+typedef struct termios		t_termios;
 
 // enums
 enum	e_bool
@@ -55,8 +56,20 @@ typedef struct	s_minishell
 {
 	t_tree			*tree;
 	t_list			*envs;
-	t_token_list	*token_list;
+	t_list			*fd_list;
 }				t_minishell;
+
+typedef struct s_main
+{
+	int				ret_code;
+	int				backup_fd_in;
+	char			*line;
+	char			*line_to_readline;
+	t_token_list	*token_list;
+	t_tree			*tree;
+	t_minishell		data;
+	t_termios		term;
+}				t_main;
 
 // builtins
 int	env(t_minishell *minishell);
