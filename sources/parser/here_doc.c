@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 15:43:48 by edcastro          #+#    #+#             */
-/*   Updated: 2024/09/30 19:38:08 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/02 00:46:06 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ char	*create_heredoc(char *delimiter, t_minishell *data)
 
 	file_name = create_heredoc_name(delimiter);
 	heredoc_signals();
-	here_doc_fork(file_name, delimiter, data->envp_list);
+	here_doc_fork(file_name, delimiter, data->envs);
 	if (g_signal == SIGINT)
 	{
 		unlink(file_name);

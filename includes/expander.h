@@ -6,7 +6,7 @@
 /*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 18:42:26 by edcastro          #+#    #+#             */
-/*   Updated: 2024/09/27 23:51:27 by educastro        ###   ########.fr       */
+/*   Updated: 2024/10/02 00:50:42 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 // structs
 typedef struct	s_str_list
 {
-	char				*str;
+	char				letter;
 	struct s_str_list	*next;
 }				t_str_list;
 
