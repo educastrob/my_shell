@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_tree_cmd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
+/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 15:43:44 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/09 03:04:56 by educastro        ###   ########.fr       */
+/*   Updated: 2024/10/09 17:49:38 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 // add redirects em redir_list
 static void	put_redirect_on_list(t_aux_tree *aux_tree)
 {
-	token_add_to_list(&aux_tree->redir_list, NULL, aux_tree->aux->token.type);
+	add_token_to_list(&aux_tree->redir_list, NULL, aux_tree->aux->token.type);
 
 	if (aux_tree->aux->next)
 	{
-		token_add_to_list(&aux_tree->redir_list, 
+		add_token_to_list(&aux_tree->redir_list, 
 			ft_strdup(aux_tree->aux->next->token.lexeme), 
 			aux_tree->aux->next->token.type);
 
@@ -72,7 +72,7 @@ t_tree	*make_tree_cmd(t_token_list *token_list, t_minishell *data)
 			put_redirect_on_list(&aux_tree);
 		else
 		{
-			token_add_to_list(&aux_tree.args, 
+			add_token_to_list(&aux_tree.args, 
 				ft_strdup(aux_tree.aux->token.lexeme), 
 				aux_tree.aux->token.type);
 		}

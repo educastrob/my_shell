@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_heredoc.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
+/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 18:39:48 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/08 16:18:42 by educastro        ###   ########.fr       */
+/*   Updated: 2024/10/09 15:24:49 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	skip_invalid_variable(char *str, int *i)
 }
 
 static void	expand_variable_heredoc(char *str, int *i, t_str_list **new_str, \
-									t_env *envp_list)
+									t_list *envp_list)
 {
 	int		j;
 	char	*key;
@@ -55,7 +55,7 @@ static void	expand_variable_heredoc(char *str, int *i, t_str_list **new_str, \
 	}
 }
 
-char	*expand_heredoc(char *str, t_env *envp_list)
+char	*expand_heredoc(char *str, t_list *envp_list)
 {
 	int			i;
 	char		*expanded;

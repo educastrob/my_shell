@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 19:09:58 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/02 19:10:51 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/09 17:40:37 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,31 @@ int	is_directory(char *path)
 	if (stat(path, &statbuf) == -1)
 		return (0);
 	return ((((statbuf.st_mode) & 0170000) == (0040000)));
+}
+
+void	free_envp(char **envp)
+{
+	int	i;
+
+	i = 0;
+	while (envp && envp[i])
+	{
+		free(envp);
+		i++;
+	}
+	if (envp)
+		free(envp);
+}
+
+void	*select_env(void *content)
+{
+	t_env	*env;
+	char	*env_key;
+	char	*env_value;
+
+	env = content;
+	env_key = ft_strjoin(env->name, "=");
+	env_value = ft_strjoin(env_key, env->value);
+	free(env_key);
+	return (env_value);
 }

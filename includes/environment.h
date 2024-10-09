@@ -6,7 +6,7 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 18:37:12 by educastro         #+#    #+#             */
-/*   Updated: 2024/10/09 15:14:16 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/10/09 17:53:26 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include "../libft/libft.h"
 
 typedef struct s_minishell t_minishell;
+typedef struct s_env t_env;
 
 // structs
 typedef struct	s_env

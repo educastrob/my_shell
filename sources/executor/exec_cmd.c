@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
+/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 20:43:17 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/07 15:38:58 by educastro        ###   ########.fr       */
+/*   Updated: 2024/10/09 16:02:38 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	exec_cmd(t_tree *tree, t_minishell *data)
 		fd_list_close_clear(&data->fd_list);
 		ret_code = exec_cmd_fork(tree, data);
 		free_tree(&data->tree);
-		env_clear_list(&data->envs);
+		ft_lstiter(data->envs, del_env);
 		close(STDIN_FILENO);
 		close(STDOUT_FILENO);
 		close(STDERR_FILENO);
