@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_cmd_fork.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
+/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 21:08:43 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/09 02:16:16 by educastro        ###   ########.fr       */
+/*   Updated: 2024/10/09 17:38:59 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,17 +76,16 @@ int	exec_execve(t_tree *tree, t_minishell *data)
 	if (argv[0])
 	{
 		cmd = expand_command(argv[0], data->envs);
-		envp = create_envs(data->envs);
+		envp = ft_lst_to_array_choice(data->envs, select_env);
 		if (access(cmd, F_OK | X_OK) == 0
 			&& ft_strchr(cmd, '/') != NULL)
 			execve(cmd, argv, envp);
 		ret_code = display_error(cmd);
 		free(cmd);
-		free_envp(envp);
 	}
 	else
 		ret_code = 0;
-	free_envp(argv);
+	// free_envp(envp);
 	return (ret_code);
 }
 

@@ -18,6 +18,7 @@ SRCS = \
 	lst/ft_lstnew.c\
 	lst/ft_lstsize.c\
 	lst/ft_lstrm.c\
+	lst/ft_lst_to_array.c\
 	\
 	mem/ft_memset.c \
 	mem/ft_bzero.c \
@@ -35,6 +36,7 @@ SRCS = \
 	is/ft_isalnum.c \
 	is/ft_isalpha.c \
 	is/ft_isascii.c \
+	is/ft_isspace.c \
 	\
 	str/ft_count_words.c \
 	str/ft_strjoin.c \

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
+/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 19:38:39 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/10/09 03:08:59 by educastro        ###   ########.fr       */
+/*   Updated: 2024/10/09 15:23:47 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ t_tree	*make_tree_cmd(t_token_list *token_list, t_minishell *data);
 
 // here_doc.c
 void	print_error_message(char *delimiter);
-void	write_on_file(int fd, char *line, int need_to_expand, t_env *envp_list);
-void	heredoc_fork(char *file_name, char *delimiter, t_env *envp_list);
+void	write_on_file(int fd, char *line, int need_to_expand, t_list *envp_list);
+void	heredoc_fork(char *file_name, char *delimiter, t_list *envp_list);
 char	*create_heredoc_name(char *delimiter);
 char	*create_heredoc(char *delimiter, t_minishell *data);
 

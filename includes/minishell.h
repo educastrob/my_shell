@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
+/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 19:40:49 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/09 03:07:03 by educastro        ###   ########.fr       */
+/*   Updated: 2024/10/09 17:42:34 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ typedef struct s_main
 }				t_main;
 
 // builtins
-int	env(t_minishell *minishell);
-int	pwd(void);
-int	ft_echo(char **args);
+int		env(t_minishell *minishell);
+int		pwd(void);
+int		ft_echo(char **args);
 
 // utils.c
 char	*get_line_to_readline(t_list *env_list);
