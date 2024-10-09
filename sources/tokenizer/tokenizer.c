@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:26:39 by edcastro          #+#    #+#             */
-/*   Updated: 2024/09/24 15:38:12 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/09 17:47:31 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static t_token_list	*token_create_node(char *lexeme, int token_type)
 	return (new_token);
 }
 
-static void	add_token_to_list(t_token_list **token_list, char *lexeme, int token_type)
+void	add_token_to_list(t_token_list **token_list, char *lexeme, int token_type)
 {
 	t_token_list	*current;
 

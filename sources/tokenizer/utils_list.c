@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_list.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
+/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 14:53:03 by educastro         #+#    #+#             */
-/*   Updated: 2024/09/12 15:03:22 by educastro        ###   ########.fr       */
+/*   Updated: 2024/10/09 17:50:22 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	token_join_lists(t_token_list **dest, t_token_list *source)
 	aux = source;
 	while (aux)
 	{
-		token_add_to_list(dest, ft_strdup(aux->token.lexeme), aux->token.type);
+		add_token_to_list(dest, ft_strdup(aux->token.lexeme), aux->token.type);
 		aux = aux->next;
 	}
 }

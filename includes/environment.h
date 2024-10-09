@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   environment.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
+/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 18:37:12 by educastro         #+#    #+#             */
-/*   Updated: 2024/10/09 02:43:31 by educastro        ###   ########.fr       */
+/*   Updated: 2024/10/09 15:29:15 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXPANDER_H
-# define EXPANDER_H
+#ifndef ENVIRONMENT_H
+# define ENVIRONMENT_H
 
 // libs
 # include "minishell.h"
@@ -22,6 +22,7 @@
 # include "../libft/libft.h"
 
 typedef struct s_minishell t_minishell;
+typedef struct s_env t_env;
 
 // structs
 typedef struct	s_env

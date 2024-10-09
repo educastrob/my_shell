@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
+/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 18:37:12 by educastro         #+#    #+#             */
-/*   Updated: 2024/10/09 02:26:01 by educastro        ###   ########.fr       */
+/*   Updated: 2024/10/09 17:39:22 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,10 @@ int		exit_status(int status);
 int		term_signal(int status);
 int		get_return_value(int status);
 
+// create_argv.c
+t_token_list	*get_expanded_list(t_token_list *token_list, t_list *envp);
+char			**create_argv(t_tree *tree, t_minishell *data);
+
 // exec_pipe.c
 int	exec_pipe(t_tree *tree, t_minishell *data);
 
@@ -76,5 +80,11 @@ int		close_fd(int fd);
 void	close_pipe(int *pipe_fd);
 void	fd_list_add_fd(t_list **fd_list, int fd);
 void	fd_list_close_clear(t_list **fd_list);
+
+// utils.c
+int		open_redir(char *path_to_file, int type);
+int		is_directory(char *path);
+void	free_envp(char **envp);
+void	*select_env(void *content);
 
 #endif
