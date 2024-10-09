@@ -6,7 +6,7 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 15:52:18 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/10/09 17:24:24 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/10/09 18:16:16 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,44 +48,41 @@ void	export_perror(char *key_value)
 	free(message_to_print);
 }
 
-void	print_envp(char **envp)
+char	*create_env_string(t_env *env)
 {
-	int	i;
+	int		full_size;
+	char	*env_string;
 
-	i = 0;
-	while (envp[i])
+	full_size = ft_strlen(env->name) + ft_strlen(env->value) + 2;
+	env_string = malloc(sizeof(char) * full_size);
+	ft_strlcpy(env_string, env->name, full_size);
+	if (env->value)
 	{
-		if (ft_strncmp(envp[i], "?", -1) == 0)
-			continue ;
-		printf("declare -x %s\n", envp[i]);
-		i++;
+		ft_strlcat(env_string, "=", full_size);
+		ft_strlcat(env_string, env->value, full_size);
 	}
+	return (env_string);
 }
 
-void	print_sorted_envp(t_minishell *data)
+char	**populate_envp(t_list *head)
 {
 	int		i;
-	int		j;
-	char	*temp;
-	char	**envp;
+	char	**new_envp;
+	t_list	*temp;
+	t_env	*env;
 
-	envp = create_envs(data->envs);
 	i = 0;
-	while (envp[i])
+	temp = head;
+	new_envp = ft_calloc(sizeof(char *), envp_list_size(head));
+	while (temp)
 	{
-		j = i + 1;
-		while (envp[j])
+		env = (t_env *)temp->content;
+		if (ft_strncmp(env->name, "?", -1) != 0)
 		{
-			if (ft_strncmp(envp[i], envp[j], -1) > 0)
-			{
-				temp = envp[i];
-				envp[i] = envp[j];
-				envp[j] = temp;
-			}
-			j++;
+			new_envp[i] = create_env_string(env);
+			i++;
 		}
-		i++;
+		temp = temp->next;
 	}
-	print_envp(envp);
-	free_envp(envp);
+	return (new_envp);
 }

@@ -6,7 +6,7 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 15:35:20 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/10/09 15:57:50 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/10/09 18:13:30 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,47 @@
 #include "../../includes/environment.h"
 #include "../../includes/executor.h"
 
+void	print_envp(char **envp)
+{
+	int	i;
+
+	i = 0;
+	while (envp[i])
+	{
+		if (ft_strncmp(envp[i], "?", -1) == 0)
+			continue ;
+		printf("declare -x %s\n", envp[i]);
+		i++;
+	}
+}
+
+void	print_sorted_envp(t_minishell *data)
+{
+	int		i;
+	int		j;
+	char	*temp;
+	char	**envp;
+
+	envp = populate_envs(data->envs);
+	i = 0;
+	while (envp[i])
+	{
+		j = i + 1;
+		while (envp[j])
+		{
+			if (ft_strncmp(envp[i], envp[j], -1) > 0)
+			{
+				temp = envp[i];
+				envp[i] = envp[j];
+				envp[j] = temp;
+			}
+			j++;
+		}
+		i++;
+	}
+	print_envp(envp);
+	free_envp(envp);
+}
 
 int	set_arg(char *arg, int idx, t_list *envp_list)
 {
