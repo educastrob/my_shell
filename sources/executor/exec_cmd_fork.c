@@ -6,11 +6,11 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 21:08:43 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/02 20:45:25 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/08 23:56:20 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+// #include "../../includes/minishell.h"
 
 // static int	execute_redirects(t_exec_tree *tree, t_minishell *data)
 // {
@@ -36,6 +36,7 @@
 // 	return (ret_code);
 // }
 
+// // verifica acessos dos diretorios
 // int	display_error(char *cmd)
 // {
 // 	int		ret_code;
