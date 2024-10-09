@@ -6,7 +6,7 @@
 /*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 18:37:12 by educastro         #+#    #+#             */
-/*   Updated: 2024/09/27 23:51:35 by educastro        ###   ########.fr       */
+/*   Updated: 2024/10/09 02:43:31 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,9 @@ t_env	*find_env(t_list *envs, char *name);
 char	*find_env_value(t_list *envs, char *name);
 t_list	*find_env_element(t_list *envs, char *name);
 void	uptade_pwd_env(t_list *envs);
+enum e_bool	delete_env(t_minishell *minishell, char *name);
 
 // utils.c
-t_minishell	*init_minishell(char **envp);
+void	del_env(void *content);
 
 #endif
