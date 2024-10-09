@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   exec_cmd_fork.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 21:08:43 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/08 23:57:24 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/09 01:36:36 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static int	execute_redirects(t_exec_tree *tree, t_minishell *data)
+static int	execute_redirects(t_tree *tree, t_minishell *data)
 {
 	int		fd_redir;
 	int		ret_code;
 	char	*cmd;
 
-	cmd = expand_string(tree->left->command->token.lexeme, data->envp_list);
+	cmd = expand_string(tree->left->command->token.lexeme, data->envs);
 	fd_redir = open_redir(cmd, tree->type);
 	free(cmd);
 	if (fd_redir == -1)
@@ -65,7 +65,7 @@ int	display_error(char *cmd)
 	return (ret_code);
 }
 
-int	exec_execve(t_exec_tree *tree, t_minishell *data)
+int	exec_execve(t_tree *tree, t_minishell *data)
 {
 	int		ret_code;
 	char	*cmd;
@@ -75,8 +75,8 @@ int	exec_execve(t_exec_tree *tree, t_minishell *data)
 	argv = create_argv(tree, data);
 	if (argv[0])
 	{
-		cmd = expand_command(argv[0], data->envp_list);
-		envp = create_envp(data->envp_list);
+		cmd = expand_command(argv[0], data->envs);
+		envp = create_envp(data->envs);
 		if (access(cmd, F_OK | X_OK) == 0
 			&& ft_strchr(cmd, '/') != NULL)
 			execve(cmd, argv, envp);
@@ -90,7 +90,7 @@ int	exec_execve(t_exec_tree *tree, t_minishell *data)
 	return (ret_code);
 }
 
-int	execute_command(t_exec_tree *tree, t_minishell *data)
+int	execute_command(t_tree *tree, t_minishell *data)
 {
 	int		args_num;
 	int		ret_code;
@@ -107,7 +107,7 @@ int	execute_command(t_exec_tree *tree, t_minishell *data)
 	return (ret_code);
 }
 
-int	exec_cmd_fork(t_exec_tree *tree, t_minishell *data)
+int	exec_cmd_fork(t_tree *tree, t_minishell *data)
 {
 	int		ret_code;
 
@@ -119,8 +119,6 @@ int	exec_cmd_fork(t_exec_tree *tree, t_minishell *data)
 	if (tree->type >= REDIRECT_INPUT
 		&& tree->type <= REDIRECT_OUTPUT_APPEND)
 		ret_code = execute_redirects(tree, data);
-	else if (tree->type == SUBSHELL)
-		ret_code = exec_tree(tree->subshell, data);
 	else
 		ret_code = execute_command(tree, data);
 	return (ret_code);
