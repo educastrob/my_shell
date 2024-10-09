@@ -6,7 +6,7 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 19:23:41 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/10/09 14:56:54 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/10/09 15:01:18 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	builtin_unset(char **argv, t_env **envp_list)
 	while (argv[i])
 	{
 		if (key_is_valid(argv[i]))
-			env_delete_value(envp_list, argv[i]);
+			delete_env(envp_list, argv[i]);
 		else
 		{
 			unset_perror(argv[i]);
