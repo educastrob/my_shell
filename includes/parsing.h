@@ -6,7 +6,7 @@
 /*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 19:38:39 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/09/27 23:51:30 by educastro        ###   ########.fr       */
+/*   Updated: 2024/10/09 03:08:59 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@
 // typedefs
 typedef struct s_token_list t_token_list;
 typedef struct s_minishell t_minishell;
+typedef struct s_env t_env;
+typedef struct s_tree t_tree;
+typedef struct s_aux_tree t_aux_tree;
+typedef struct s_str_list	t_str_list;
 
 // structs
 typedef struct s_tree

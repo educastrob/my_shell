@@ -6,7 +6,7 @@
 /*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 19:40:49 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/08 16:08:27 by educastro        ###   ########.fr       */
+/*   Updated: 2024/10/09 03:07:03 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_env		t_env;
 typedef struct s_token_list	t_token_list;
 typedef struct s_tree		t_tree;
 typedef struct termios		t_termios;
+typedef struct s_str_list	t_str_list;
 
 // enums
 enum	e_bool
@@ -75,5 +76,9 @@ typedef struct s_main
 int	env(t_minishell *minishell);
 int	pwd(void);
 int	ft_echo(char **args);
+
+// utils.c
+char	*get_line_to_readline(t_list *env_list);
+int		str_is_space(char *str);
 
 #endif

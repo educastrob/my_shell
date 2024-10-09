@@ -6,7 +6,7 @@
 /*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 21:08:43 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/09 01:36:36 by educastro        ###   ########.fr       */
+/*   Updated: 2024/10/09 02:16:16 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	exec_execve(t_tree *tree, t_minishell *data)
 	if (argv[0])
 	{
 		cmd = expand_command(argv[0], data->envs);
-		envp = create_envp(data->envs);
+		envp = create_envs(data->envs);
 		if (access(cmd, F_OK | X_OK) == 0
 			&& ft_strchr(cmd, '/') != NULL)
 			execve(cmd, argv, envp);

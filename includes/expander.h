@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 18:42:26 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/09 00:13:09 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/09 03:06:35 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,5 @@ char	*create_string_from_list(t_str_list *lst);
 int		ternary(int condition, int if_true, int if_false);
 int		is_valid_var(char letter);
 char	*remove_quotes(char	*delimiter);
-
 
 #endif
