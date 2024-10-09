@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_tree_cmd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 15:43:44 by edcastro          #+#    #+#             */
-/*   Updated: 2024/09/25 17:18:54 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/09 03:04:56 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	make_redirects(t_tree **tree, t_token_list *redir_list, t_token_list
 	(*tree)->left->type = COMMAND;
 	if ((*tree)->type == REDIRECT_HEREDOC)
 	{
-		str = create_here_doc(redir_list->next->token.lexeme, data); // cria o HEREDOC
+		str = create_heredoc(redir_list->next->token.lexeme, data); // cria o HEREDOC
 		(*tree)->left->command = get_token_list(str); // obtem lista de tokens do HEREDOC
 		free(str);
 	}

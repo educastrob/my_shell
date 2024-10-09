@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_func2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 16:08:11 by edcastro          #+#    #+#             */
-/*   Updated: 2024/09/26 16:34:32 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/09 02:43:08 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,15 @@ void	uptade_pwd_env(t_list *envs)
 	update_env(envs, "OLDPWD", old_pwd);
 	update_env(envs, "PWD", current_pwd);
 	free(current_pwd);
+}
+
+enum e_bool	delete_env(t_minishell *minishell, char *name)
+{
+	t_list	*env;
+
+	env = find_env_element(minishell->envs, name);
+	if (env == NULL)
+		return (FALSE);
+	minishell->envs = ft_lstrm(minishell->envs, env, del_env);
+	return (TRUE);
 }
