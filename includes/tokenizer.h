@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
+/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 13:17:57 by educastro         #+#    #+#             */
-/*   Updated: 2024/10/09 02:27:16 by educastro        ###   ########.fr       */
+/*   Updated: 2024/10/09 17:48:23 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int				get_state_82(char c);
 
 // tokenizer.c
 t_token_list	*get_token_list(char *str);
-void			token_add_to_list(t_token_list **token_list, char *lexeme, int token_type);
+void			add_token_to_list(t_token_list **token_list, char *lexeme, int token_type);
 t_token_list	*token_get_sublist(t_token_list *token_lst, int start, int lst_len);
 void			token_final_state(t_aux_token *aux, t_token_list **token_list, char *str);
 
