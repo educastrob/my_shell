@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
+/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 18:42:26 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/02 00:50:42 by educastro        ###   ########.fr       */
+/*   Updated: 2024/10/09 00:13:09 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ typedef struct	s_str_list
 
 // expand_heredoc.c
 char	*expand_heredoc(char *str, t_env *envp_list);
+
+// expand_string.c
+char	*expand_string(char *str, t_env *head);
+
+// expand_cmd.c
+char	*expand_command(char *command, t_env *envp_list);
 
 // string_list.c
 void	add_letter_list(t_str_list **lst, char letter);
