@@ -3,16 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   export_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 15:52:18 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/10/09 18:16:16 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/10/10 01:28:11 by nasser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/expander.h"
 #include "../../includes/environment.h"
 #include "../../includes/executor.h"
+
+int	key_is_valid(char *key)
+{
+	int	i;
+
+	i = 0;
+	if (ft_isdigit(key[0]))
+		return (0);
+	while (key[i] && (ft_isalnum(key[i]) || key[i] == '_'))
+		i++;
+	if (key[i] == '\0')
+		return (1);
+	return (0);
+}
 
 int	key_exist(char *key, t_list *envp_list)
 {
@@ -22,7 +36,7 @@ int	key_exist(char *key, t_list *envp_list)
 	tmp = envp_list;
 	while (tmp)
 	{
-		env = (t_env *)tmp->content;  // Acessa o conteúdo da lista como um t_env
+		env = (t_env *)tmp->content;
 		if (ft_strncmp(env->name, key, -1) == 0)
 			return (1);
 		tmp = tmp->next;
@@ -48,7 +62,7 @@ void	export_perror(char *key_value)
 	free(message_to_print);
 }
 
-char	*create_env_string(t_env *env)
+static char	*create_env_string(t_env *env)
 {
 	int		full_size;
 	char	*env_string;
@@ -64,7 +78,7 @@ char	*create_env_string(t_env *env)
 	return (env_string);
 }
 
-char	**populate_envp(t_list *head)
+char	**populate_envs(t_list *head)
 {
 	int		i;
 	char	**new_envp;
@@ -86,3 +100,4 @@ char	**populate_envp(t_list *head)
 	}
 	return (new_envp);
 }
+

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 19:23:41 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/10/09 15:01:18 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/10/10 01:23:00 by nasser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	unset_perror(char *key_value)
 	free(message_to_print);
 }
 
-int	builtin_unset(char **argv, t_env **envp_list)
+int	builtin_unset(char **argv, t_minishell *data)
 {
 	int	i;
 	int	ret_code;
@@ -39,7 +39,7 @@ int	builtin_unset(char **argv, t_env **envp_list)
 	while (argv[i])
 	{
 		if (key_is_valid(argv[i]))
-			delete_env(envp_list, argv[i]);
+			delete_env(data, argv[i]);
 		else
 		{
 			unset_perror(argv[i]);

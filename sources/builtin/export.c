@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 15:35:20 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/10/09 18:13:30 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/10/10 01:19:53 by nasser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,9 @@ int	set_arg(char *arg, int idx, t_list *envp_list)
 	if (key && key[0] && value && key_is_valid(key))
 	{
 		if (key_exist(key, envp_list))
-			update_env(key, value, envp_list);
+			update_env(envp_list, key, value);
 		else
-			add_env(key, value, envp_list);
+			add_env(envp_list, key, value);
 	}
 	else
 	{
@@ -97,7 +97,7 @@ int	select_arg(char *arg, t_minishell *data)
 		env_insert_node(&data->envs, arg, NULL);
 	else if (arg[i] == '\0' && !key_is_valid(arg))
 	{
-		export_print_error_message(arg);
+		export_perror(arg);
 		ret_code = 1;
 	}
 	return (ret_code);
