@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 13:17:57 by educastro         #+#    #+#             */
-/*   Updated: 2024/10/09 17:48:23 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/10 16:50:51 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ enum e_token_type
 	REDIRECT_OUTPUT,
 	REDIRECT_OUTPUT_APPEND,
 	COMMAND,
+	SUBSHELL
 };
 
 // structs
