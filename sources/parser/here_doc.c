@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 15:43:48 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/09 15:23:02 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/09 17:53:48 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/parsing.h"
+#include "minishell.h"
 
 void	print_error_message(char *delimiter)
 {

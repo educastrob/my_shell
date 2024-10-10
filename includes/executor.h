@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 18:37:12 by educastro         #+#    #+#             */
-/*   Updated: 2024/10/09 17:39:22 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/10 01:26:49 by nasser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,16 @@ int		open_redir(char *path_to_file, int type);
 int		is_directory(char *path);
 void	free_envp(char **envp);
 void	*select_env(void *content);
+
+// builtins
+int		key_is_valid(char *key);
+int		key_exist(char *key, t_list *envp_list);
+void	export_perror(char *key_value);
+char	**populate_envs(t_list *head);
+
+int		att_existing_value(t_list *head, char *key, char *value);
+int		envp_list_size(t_list *head);
+void	env_insert_node(t_list **head, char *key, char *value);
+
 
 #endif
