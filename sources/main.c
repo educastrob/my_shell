@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
+/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 16:02:33 by educastro         #+#    #+#             */
-/*   Updated: 2024/10/09 02:52:44 by educastro        ###   ########.fr       */
+/*   Updated: 2024/10/10 15:38:05 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	aux_main(t_main *main)
 	main->token_list = get_token_list(main->line);
 	main->data.tree = get_tree(main->token_list, &main->data);
 	token_clear_list(&main->token_list);
-	// add_history(main->line);
+	add_history(main->line);
 	free(main->line);
 	if (g_signal == SIGINT)
 		main->ret_code = 130;
@@ -56,7 +56,7 @@ static void	close_main(t_main *main)
 	ft_lstclear(&main->data.envs, del_env);
 	main->data.envs = NULL;
 	fd_list_close_clear(&main->data.fd_list);
-	// rl_clear_history();
+	rl_clear_history();
 	close(STDIN_FILENO);
 	close(STDOUT_FILENO);
 	close(STDERR_FILENO);
