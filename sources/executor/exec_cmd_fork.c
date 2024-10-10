@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 21:08:43 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/09 17:38:59 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/09 17:55:20 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ int	exec_execve(t_tree *tree, t_minishell *data)
 	char	**argv;
 	char	**envp;
 
+	envp = NULL;
 	argv = create_argv(tree, data);
 	if (argv[0])
 	{
@@ -85,7 +86,7 @@ int	exec_execve(t_tree *tree, t_minishell *data)
 	}
 	else
 		ret_code = 0;
-	// free_envp(envp);
+	free_envp(envp);
 	return (ret_code);
 }
 

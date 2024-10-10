@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:12:53 by educastro         #+#    #+#             */
-/*   Updated: 2024/09/24 15:23:23 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/10 16:41:00 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void		divide_tree(t_aux_tree *aux_tree, t_token_list *token_list, t_minis
 
 static void		find_division_pipe_index(t_aux_tree *aux_tree)
 {
-	while (aux_tree)
+	while (aux_tree->aux)
 	{
 		if (aux_tree->pipe_idx == -1 && (aux_tree->aux->token.type == PIPE))
 			aux_tree->pipe_idx = aux_tree->idx;
@@ -55,8 +55,10 @@ t_tree			*make_tree(t_token_list *token_list, t_minishell *data)
 	init_values(&aux_tree.idx, &aux_tree, token_list);
 	if (token_list == NULL)
 		return (NULL);
-	aux_tree.tree = ft_calloc(1, sizeof(t_tree));
+	aux_tree.tree = malloc(sizeof(t_tree));
+	ft_bzero(aux_tree.tree, sizeof(t_tree));
 	find_division_pipe_index(&aux_tree);
+	printf("\n\n%i\n\n", aux_tree.pipe_idx);
 	if (aux_tree.tree == NULL)
 		return (NULL);
 	if (aux_tree.pipe_idx != -1)
