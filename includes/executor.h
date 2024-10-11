@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 18:37:12 by educastro         #+#    #+#             */
-/*   Updated: 2024/10/10 20:54:59 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/10 21:07:43 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,16 @@ void	fd_list_close_clear(t_list **fd_list);
 // utils.c
 int		open_redir(char *path_to_file, int type);
 int		is_directory(char *path);
+
+// builtins
+int		key_is_valid(char *key);
+int		key_exist(char *key, t_list *envp_list);
+void	export_perror(char *key_value);
+char	**populate_envs(t_list *head);
+
+int		att_existing_value(t_list *head, char *key, char *value);
+int		envp_list_size(t_list *head);
+void	env_insert_node(t_list **head, char *key, char *value);
+
 
 #endif

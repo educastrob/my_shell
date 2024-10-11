@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 18:42:26 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/10 20:30:34 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/10 21:07:48 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	clear_str_list(t_str_list **head);
 char	*create_string_from_list(t_str_list *lst);
 
 // utils.c
+char	*search_value(t_list *head, char *key);
 int		ternary(int condition, int if_true, int if_false);
 int		is_valid_var(char letter);
 char	*remove_quotes(char	*delimiter);
