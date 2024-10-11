@@ -6,15 +6,15 @@ Repositorio para a criação do projeto minishell da 42 São Paulo
 - [x] analisar sintaxe
 - [x] heredoc
 - [x] arvore de execução
-- [ ] criar lista de comandos
-- [ ] pipe
+- [x] criar lista de comandos
+- [x] pipe
 - [ ] builtins
 - [x] redirect
 - [ ] verificar se o comando e executavel/ acessivel ou builtin
-- [ ] expandir variaveis
+- [x] expandir variaveis
 - [x] sinais
 - [x] transformar as envs em char **
-- [ ] executar
+- [x] executar
 - [x] guardar o status da execução
 
 < in cmd |&&><)|>>(|"|><)"
