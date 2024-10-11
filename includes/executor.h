@@ -6,7 +6,7 @@
 /*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 18:37:12 by educastro         #+#    #+#             */
-/*   Updated: 2024/10/10 01:26:49 by nasser           ###   ########.fr       */
+/*   Updated: 2024/10/11 15:23:00 by nasser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int		term_signal(int status);
 int		get_return_value(int status);
 
 // create_argv.c
-t_token_list	*get_expanded_list(t_token_list *token_list, t_list *envp);
+t_token_list	*get_expanded_list(t_token_list *token_list, t_env *envp);
 char			**create_argv(t_tree *tree, t_minishell *data);
 
 // exec_pipe.c
@@ -68,6 +68,10 @@ int	exec_tree(t_tree *tree, t_minishell *data);
 
 // exec_cmd.c
 int	exec_cmd(t_tree *tree, t_minishell *data);
+
+// exec_and_or.c
+int	exec_and(t_tree *tree, t_minishell *data);
+int	exec_or(t_tree *tree, t_minishell *data);
 
 // exec_cmd_fork.c
 int	exec_cmd_fork(t_tree *tree, t_minishell *data);
@@ -84,8 +88,6 @@ void	fd_list_close_clear(t_list **fd_list);
 // utils.c
 int		open_redir(char *path_to_file, int type);
 int		is_directory(char *path);
-void	free_envp(char **envp);
-void	*select_env(void *content);
 
 // builtins
 int		key_is_valid(char *key);
@@ -93,9 +95,6 @@ int		key_exist(char *key, t_list *envp_list);
 void	export_perror(char *key_value);
 char	**populate_envs(t_list *head);
 
-int		att_existing_value(t_list *head, char *key, char *value);
-int		envp_list_size(t_list *head);
-void	env_insert_node(t_list **head, char *key, char *value);
 
 
 #endif

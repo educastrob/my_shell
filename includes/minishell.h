@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 19:40:49 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/09 17:42:34 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/10 20:44:44 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ enum	e_bool
 typedef struct	s_minishell
 {
 	t_tree			*tree;
-	t_list			*envs;
+	t_env			*envs;
 	t_list			*fd_list;
 }				t_minishell;
 
@@ -73,12 +73,12 @@ typedef struct s_main
 }				t_main;
 
 // builtins
-int		env(t_minishell *minishell);
+int		builtin_env(t_minishell *minishell);
 int		pwd(void);
 int		ft_echo(char **args);
 
 // utils.c
-char	*get_line_to_readline(t_list *env_list);
+char	*get_line_to_readline(t_env *env_list);
 int		str_is_space(char *str);
 
 #endif

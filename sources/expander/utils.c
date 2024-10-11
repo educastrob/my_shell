@@ -6,28 +6,11 @@
 /*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 18:42:13 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/10 01:38:25 by nasser           ###   ########.fr       */
+/*   Updated: 2024/10/11 15:25:26 by nasser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/expander.h"
-
-char	*search_value(t_list *head, char *key)
-{
-	t_list	*temp;
-	t_env	*env;
-
-	temp = head;
-	while (temp != NULL)
-	{
-		env = (t_env *)temp->content; 
-		if (ft_strncmp(env->name, key, -1) == 0)
-			return (ft_strdup(env->value));
-		temp = temp->next;
-	}
-	return (ft_strdup(""));
-}
-
 
 int	ternary(int condition, int if_true, int if_false)
 {

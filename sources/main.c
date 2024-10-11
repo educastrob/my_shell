@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 16:02:33 by educastro         #+#    #+#             */
-/*   Updated: 2024/10/09 17:55:53 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/10 20:33:43 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ static void	init_main(t_main *main, char *envp[])
 	main->backup_fd_in = dup(STDIN_FILENO);
 	ft_memset(&main->data, 0, sizeof(main->data));
 	fd_list_add_fd(&main->data.fd_list, main->backup_fd_in);
-	main->data.envs = create_envs(envp);
-	add_env(main->data.envs, "?", "0");
+	main->data.envs = env_create_list(envp);
+	env_insert_node(&main->data.envs, "?", "0");
 	tcgetattr(STDIN_FILENO, &main->term);
 }
 
@@ -46,16 +46,15 @@ static void	aux_main(t_main *main)
 			ft_putendl_fd("syntax error", STDERR_FILENO);
 	}
 	main->line = ft_itoa(main->ret_code);
-	add_env(main->data.envs, "?", main->line);
+	env_insert_node(&main->data.envs, "?", main->line);
 	free(main->line);
 	free_tree_all(&main->data.tree);
 }
 
-static void	close_main(t_main *main)
+static void	close_main(t_main main)
 {
-	ft_lstclear(&main->data.envs, del_env);
-	main->data.envs = NULL;
-	fd_list_close_clear(&main->data.fd_list);
+	env_clear_list(&main.data.envs);
+	fd_list_close_clear(&main.data.fd_list);
 	rl_clear_history();
 	close(STDIN_FILENO);
 	close(STDOUT_FILENO);
@@ -95,6 +94,6 @@ int	main(int argc __attribute__((unused)), \
 		}
 		aux_main(&main);
 	}
-	close_main(&main);
+	close_main(main);
 	return (main.ret_code);
 }

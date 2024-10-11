@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 21:08:43 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/09 17:55:20 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/10 20:54:22 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	exec_execve(t_tree *tree, t_minishell *data)
 	if (argv[0])
 	{
 		cmd = expand_command(argv[0], data->envs);
-		envp = ft_lst_to_array_choice(data->envs, select_env);
+		envp = create_envp(data->envs);
 		if (access(cmd, F_OK | X_OK) == 0
 			&& ft_strchr(cmd, '/') != NULL)
 			execve(cmd, argv, envp);
@@ -119,6 +119,8 @@ int	exec_cmd_fork(t_tree *tree, t_minishell *data)
 	if (tree->type >= REDIRECT_INPUT
 		&& tree->type <= REDIRECT_OUTPUT_APPEND)
 		ret_code = execute_redirects(tree, data);
+	else if (tree->type == SUBSHELL)
+		ret_code = exec_tree(tree->subshell, data);
 	else
 		ret_code = execute_command(tree, data);
 	return (ret_code);

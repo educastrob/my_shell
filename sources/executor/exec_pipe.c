@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_pipe.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
+/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 17:03:08 by educastro         #+#    #+#             */
-/*   Updated: 2024/10/09 01:43:45 by educastro        ###   ########.fr       */
+/*   Updated: 2024/10/10 20:51:44 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,26 @@ static int	prepare_and_execute_pipe(t_tree *tree, t_minishell *data)
 	return (pid);
 }
 
+static int	exec_pipe_subshell(t_tree *tree, t_minishell *data)
+{
+	int	pid;
+	int	ret_code;
+
+	pid = fork();
+	if (pid == 0)
+	{
+		fd_list_close_clear(&data->fd_list);
+		ret_code = exec_tree(tree->subshell, data);
+		free_tree(&data->tree);
+		env_clear_list(&data->envs);
+		close(STDIN_FILENO);
+		close(STDOUT_FILENO);
+		close(STDERR_FILENO);
+		exit(ret_code);
+	}
+	return (pid);
+}
+
 int	exec_pipe(t_tree *tree, t_minishell *data)
 {
 	int			pid;
@@ -47,5 +67,7 @@ int	exec_pipe(t_tree *tree, t_minishell *data)
 		|| (tree->type >= REDIRECT_INPUT
 			&& tree->type <= REDIRECT_OUTPUT_APPEND))
 		pid = exec_cmd(tree, data);
+	else if (tree->type == SUBSHELL)
+		pid = exec_pipe_subshell(tree, data);
 	return (pid);
 }

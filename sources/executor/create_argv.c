@@ -6,13 +6,13 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:06:17 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/09 17:49:01 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/10 20:48:12 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-t_token_list	*get_expanded_list(t_token_list *token_list, t_list *envp)
+t_token_list	*get_expanded_list(t_token_list *token_list, t_env *envp)
 {
 	char			*expanded_string;
 	t_token_list	*aux;

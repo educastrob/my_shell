@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 13:17:57 by educastro         #+#    #+#             */
-/*   Updated: 2024/10/10 16:50:51 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/10 18:12:07 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ enum e_token_type
 	REDIRECT_HEREDOC,
 	REDIRECT_OUTPUT,
 	REDIRECT_OUTPUT_APPEND,
+	OR,
+	AND,
+	OPEN_PARENTHESIS,
+	CLOSE_PARENTHESIS,
+	EXPRESSION,
 	COMMAND,
 	SUBSHELL
 };
@@ -81,6 +86,7 @@ void			token_final_state(t_aux_token *aux, t_token_list **token_list, char *str)
 void		token_clear_list(t_token_list **token_list);
 int			is_whitespace(char c);
 int			is_metacharacter(char c);
+int			is_an_command_element(t_token_list *node);
 
 // utils_list.c
 void			token_join_lists(t_token_list **dest, t_token_list *source);
