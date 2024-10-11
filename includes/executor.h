@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 18:37:12 by educastro         #+#    #+#             */
-/*   Updated: 2024/10/10 21:07:43 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/11 15:23:00 by nasser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,9 +95,6 @@ int		key_exist(char *key, t_list *envp_list);
 void	export_perror(char *key_value);
 char	**populate_envs(t_list *head);
 
-int		att_existing_value(t_list *head, char *key, char *value);
-int		envp_list_size(t_list *head);
-void	env_insert_node(t_list **head, char *key, char *value);
 
 
 #endif
