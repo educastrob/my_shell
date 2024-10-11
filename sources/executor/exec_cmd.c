@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   exec_cmd.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/30 20:43:17 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/10 20:50:13 by edcastro         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
@@ -22,7 +11,10 @@ int	exec_cmd(t_tree *tree, t_minishell *data)
 	if (pid == 0)
 	{
 		fd_list_close_clear(&data->fd_list);
-		ret_code = exec_cmd_fork(tree, data);
+		if (is_builtin(tree))
+			ret_code = builtin_process(tree, data);
+		else
+			ret_code = exec_cmd_fork(tree, data);
 		free_tree(&data->tree);
 		env_clear_list(&data->envs);
 		close(STDIN_FILENO);

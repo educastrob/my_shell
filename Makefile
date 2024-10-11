@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: nasser <nasser@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/10 16:58:43 by fcaldas-          #+#    #+#              #
-#    Updated: 2024/10/10 21:10:20 by edcastro         ###   ########.fr        #
+#    Updated: 2024/10/11 15:31:50 by nasser           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRCS		:= $(addprefix ./sources/, main.c utils.c) \
 				$(addprefix ./sources/tokenizer/, tokenizer.c utils.c get_states.c token_states_1.c token_states_2.c token_tests.c utils_list.c) \
 				$(addprefix ./sources/environment/, env_func1.c env_func2.c) \
 				$(addprefix ./sources/parser/, get_tree.c make_tree.c make_tree_cmd.c make_tree_cmd_recursive.c here_doc.c) \
-				$(addprefix ./sources/builtin/, env.c pwd.c) \
+				$(addprefix ./sources/builtin/, env.c pwd.c echo.c) \
 				$(addprefix ./sources/expander/, expand_heredoc.c expand_cmd.c expand_string.c string_list.c utils.c) \
 				$(addprefix ./sources/executor/, signals.c signal_handler.c signals_macros.c create_argv.c exec_tree.c exec_cmd.c exec_pipe.c exec_and_or.c exec_cmd_fork.c fd_list.c utils.c) 
 OBJS		:= $(patsubst ./sources/%.c,$(BIN)%.o,$(SRCS))

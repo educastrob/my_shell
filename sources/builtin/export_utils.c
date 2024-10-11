@@ -1,32 +1,7 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   export_utils.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/09 15:52:18 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/10/10 01:28:11 by nasser           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "../../includes/expander.h"
 #include "../../includes/environment.h"
 #include "../../includes/executor.h"
-
-int	key_is_valid(char *key)
-{
-	int	i;
-
-	i = 0;
-	if (ft_isdigit(key[0]))
-		return (0);
-	while (key[i] && (ft_isalnum(key[i]) || key[i] == '_'))
-		i++;
-	if (key[i] == '\0')
-		return (1);
-	return (0);
-}
 
 int	key_exist(char *key, t_list *envp_list)
 {
