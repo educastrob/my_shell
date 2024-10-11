@@ -6,79 +6,125 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 05:11:02 by educastro         #+#    #+#             */
-/*   Updated: 2024/09/25 16:19:12 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/10 20:37:40 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/environment.h"
 
-// adiciona um novo env
-t_env	*add_env(t_list *envs, char *name, char *value)
+t_env	*env_create_node(char *name, char *value)
 {
-	t_env	*env;
+	t_env	*new_node;
 
-	env = ft_calloc(1, sizeof(t_env));
-	if (env == NULL)
-		return (env);
-	env->name = ft_strdup(name);
-	if (value == NULL)
-		env->value = NULL;
+	new_node = (t_env *)malloc(sizeof(t_env));
+	new_node->name = ft_strdup(name);
+	if (value)
+		new_node->value = ft_strdup(value);
 	else
-		env->value = ft_strdup(value);
-	ft_lstadd_back(&envs, ft_lstnew(env));
-	return (env);
+		new_node->value = NULL;
+	new_node->next = NULL;
+	return (new_node);
 }
 
-// cria um node contendo name e value separados por '=' (complementa create_envs())
-static t_env	*new_env(char *envp)
+void	env_insert_node(t_env **head, char *name, char *value)
 {
-	t_env	*env;
-	char	*first_equal;
-	
-	env = ft_calloc(1, sizeof(t_env));
-	first_equal = ft_strchr(envp, '=');
-	*first_equal = '\0';
-	env->name = ft_strdup(envp);
-	env->value = ft_strdup(first_equal + 1);
-	return (env);
-}
+	t_env	*new_node;
+	t_env	*temp;
 
-// itera sobre todos o envp e aloca um por um.
-t_list	*create_envs(char **envp)
-{
-	t_list	*envs;
-	
-	envs = NULL;
-	while (*envp != NULL)
+	if (!head || !name)
+		return ;
+	if (att_existing_value(*head, name, value) == 1)
+		return ;
+	new_node = env_create_node(name, value);
+	if (*head == NULL)
+		*head = new_node;
+	else
 	{
-		ft_lstadd_back(&envs, ft_lstnew(new_env(*envp)));
-		envp++;
+		temp = *head;
+		while (temp->next != NULL)
+			temp = temp->next;
+		temp->next = new_node;
 	}
-	return (envs);
 }
 
-// atualiza o env
-t_env	*update_env(t_list *envs, char *name, char *value)
+t_env	*env_create_list(char *envp[])
 {
-	t_env	*env;
+	int		idx[3];
+	char	*name;
+	char	*value;
+	t_env	*head;
 
-	env = find_env(envs, name);
-	if (env == NULL)
-		return (NULL);
-	if (value == NULL)
-		return (env);
-	if (value != NULL)
-		free(env->value);
-	env->value = ft_strdup(value);
-	return (env);
+	head = NULL;
+	idx[0] = -1;
+	while (envp && envp[++idx[0]])
+	{
+		idx[1] = 0;
+		while (envp[idx[0]][idx[1]] != '=')
+			idx[1]++;
+		name = malloc(sizeof(char) * (idx[1] + 1));
+		idx[2] = idx[1] + 1;
+		while (envp[idx[0]][idx[2]] != '\0')
+			idx[2]++;
+		value = malloc(sizeof(char) * (idx[2] + 1));
+		ft_strlcpy(name, envp[idx[0]], idx[1] + 1);
+		ft_strlcpy(value, envp[idx[0]] + idx[1] + 1, idx[2]);
+		env_insert_node(&head, name, value);
+		free(name);
+		free(value);
+	}
+	return (head);
 }
 
-t_env	*export_env(t_minishell *minishell, char *name, char *value)
+char	**create_envp(t_env *head)
 {
-	t_env	*env;
+	int			i;
+	int			full_size;
+	char		**new_envp;
+	t_env		*temp;
 
-	env = update_env(minishell->envs, name, value);
-	if (env == NULL)
-		return (add_env(minishell->envs, name, value));
-	return (env);
+	i = 0;
+	temp = head;
+	new_envp = ft_calloc(sizeof(char *), envp_list_size(head));
+	while (temp)
+	{
+		if (ft_strncmp(temp->name, "?", -1) != 0)
+		{
+			full_size = ft_strlen(temp->name) + ft_strlen(temp->value) + 2;
+			new_envp[i] = malloc(sizeof(char) * full_size);
+			ft_strlcpy(new_envp[i], temp->name, full_size);
+			if (temp->value)
+			{
+				ft_strlcat(new_envp[i], "=", full_size);
+				ft_strlcat(new_envp[i], temp->value, full_size);
+			}
+			i++;
+		}
+		temp = temp->next;
+	}
+	return (new_envp);
+}
+
+void	env_delete_value(t_env **head, char *name)
+{
+	t_env	*temp;
+	t_env	*prev;
+
+	temp = *head;
+	prev = NULL;
+	while (temp != NULL && name)
+	{
+		if (ft_strncmp(temp->name, name, -1) == 0)
+		{
+			if (prev == NULL)
+				*head = temp->next;
+			else
+				prev->next = temp->next;
+			free(temp->name);
+			free(temp->value);
+			free(temp);
+			break ;
+		}
+		prev = temp;
+		temp = temp->next;
+	}
 }

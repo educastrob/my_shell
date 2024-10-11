@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_states.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:44:40 by edcastro          #+#    #+#             */
-/*   Updated: 2024/09/03 16:39:40 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/10/10 18:14:03 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,16 @@ int		get_token_type(int state)
 {
 	int	type;
 
-	if (state == 40)
+	if (state == 20)
+		type = OPEN_PARENTHESIS;
+	else if (state == 30)
+		type = CLOSE_PARENTHESIS;
+	else if (state == 41)
+		type = OR;
+	else if (state == 42)
 		type = PIPE;
+	else if (state == 51)
+		type = AND;
 	else if (state == 61)
 		type = REDIRECT_HEREDOC;
 	else if (state == 62)
@@ -35,7 +43,8 @@ int		get_token_type(int state)
 
 int		token_state_requires_backtrack(int state)
 {
-	if (state == 62
+	if (state == 42
+		|| state == 62
 		|| state == 72
 		|| state == 83)
 		return (1);
@@ -44,11 +53,12 @@ int		token_state_requires_backtrack(int state)
 
 int		token_state_is_final(int state)
 {
-	if ( state == 40 
-		|| state == 61
-		|| state == 62
-		|| state == 71
-		|| state == 72
+	if (state == 20
+		|| state == 30
+		|| state == 41 || state == 42
+		|| state == 51
+		|| state == 61 || state == 62
+		|| state == 71 || state == 72
 		|| state == 83)
 		return (1);
 	return (0);
@@ -56,21 +66,25 @@ int		token_state_is_final(int state)
 
 int		token_get_next_state(int state, char c)
 {
-	int	next_state;
+	int	new_state;
 
 	if (state == 1)
-		next_state = get_state_1(c);
+		new_state = get_state_1(c);
+	else if (state == 40)
+		new_state = get_state_40(c);
+	else if (state == 50)
+		new_state = get_state_50(c);
 	else if (state == 60)
-		next_state = get_state_60(c);
+		new_state = get_state_60(c);
 	else if (state == 70)
-		next_state = get_state_70(c);
+		new_state = get_state_70(c);
 	else if (state == 80)
-		next_state = get_state_80(c);
+		new_state = get_state_80(c);
 	else if (state == 81)
-		next_state = get_state_81(c);
+		new_state = get_state_81(c);
 	else if (state == 82)
-		next_state = get_state_82(c);
+		new_state = get_state_82(c);
 	else
-		next_state = -1;
-	return (next_state);
+		new_state = -1;
+	return (new_state);
 }

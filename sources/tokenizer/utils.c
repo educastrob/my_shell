@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 17:52:58 by edcastro          #+#    #+#             */
-/*   Updated: 2024/09/03 16:34:13 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/10/10 17:22:34 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,29 @@ int	is_whitespace(char c)
 	return (c == ' ' || c == '\t' || c == '\n');
 }
 
-int	is_metacharacter(char c)
+int	is_metacharacter(char character)
 {
-	if (c == '|' || c == '<' || c == '>' || c == '\'' 
-		|| c == '\"' || is_whitespace(c))
+	if (character == '('
+		|| character == ')'
+		|| character == '|'
+		|| character == '&'
+		|| character == '<'
+		|| character == '>'
+		|| character == '\''
+		|| character == '\"'
+		|| ft_isspace(character))
+		return (1);
+	return (0);
+}
+
+int	is_an_command_element(t_token_list *node)
+{
+	if (node && (node->token.type == WORD
+			|| node->token.type == PIPE
+			|| node->token.type == REDIRECT_INPUT
+			|| node->token.type == REDIRECT_HEREDOC
+			|| node->token.type == REDIRECT_OUTPUT
+			|| node->token.type == REDIRECT_OUTPUT_APPEND))
 		return (1);
 	return (0);
 }

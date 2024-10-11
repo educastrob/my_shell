@@ -6,19 +6,19 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 02:19:54 by educastro         #+#    #+#             */
-/*   Updated: 2024/10/10 16:39:01 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/10 20:34:11 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-char	*get_line_to_readline(t_list *env_list)
+char	*get_line_to_readline(t_env *env_list)
 {
 	int			i;
 	int			length;
 	char		*line;
-	const char	*vars[2] = {find_env_value(env_list, "USER"), \
-							find_env_value(env_list, "PWD")};
+	const char	*vars[2] = {search_value(env_list, "USER"), \
+							search_value(env_list, "PWD")};
 	const char	*to_print[] = {vars[0], vars[1], ": ", NULL};
 
 	i = 0;

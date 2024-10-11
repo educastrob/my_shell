@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 00:12:01 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/09 15:30:19 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/10 20:47:13 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static char	*get_absolute_path(char *command, char **paths)
 	return (absolute_command);
 }
 
-char	*expand_command(char *command, t_list *envp_list)
+char	*expand_command(char *command, t_env *envp_list)
 {
 	char	*path_env;
 	char	*absolute_command;
@@ -45,7 +45,7 @@ char	*expand_command(char *command, t_list *envp_list)
 	absolute_command = NULL;
 	if (ft_strlen(command) > 0 && ft_strchr(command, '/') == NULL)
 	{
-		path_env = find_env_value(envp_list, "PATH");
+		path_env = search_value(envp_list, "PATH");
 		paths = ft_split(path_env, ':');
 		free(path_env);
 		absolute_command = get_absolute_path(command, paths);

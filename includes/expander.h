@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 18:42:26 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/09 15:30:35 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/10 20:30:34 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ typedef struct	s_str_list
 }				t_str_list;
 
 // expand_heredoc.c
-char	*expand_heredoc(char *str, t_list *envp_list);
+char	*expand_heredoc(char *str, t_env *envp_list);
 
 // expand_string.c
-char	*expand_string(char *str, t_list *head);
+char	*expand_string(char *str, t_env *head);
 
 // expand_cmd.c
-char	*expand_command(char *command, t_list *envp_list);
+char	*expand_command(char *command, t_env *envp_list);
 
 // string_list.c
 void	add_letter_list(t_str_list **lst, char letter);

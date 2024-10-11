@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 15:43:48 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/09 15:23:02 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/10 20:41:00 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	print_error_message(char *delimiter)
 }
 
 void	write_on_file(int fd, char *line, int need_to_expand, \
-						t_list *envp_list)
+						t_env *envp_list)
 {
 	char	*expanded_line;
 
@@ -43,7 +43,7 @@ void	write_on_file(int fd, char *line, int need_to_expand, \
 		ft_putendl_fd(line, fd);
 }
 
-void	heredoc_fork(char *file_name, char *delimiter, t_list *envp_list)
+void	heredoc_fork(char *file_name, char *delimiter, t_env *envp_list)
 {
 	int		fd;
 	int		need_to_expand;
