@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_cmd_fork.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 21:08:43 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/10 20:54:22 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/12 14:08:11 by nasser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ int	exec_execve(t_tree *tree, t_minishell *data)
 			execve(cmd, argv, envp);
 		ret_code = display_error(cmd);
 		free(cmd);
+		free_envp(envp);
 	}
 	else
 		ret_code = 0;

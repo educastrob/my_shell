@@ -15,7 +15,7 @@ static	int	exec_builtin(char *cmd, char **argv, t_minishell *data)
 	else if (ft_strncmp(cmd, "export", -1) == 0)
 		ret_code = builtin_export(argv, data);
 	else if (ft_strncmp(cmd, "unset", -1) == 0)
-		ret_code = builtin_unset(argv, data);
+		ret_code = builtin_unset(argv, &data->envs);
 	else if (ft_strncmp(cmd, "env", -1) == 0)
 		ret_code = builtin_env(data);
 	else if (ft_strncmp(cmd, "exit", -1) == 0)
