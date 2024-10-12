@@ -6,7 +6,7 @@
 /*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 21:08:43 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/12 14:08:11 by nasser           ###   ########.fr       */
+/*   Updated: 2024/10/12 15:33:08 by nasser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ int	exec_execve(t_tree *tree, t_minishell *data)
 	char	**argv;
 	char	**envp;
 
-	envp = NULL;
 	argv = create_argv(tree, data);
 	if (argv[0])
 	{
@@ -87,7 +86,7 @@ int	exec_execve(t_tree *tree, t_minishell *data)
 	}
 	else
 		ret_code = 0;
-	free_envp(envp);
+	free_envp(argv);
 	return (ret_code);
 }
 

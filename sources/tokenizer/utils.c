@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 17:52:58 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/10 17:22:34 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/12 14:56:29 by nasser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,19 @@ void	token_clear_list(t_token_list **token_list)
 	t_token_list	*current;
 	t_token_list	*next;
 
-	current = *token_list;
-	while (current)
+	if (token_list)
 	{
-		next = current->next;
-		free(current->token.lexeme);
-		free(current);
-		current = next;
+		current = *token_list;
+		while (current)
+		{
+			next = current->next;
+			if (current->token.lexeme)
+				free(current->token.lexeme);
+			free(current);
+			current = next;
+		}
+		*token_list = NULL;
 	}
-	*token_list = NULL;
 }
 
 int	is_whitespace(char c)
