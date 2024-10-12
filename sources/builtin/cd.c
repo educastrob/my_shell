@@ -6,13 +6,13 @@
 /*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 19:22:44 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/10/10 01:41:07 by nasser           ###   ########.fr       */
+/*   Updated: 2024/10/11 23:01:16 by nasser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	cd_perror(char *folder)
+static void	cd_print_error_message(char *folder)
 {
 	int			length;
 	char		*message_to_print;
@@ -29,23 +29,17 @@ static void	cd_perror(char *folder)
 	free(message_to_print);
 }
 
-static int	add_envp_list(t_list **head, char *key, char *value)
+static int	add_envp_list(t_env **head, char *name, char *value)
 {
-	t_list	*new;
-	t_list	*tmp;
-	t_env	*env;
+	t_env	*new;
+	t_env	*tmp;
 
-	env = malloc(sizeof(t_env));
-	if (env == NULL)
-		return (1);
-	env->name = ft_strdup(key);
-	env->value = ft_strdup(value);
-	new = ft_lstnew(env);
+	new = malloc(sizeof(t_env));
 	if (new == NULL)
-	{
-		del_env(env);
 		return (1);
-	}
+	new->name = ft_strdup(name);
+	new->value = ft_strdup(value);
+	new->next = NULL;
 	if (*head == NULL)
 		*head = new;
 	else
@@ -58,11 +52,10 @@ static int	add_envp_list(t_list **head, char *key, char *value)
 	return (0);
 }
 
-
-static int	set_env(char *key, char *value, t_minishell *data)
+static int	set_env(char *name, char *value, t_minishell *data)
 {
-	if (att_existing_value(data->envs, key, value) == 0)
-		add_envp_list(&data->envs, key, value);
+	if (att_existing_value(data->envs, name, value) == 0)
+		add_envp_list(&data->envs, name, value);
 	return (0);
 }
 
@@ -102,7 +95,7 @@ int	builtin_cd(char *args[], t_minishell *data)
 		oldpwd = search_value(data->envs, "PWD");
 	if (chdir(path) == -1)
 	{
-		cd_perror(path);
+		cd_print_error_message(path);
 		free(path);
 		free(oldpwd);
 		return (1);

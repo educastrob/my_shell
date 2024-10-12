@@ -1,7 +1,7 @@
 
 #include "minishell.h"
 
-static void	unset_perror(char *key_value)
+static void	unset_print_error_message(char *key_value)
 {
 	int			length;
 	char		*message_to_print;
@@ -18,7 +18,7 @@ static void	unset_perror(char *key_value)
 	free(message_to_print);
 }
 
-int	builtin_unset(char **argv, t_minishell *data)
+int	builtin_unset(char **argv, t_env **envp_list)
 {
 	int	i;
 	int	ret_code;
@@ -28,10 +28,10 @@ int	builtin_unset(char **argv, t_minishell *data)
 	while (argv[i])
 	{
 		if (key_is_valid(argv[i]))
-			delete_env(data, argv[i]);
+			env_delete_value(envp_list, argv[i]);
 		else
 		{
-			unset_perror(argv[i]);
+			unset_print_error_message(argv[i]);
 			ret_code = 1;
 		}
 		i++;

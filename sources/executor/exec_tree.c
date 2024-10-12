@@ -6,11 +6,12 @@
 /*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 20:33:38 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/11 19:38:29 by nasser           ###   ########.fr       */
+/*   Updated: 2024/10/11 23:21:42 by nasser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
+#include "executor.h"
 
 static int	execute_simple_command(t_tree *tree, t_minishell *data)
 {
@@ -24,8 +25,8 @@ static int	execute_simple_command(t_tree *tree, t_minishell *data)
 		pid = exec_cmd(tree, data);
 		waitpid(pid, &ret_code, 0);
 		ret_code = get_return_value(ret_code);
-		return (ret_code);
 	}
+	return (ret_code);
 }
 
 static int	execute_and_wait_pipe(t_tree *tree, t_minishell *data)

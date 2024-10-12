@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 17:41:39 by edcastro          #+#    #+#             */
-/*   Updated: 2024/08/29 19:33:56 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/10/11 23:09:03 by nasser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int	pwd(void)
+int	builtin_pwd(void)
 {
 	char	*path;
 

@@ -6,7 +6,7 @@
 /*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 18:37:12 by educastro         #+#    #+#             */
-/*   Updated: 2024/10/11 15:23:00 by nasser           ###   ########.fr       */
+/*   Updated: 2024/10/11 23:16:15 by nasser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,16 @@ typedef struct s_cmd_for_fork
 	char	**argv;
 	char	**envp;
 }				t_cmd_for_fork;
+
+typedef struct s_builtin
+{
+	int		ret_code;
+	int		fd_redir;
+	int		args_num;
+	char	*cmd;
+	char	**argv;
+	char	**envp;
+}	t_builtin;
 
 // signals.c
 void	sig_handler_heredoc(int signal __attribute__((unused)));
@@ -90,10 +100,29 @@ int		open_redir(char *path_to_file, int type);
 int		is_directory(char *path);
 
 // builtins
+int	builtin_echo(char **args);
+int	builtin_cd(char *args[], t_minishell *data);
+int	builtin_env(t_minishell *data);
+int	builtin_exit(char **argv, t_minishell *data);
+int	builtin_export(char **argv, t_minishell *data);
+int	builtin_pwd(void);
+int	builtin_unset(char **argv, t_env **envp_list);
+
+int	process_redirections(t_tree *tree, t_minishell *data);
+int	builtin_process(t_tree *tree, t_minishell *data);
+int	is_builtin(t_tree *tree);
+int	verify_builtin(char *command);
+
 int		key_is_valid(char *key);
-int		key_exist(char *key, t_list *envp_list);
-void	export_perror(char *key_value);
-char	**populate_envs(t_list *head);
+void	print_sorted_envp(t_minishell *data);
+void	print_envp(char **envp);
+void	export_print_error_message(char *key_value);
+int		key_exist(char *name, t_env *envs);
+
+// int		key_is_valid(char *key);
+// int		key_exist(char *key, t_list *envp_list);
+// void	export_perror(char *key_value);
+// char	**populate_envs(t_list *head);
 
 
 

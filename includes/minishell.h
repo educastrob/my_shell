@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 19:40:49 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/10 20:44:44 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/11 23:10:41 by nasser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,6 @@ typedef struct s_main
 	t_termios		term;
 }				t_main;
 
-// builtins
-int		builtin_env(t_minishell *minishell);
-int		pwd(void);
-int		ft_echo(char **args);
 
 // utils.c
 char	*get_line_to_readline(t_env *env_list);
