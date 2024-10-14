@@ -8,7 +8,7 @@ Repositorio para a criação do projeto minishell da 42 São Paulo
 - [x] arvore de execução
 - [x] criar lista de comandos
 - [x] pipe
-- [ ] builtins
+- [x] builtins
 - [x] redirect
 - [ ] verificar se o comando e executavel/ acessivel ou builtin
 - [x] expandir variaveis
