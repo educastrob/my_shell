@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 19:40:49 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/15 12:56:49 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/15 14:13:59 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 # include <unistd.h>
 
 // global
-extern volatile int			g_signal;
+extern volatile int			g_signal;		
 
 // typedefs
 typedef struct s_env		t_env;

@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 21:08:43 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/15 13:33:48 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/15 15:18:21 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ static int	execute_redirects(t_tree *tree, t_minishell *data)
 	return (ret_code);
 }
 
-// verifica acessos dos diretorios
 int	display_error(char *cmd)
 {
 	int		ret_code;

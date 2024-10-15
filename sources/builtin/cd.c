@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 19:22:44 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/10/15 13:29:23 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/15 14:54:12 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,7 @@ int	builtin_cd(char *args[], t_minishell *data)
 	char	*oldpwd;
 
 	if (builtin_cd_util(args, data, &path) == 1)
-	{
-		free(path);
 		return (1);
-	}
 	oldpwd = getcwd(NULL, 0);
 	if (oldpwd == NULL)
 		oldpwd = search_value(data->envs, "PWD");
