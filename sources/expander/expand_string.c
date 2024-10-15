@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 21:31:49 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/09 15:37:59 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/10 20:28:49 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	invalid_var(char *str, int *i)
 	}
 }
 
-static void	expand_var(char *str, int *i, t_list *head, \
+static void	expand_var(char *str, int *i, t_env *head, \
 	t_str_list **new_str)
 {
 	int		j;
@@ -41,7 +41,7 @@ static void	expand_var(char *str, int *i, t_list *head, \
 			break ;
 	}
 	key = ft_substr(str, (*i) - j, j);
-	expanded = find_env_value(head, key);
+	expanded = search_value(head, key);
 	add_string_to_list(new_str, expanded);
 	free(key);
 	free(expanded);
@@ -49,7 +49,7 @@ static void	expand_var(char *str, int *i, t_list *head, \
 }
 
 static void	var_validation(int *i, char *str, \
-	t_list *head, t_str_list **new_str)
+	t_env *head, t_str_list **new_str)
 {
 	(*i)++;
 	if ((str[*i] >= '0' && str[*i] <= '9' ) || str[*i] == '$'
@@ -59,7 +59,7 @@ static void	var_validation(int *i, char *str, \
 		expand_var(str, i, head, new_str);
 }
 
-char	*expand_string(char *str, t_list *head)
+char	*expand_string(char *str, t_env *head)
 {
 	int				i;
 	int				in_quotes;

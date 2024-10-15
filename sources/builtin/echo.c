@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 19:54:03 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/09/04 20:47:39 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/10/11 23:03:20 by nasser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_echo(char **args)
+int	builtin_echo(char **args)
 {
 	int	i;
 	int	n_flag;

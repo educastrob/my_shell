@@ -6,13 +6,13 @@
 /*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 19:23:34 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/10/10 01:51:47 by nasser           ###   ########.fr       */
+/*   Updated: 2024/10/12 13:38:53 by nasser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	exit_perror(char *message)
+static void	exit_print_error_message(char *message)
 {
 	int			i;
 	int			length;
@@ -35,7 +35,7 @@ static void	exit_perror(char *message)
 	free(line);
 }
 
-int	is_valid_arg(char *arg)
+int	exit_arg_valid(char *arg)
 {
 	int	i;
 
@@ -48,7 +48,7 @@ int	is_valid_arg(char *arg)
 	{
 		if (!ft_isdigit(arg[i]))
 		{
-			exit_perror("numeric argument required");
+			exit_print_error_message("numeric argument required");
 			return (0);
 		}
 		i++;
@@ -68,7 +68,7 @@ int	builtin_exit(char **argv, t_minishell *data)
 		args_num++;
 	if (args_num > 2)
 	{
-		exit_perror("too many arguments");
+		exit_print_error_message("too many arguments");
 		return (1);
 	}
 	if (args_num == 1)
@@ -77,7 +77,7 @@ int	builtin_exit(char **argv, t_minishell *data)
 		ret_code = ft_atoi(ret_code_str);
 		free(ret_code_str);
 	}
-	else if (!is_valid_arg(argv[1]))
+	else if (!exit_arg_valid(argv[1]))
 		ret_code = 2;
 	ft_putstr_fd("exit\n", STDOUT_FILENO);
 	g_signal = -1;

@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   exec_and_or.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/28 15:43:55 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/10 20:45:19 by edcastro         ###   ########.fr       */
+/*   Created: 2024/10/10 18:06:08 by edcastro          #+#    #+#             */
+/*   Updated: 2024/10/10 18:08:47 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int	builtin_env(t_minishell *data)
+int	exec_and(t_tree *tree, t_minishell *data)
 {
-	t_env	*tmp;
+	int	ret_code;
 
-	tmp = data->envs;
-	while (tmp)
-	{
-		if (ft_strncmp(tmp->name, "?", -1) != 0)
-		{
-			if (tmp->value)
-				printf("%s=%s\n", tmp->name, tmp->value);
-		}
-		tmp = tmp->next;
-	}
-	return (0);
+	ret_code = exec_tree(tree->left, data);
+	if (ret_code == 0)
+		ret_code = exec_tree(tree->right, data);
+	return (ret_code);
+}
+
+int	exec_or(t_tree *tree, t_minishell *data)
+{
+	int	ret_code;
+
+	ret_code = exec_tree(tree->left, data);
+	if (ret_code != 0)
+		ret_code = exec_tree(tree->right, data);
+	return (ret_code);
 }

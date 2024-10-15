@@ -3,23 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   exec_tree.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 20:33:38 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/09 16:39:08 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/11 23:21:42 by nasser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
+#include "executor.h"
 
 static int	execute_simple_command(t_tree *tree, t_minishell *data)
 {
 	int	pid;
 	int	ret_code;
 
-	pid = exec_cmd(tree, data);
-	waitpid(pid, &ret_code, 0);
-	ret_code = get_return_value(ret_code);
+	if (is_builtin(tree))
+		ret_code = builtin_process(tree, data);
+	else
+	{
+		pid = exec_cmd(tree, data);
+		waitpid(pid, &ret_code, 0);
+		ret_code = get_return_value(ret_code);
+	}
 	return (ret_code);
 }
 

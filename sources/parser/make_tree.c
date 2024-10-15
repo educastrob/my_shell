@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_tree.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:12:53 by educastro         #+#    #+#             */
-/*   Updated: 2024/10/10 16:41:00 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/12 15:12:26 by nasser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,25 @@ static void		divide_tree(t_aux_tree *aux_tree, t_token_list *token_list, t_minis
 		free_tree(&aux_tree->tree);
 }
 
-static void		find_division_pipe_index(t_aux_tree *aux_tree)
+static void		find_division_index(t_aux_tree *aux_tree)
 {
 	while (aux_tree->aux)
 	{
-		if (aux_tree->pipe_idx == -1 && (aux_tree->aux->token.type == PIPE))
+		if (aux_tree->aux->token.type == CLOSE_PARENTHESIS)
+		{
+			aux_tree->parenthesis_idx = index_to_open_parenthesis(aux_tree->aux->next);
+			if (aux_tree->parenthesis_idx == -1)
+			{
+				aux_tree->idx += 1;
+				aux_tree->aux = token_get_node_index(aux_tree->aux, aux_tree->idx);
+			}
+			else
+				free_tree(&aux_tree->tree);
+		}
+		else if (aux_tree->and_or_idx == -1 && (aux_tree->aux->token.type \
+					== AND || aux_tree->aux->token.type == OR))
+			aux_tree->and_or_idx = aux_tree->idx;
+		else if (aux_tree->pipe_idx == -1 && (aux_tree->aux->token.type == PIPE))
 			aux_tree->pipe_idx = aux_tree->idx;
 		aux_tree->idx++;
 		if (aux_tree->aux)
@@ -43,6 +57,8 @@ static void		find_division_pipe_index(t_aux_tree *aux_tree)
 static void		init_values(int *i, t_aux_tree *aux_tree, t_token_list *token_list)
 {
 	*i = 0;
+	aux_tree->parenthesis_idx = 0;
+	aux_tree->and_or_idx = -1;
 	aux_tree->pipe_idx = -1;
 	aux_tree->aux = token_list;
 	aux_tree->tree = NULL;
@@ -57,17 +73,18 @@ t_tree			*make_tree(t_token_list *token_list, t_minishell *data)
 		return (NULL);
 	aux_tree.tree = malloc(sizeof(t_tree));
 	ft_bzero(aux_tree.tree, sizeof(t_tree));
-	find_division_pipe_index(&aux_tree);
-	printf("\n\n%i\n\n", aux_tree.pipe_idx);
+	find_division_index(&aux_tree);
 	if (aux_tree.tree == NULL)
 		return (NULL);
-	if (aux_tree.pipe_idx != -1)
+	if (aux_tree.and_or_idx != -1)
+		aux_tree.idx = aux_tree.and_or_idx;
+	else if (aux_tree.pipe_idx != -1)
 		aux_tree.idx = aux_tree.pipe_idx;
 	else
 	{
 		free(aux_tree.tree);
 		aux_tree.aux = invert_list(token_get_sublist(token_list, 0, \
-										token_list_size(token_list)));
+						token_list_size(token_list)));
 		aux_tree.tree = make_tree_cmd(aux_tree.aux, data);
 		token_clear_list(&aux_tree.aux);
 		return (aux_tree.tree);

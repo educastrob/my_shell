@@ -1,83 +1,62 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   export.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/09 15:35:20 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/10/10 01:19:53 by nasser           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "../../includes/expander.h"
 #include "../../includes/environment.h"
 #include "../../includes/executor.h"
 
-void	print_envp(char **envp)
+static void	update_envp(char *name, char *value, t_env *envs)
 {
-	int	i;
+	t_env	*tmp;
 
-	i = 0;
-	while (envp[i])
+	tmp = envs;
+	while (tmp)
 	{
-		if (ft_strncmp(envp[i], "?", -1) == 0)
-			continue ;
-		printf("declare -x %s\n", envp[i]);
-		i++;
-	}
-}
-
-void	print_sorted_envp(t_minishell *data)
-{
-	int		i;
-	int		j;
-	char	*temp;
-	char	**envp;
-
-	envp = populate_envs(data->envs);
-	i = 0;
-	while (envp[i])
-	{
-		j = i + 1;
-		while (envp[j])
+		if (ft_strncmp(tmp->name, name, -1) == 0)
 		{
-			if (ft_strncmp(envp[i], envp[j], -1) > 0)
-			{
-				temp = envp[i];
-				envp[i] = envp[j];
-				envp[j] = temp;
-			}
-			j++;
+			free(tmp->value);
+			tmp->value = ft_strdup(value);
+			return ;
 		}
-		i++;
+		tmp = tmp->next;
 	}
-	print_envp(envp);
-	free_envp(envp);
 }
 
-int	set_arg(char *arg, int idx, t_list *envp_list)
+static void	add_envp(char *name, char *value, t_env *envs)
+{
+	t_env	*new;
+	t_env	*tmp;
+
+	new = malloc(sizeof(t_env));
+	new->name = ft_strdup(name);
+	new->value = ft_strdup(value);
+	new->next = NULL;
+	tmp = envs;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = new;
+}
+
+int	set_arg(char *arg, int idx, t_env *envs)
 {
 	int		ret_code;
-	char	*key;
+	char	*name;
 	char	*value;
 
 	ret_code = 0;
-	key = ft_substr(arg, 0, idx);
+	name = ft_substr(arg, 0, idx);
 	value = ft_substr(arg, idx + 1, ft_strlen(arg) - idx);
-	if (key && key[0] && value && key_is_valid(key))
+	if (name && name[0] && value && key_is_valid(name))
 	{
-		if (key_exist(key, envp_list))
-			update_env(envp_list, key, value);
+		if (key_exist(name, envs))
+			update_envp(name, value, envs);
 		else
-			add_env(envp_list, key, value);
+			add_envp(name, value, envs);
 	}
 	else
 	{
-		export_perror(arg);
+		export_print_error_message(arg);
 		ret_code = 1;
 	}
-	free(key);
+	free(name);
 	free(value);
 	return (ret_code);
 }
@@ -97,7 +76,7 @@ int	select_arg(char *arg, t_minishell *data)
 		env_insert_node(&data->envs, arg, NULL);
 	else if (arg[i] == '\0' && !key_is_valid(arg))
 	{
-		export_perror(arg);
+		export_print_error_message(arg);
 		ret_code = 1;
 	}
 	return (ret_code);

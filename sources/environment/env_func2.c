@@ -3,76 +3,84 @@
 /*                                                        :::      ::::::::   */
 /*   env_func2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
+/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 16:08:11 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/09 02:43:08 by educastro        ###   ########.fr       */
+/*   Updated: 2024/10/10 20:37:24 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/environment.h"
 
-// retorna a estrutura env(name, value) pelo nome
-t_env	*find_env(t_list *envs, char *name)
+void	env_clear_list(t_env **head)
 {
-	t_env	*env;
-
-	while (envs != NULL)
+	if (head && *head)
 	{
-		env = envs->content;
-		if (ft_strncmp(env->name, name, ft_strlen(name) + 1) == 0)
-			return (env);
-		envs = envs->next;
+		env_clear_list(&(*head)->next);
+		free((*head)->name);
+		free((*head)->value);
+		free((*head));
+		*head = NULL;
 	}
-	return (NULL);
 }
 
-// retorna o valor do env pelo nome
-char	*find_env_value(t_list *envs, char *name)
+int		att_existing_value(t_env *head, char *name, char *value)
 {
-	t_env	*env;
+	t_env	*temp;
 
-	env = find_env(envs, name);
-	if (env == NULL)
-		return (NULL);
-	return (env->value);
-}
-
-// retorna o node da lista de envs
-t_list	*find_env_element(t_list *envs, char *name)
-{
-	t_env	*env;
-
-	while (envs != NULL)
+	temp = head;
+	while (temp != NULL && name)
 	{
-		env = envs->content;
-		if (ft_strncmp(env->name, name, ft_strlen(name) + 1) == 0)
-			return (envs);
-		envs = envs->next;
+		if (ft_strncmp(temp->name, name, -1) == 0)
+		{
+			free(temp->value);
+			temp->value = ft_strdup(value);
+			return (1);
+		}
+		temp = temp->next;
 	}
-	return (NULL);
+	return (0);
 }
 
-// atualiza o caminho da variavel PWD
-void	uptade_pwd_env(t_list *envs)
+char	*search_value(t_env *head, char *name)
 {
-	char	*current_pwd;
-	char	*old_pwd;
+	t_env	*temp;
 
-	current_pwd = getcwd(NULL, 0);
-	old_pwd = find_env_value(envs, "PWD");
-	update_env(envs, "OLDPWD", old_pwd);
-	update_env(envs, "PWD", current_pwd);
-	free(current_pwd);
+	temp = head;
+	while (temp != NULL)
+	{
+		if (ft_strncmp(temp->name, name, -1) == 0)
+			return (ft_strdup(temp->value));
+		temp = temp->next;
+	}
+	return (ft_strdup(""));
 }
 
-enum e_bool	delete_env(t_minishell *minishell, char *name)
+int	envp_list_size(t_env *head)
 {
-	t_list	*env;
+	int			i;
+	t_env	*aux;
 
-	env = find_env_element(minishell->envs, name);
-	if (env == NULL)
-		return (FALSE);
-	minishell->envs = ft_lstrm(minishell->envs, env, del_env);
-	return (TRUE);
+	i = 0;
+	aux = head;
+	while (aux)
+	{
+		i++;
+		aux = aux->next;
+	}
+	return (i);
+}
+
+void	free_envp(char **envp)
+{
+	int	i;
+
+	i = 0;
+	while (envp && envp[i])
+	{
+		free(envp[i]);
+		i++;
+	}
+	if (envp)
+		free(envp);
 }

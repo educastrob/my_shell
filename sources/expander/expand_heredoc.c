@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 18:39:48 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/09 15:24:49 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/10 20:45:41 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	skip_invalid_variable(char *str, int *i)
 }
 
 static void	expand_variable_heredoc(char *str, int *i, t_str_list **new_str, \
-									t_list *envp_list)
+									t_env *envp_list)
 {
 	int		j;
 	char	*key;
@@ -47,7 +47,7 @@ static void	expand_variable_heredoc(char *str, int *i, t_str_list **new_str, \
 				break ;
 		}
 		key = ft_substr(str, (*i) - j, j);
-		expanded = find_env_value(envp_list, key);
+		expanded = search_value(envp_list, key);
 		add_string_to_list(new_str, expanded);
 		free(key);
 		free(expanded);
@@ -55,7 +55,7 @@ static void	expand_variable_heredoc(char *str, int *i, t_str_list **new_str, \
 	}
 }
 
-char	*expand_heredoc(char *str, t_list *envp_list)
+char	*expand_heredoc(char *str, t_env *envp_list)
 {
 	int			i;
 	char		*expanded;

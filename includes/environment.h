@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   environment.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 18:37:12 by educastro         #+#    #+#             */
-/*   Updated: 2024/10/09 17:53:26 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2024/10/10 21:07:54 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,29 +22,28 @@
 # include "../libft/libft.h"
 
 typedef struct s_minishell t_minishell;
-typedef struct s_env t_env;
+typedef struct s_env t_env;;
 
 // structs
 typedef struct	s_env
 {
-	char		*name;
-	char		*value;
+	char			*name;
+	char			*value;
+	struct s_env	*next;
 }				t_env;
 
 // env_func1.c
-t_env	*add_env(t_list *envs, char *name, char *value);
-t_list	*create_envs(char **envp);
-t_env	*update_env(t_list *envs, char *name, char *value);
-t_env	*export_env(t_minishell *minishell, char *name, char *value);
+void		env_insert_node(t_env **head, char *key, char *value);
+void		env_delete_value(t_env **head, char *key);
+char		**create_envp(t_env *head);
+t_env		*env_create_list(char *envp[]);
+t_env		*env_create_node(char *key, char *value);
 
 // env_func2.c
-t_env	*find_env(t_list *envs, char *name);
-char	*find_env_value(t_list *envs, char *name);
-t_list	*find_env_element(t_list *envs, char *name);
-void	uptade_pwd_env(t_list *envs);
-enum e_bool	delete_env(t_minishell *minishell, char *name);
-
-// utils.c
-void	del_env(void *content);
+void		env_clear_list(t_env **head);
+int			att_existing_value(t_env *head, char *key, char *value);
+char		*search_value(t_env *head, char *key);
+int			envp_list_size(t_env *head);
+void		free_envp(char **envp);
 
 #endif
