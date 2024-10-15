@@ -6,11 +6,11 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 14:53:03 by educastro         #+#    #+#             */
-/*   Updated: 2024/10/09 17:50:22 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/15 13:25:48 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tokenizer.h"
+#include "../../includes/tokenizer.h"
 
 void	token_join_lists(t_token_list **dest, t_token_list *source)
 {
@@ -24,7 +24,7 @@ void	token_join_lists(t_token_list **dest, t_token_list *source)
 	}
 }
 
-int		token_list_size(t_token_list *token_list)
+int	token_list_size(t_token_list *token_list)
 {
 	int				i;
 	t_token_list	*aux;

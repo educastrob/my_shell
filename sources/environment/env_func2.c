@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 16:08:11 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/10 20:37:24 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/15 13:04:34 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	env_clear_list(t_env **head)
 	}
 }
 
-int		att_existing_value(t_env *head, char *name, char *value)
+int	att_existing_value(t_env *head, char *name, char *value)
 {
 	t_env	*temp;
 
@@ -58,7 +58,7 @@ char	*search_value(t_env *head, char *name)
 
 int	envp_list_size(t_env *head)
 {
-	int			i;
+	int		i;
 	t_env	*aux;
 
 	i = 0;

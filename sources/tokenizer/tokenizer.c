@@ -6,11 +6,11 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:26:39 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/10 16:59:41 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/15 13:25:41 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tokenizer.h"
+#include "../../includes/tokenizer.h"
 
 static t_token_list	*token_create_node(char *lexeme, int token_type)
 {
@@ -23,7 +23,8 @@ static t_token_list	*token_create_node(char *lexeme, int token_type)
 	return (new_token);
 }
 
-void	add_token_to_list(t_token_list **token_list, char *lexeme, int token_type)
+void	add_token_to_list(t_token_list **token_list, char *lexeme, \
+	int token_type)
 {
 	t_token_list	*current;
 
@@ -38,9 +39,10 @@ void	add_token_to_list(t_token_list **token_list, char *lexeme, int token_type)
 	current->next = token_create_node(lexeme, token_type);
 }
 
-t_token_list	*token_get_sublist(t_token_list *token_lst, int start, int lst_len)
+t_token_list	*token_get_sublist(t_token_list *token_lst, int start, \
+	int lst_len)
 {
-	int	i;
+	int				i;
 	t_token_list	*sublist;
 	t_token_list	*aux;
 
@@ -55,14 +57,16 @@ t_token_list	*token_get_sublist(t_token_list *token_lst, int start, int lst_len)
 	i = 0;
 	while (aux && i < lst_len)
 	{
-		add_token_to_list(&sublist, ft_strdup(aux->token.lexeme), aux->token.type);
+		add_token_to_list(&sublist, ft_strdup(aux->token.lexeme), \
+			aux->token.type);
 		aux = aux->next;
 		i++;
 	}
 	return (sublist);
 }
 
-void	token_final_state(t_aux_token *aux, t_token_list **token_list, char *str)
+void	token_final_state(t_aux_token *aux, t_token_list **token_list, \
+	char *str)
 {
 	if (token_state_requires_backtrack(aux->state))
 	{
@@ -77,7 +81,7 @@ void	token_final_state(t_aux_token *aux, t_token_list **token_list, char *str)
 		aux->lexeme = NULL;
 	add_token_to_list(token_list, aux->lexeme, aux->token_type);
 	aux->lexeme_length = 0;
-	aux->state = 1;	
+	aux->state = 1;
 }
 
 t_token_list	*get_token_list(char *str)

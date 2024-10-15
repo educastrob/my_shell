@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 15:43:44 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/10 18:18:36 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/15 13:03:38 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,9 @@ static void	put_redirect_on_list(t_aux_tree *aux_tree)
 	add_token_to_list(&aux_tree->redir_list, NULL, aux_tree->aux->token.type);
 	if (aux_tree->aux->next)
 	{
-		add_token_to_list(&aux_tree->redir_list, 
-			ft_strdup(aux_tree->aux->next->token.lexeme), 
+		add_token_to_list(&aux_tree->redir_list, \
+			ft_strdup(aux_tree->aux->next->token.lexeme), \
 			aux_tree->aux->next->token.type);
-
 		aux_tree->aux = aux_tree->aux->next;
 	}
 }

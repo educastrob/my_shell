@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 19:38:39 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/10/10 20:42:02 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/15 12:43:36 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@
 # include "executor.h"
 
 // typedefs
-typedef struct s_token_list t_token_list;
-typedef struct s_minishell t_minishell;
-typedef struct s_env t_env;
-typedef struct s_tree t_tree;
-typedef struct s_aux_tree t_aux_tree;
+typedef struct s_token_list	t_token_list;
+typedef struct s_minishell	t_minishell;
+typedef struct s_env		t_env;
+typedef struct s_tree		t_tree;
+typedef struct s_aux_tree	t_aux_tree;
 typedef struct s_str_list	t_str_list;
 
 // structs
@@ -68,7 +68,8 @@ t_tree	*make_tree(t_token_list *token_list, t_minishell *data);
 t_tree	*make_tree_cmd(t_token_list *token_list, t_minishell *data);
 
 // make_tree_cmd_recursive.c
-t_tree	*make_tree_cmd_recursive(t_token_list *redir_list, t_token_list *args, t_minishell *data);
+t_tree	*make_tree_cmd_recursive(t_token_list *redir_list, t_token_list *args, \
+	t_minishell *data);
 
 // here_doc.c
 void	print_error_message(char *delimiter);

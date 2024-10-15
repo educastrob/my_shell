@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
+/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 19:40:49 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/11 23:10:41 by nasser           ###   ########.fr       */
+/*   Updated: 2024/10/15 12:56:49 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	MINISHELL_H
+#ifndef MINISHELL_H
 # define MINISHELL_H
 
 // libs
@@ -23,7 +23,6 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include <signal.h>
 # include "fcntl.h"
 # include <readline/history.h>
 # include <readline/readline.h>
@@ -36,7 +35,7 @@
 # include <unistd.h>
 
 // global
-extern volatile int	g_signal;
+extern volatile int			g_signal;
 
 // typedefs
 typedef struct s_env		t_env;
@@ -53,7 +52,7 @@ enum	e_bool
 };
 
 // structs
-typedef struct	s_minishell
+typedef struct s_minishell
 {
 	t_tree			*tree;
 	t_env			*envs;
@@ -71,7 +70,6 @@ typedef struct s_main
 	t_minishell		data;
 	t_termios		term;
 }				t_main;
-
 
 // utils.c
 char	*get_line_to_readline(t_env *env_list);

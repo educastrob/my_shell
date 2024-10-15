@@ -6,11 +6,11 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:11:55 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/10 17:33:37 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/15 13:25:31 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tokenizer.h"
+#include "../../includes/tokenizer.h"
 
 int	get_state_1(char character)
 {

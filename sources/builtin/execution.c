@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   execution.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/15 13:07:26 by edcastro          #+#    #+#             */
+/*   Updated: 2024/10/15 13:29:46 by edcastro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../includes/minishell.h"
 
 static	int	exec_builtin(char *cmd, char **argv, t_minishell *data)
 {
@@ -70,7 +81,8 @@ int	process_redirections(t_tree *tree, t_minishell *data)
 		}
 		if (tree->type == REDIRECT_INPUT)
 			dup2(builtin.fd_redir, STDIN_FILENO);
-		else if (tree->type == REDIRECT_OUTPUT || tree->type == REDIRECT_OUTPUT_APPEND)
+		else if (tree->type == REDIRECT_OUTPUT || \
+			tree->type == REDIRECT_OUTPUT_APPEND)
 			dup2(builtin.fd_redir, STDOUT_FILENO);
 		builtin.fd_redir = close_fd(builtin.fd_redir);
 		builtin.ret_code = process_redirections(tree->right, data);

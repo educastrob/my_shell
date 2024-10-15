@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
+/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 18:42:26 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/11 15:23:48 by nasser           ###   ########.fr       */
+/*   Updated: 2024/10/15 12:44:50 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include "../libft/libft.h"
 
 // structs
-typedef struct	s_str_list
+typedef struct s_str_list
 {
 	char				letter;
 	struct s_str_list	*next;

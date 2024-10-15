@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   exec_tree.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
+/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 20:33:38 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/11 23:21:42 by nasser           ###   ########.fr       */
+/*   Updated: 2024/10/15 13:33:58 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-#include "executor.h"
+#include "../../includes/minishell.h"
 
 static int	execute_simple_command(t_tree *tree, t_minishell *data)
 {
@@ -34,7 +33,7 @@ static int	execute_and_wait_pipe(t_tree *tree, t_minishell *data)
 	int	pid;
 	int	ret_code;
 	int	fd[2];
-	
+
 	pid = exec_pipe(tree, data);
 	fd_list_close_clear(&data->fd_list);
 	ret_code = 0;

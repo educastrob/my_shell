@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nasser <nasser@student.42.fr>              +#+  +:+       +#+         #
+#    By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/10 16:58:43 by fcaldas-          #+#    #+#              #
-#    Updated: 2024/10/11 23:17:10 by nasser           ###   ########.fr        #
+#    Updated: 2024/10/15 13:52:24 by edcastro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,17 +14,50 @@ NAME		:= minishell
 CC			:= gcc
 FLAGS		:= -Wall -Wextra -Werror -g3
 BIN			:= ./bin/
-SRCS		:= $(addprefix ./sources/, main.c utils.c) \
-				$(addprefix ./sources/tokenizer/, tokenizer.c utils.c get_states.c token_states_1.c token_states_2.c token_tests.c utils_list.c) \
-				$(addprefix ./sources/environment/, env_func1.c env_func2.c) \
-				$(addprefix ./sources/parser/, get_tree.c make_tree.c make_tree_cmd.c make_tree_cmd_recursive.c here_doc.c) \
-				$(addprefix ./sources/builtin/, cd.c echo.c env.c execution_utils.c execution.c exit.c export_utils.c export.c pwd.c unset.c ) \
-				$(addprefix ./sources/expander/, expand_heredoc.c expand_cmd.c expand_string.c string_list.c utils.c) \
-				$(addprefix ./sources/executor/, signals.c signal_handler.c signals_macros.c create_argv.c exec_tree.c exec_cmd.c exec_pipe.c exec_and_or.c exec_cmd_fork.c fd_list.c utils.c) 
-OBJS		:= $(patsubst ./sources/%.c,$(BIN)%.o,$(SRCS))
 LIB			:= ./libft/libft.a
 INCLUDES	:= -I ./includes/ -I ./libft
-
+SRCS		:= sources/expander/expand_heredoc.c \
+				sources/expander/utils.c \
+				sources/expander/expand_cmd.c \
+				sources/expander/string_list.c \
+				sources/expander/expand_string.c \
+				sources/environment/env_func1.c \
+				sources/environment/env_func2.c \
+				sources/tokenizer/get_states.c \
+				sources/tokenizer/token_states_1.c \
+				sources/tokenizer/token_states_2.c \
+				sources/tokenizer/tokenizer.c \
+				sources/tokenizer/utils_list.c \
+				sources/tokenizer/utils.c \
+				sources/executor/create_argv.c \
+				sources/executor/exec_and_or.c \
+				sources/executor/exec_cmd_fork.c \
+				sources/executor/exec_cmd.c \
+				sources/executor/exec_pipe.c \
+				sources/executor/exec_tree.c \
+				sources/executor/fd_list.c \
+				sources/executor/signals.c \
+				sources/executor/signal_handler.c \
+				sources/executor/signals_macros.c \
+				sources/executor/utils.c \
+				sources/builtin/cd.c \
+				sources/builtin/echo.c \
+				sources/builtin/env.c \
+				sources/builtin/execution_utils.c \
+				sources/builtin/execution.c \
+				sources/builtin/exit.c \
+				sources/builtin/export_utils.c \
+				sources/builtin/export.c \
+				sources/builtin/pwd.c \
+				sources/builtin/unset.c \
+				sources/parser/get_tree.c \
+				sources/parser/here_doc.c \
+				sources/parser/make_tree_cmd_recursive.c \
+				sources/parser/make_tree_cmd.c \
+				sources/parser/make_tree.c \
+				sources/utils.c \
+				sources/main.c
+OBJS		:= $(patsubst ./sources/%.c,$(BIN)%.o,$(SRCS))
 
 # RULES
 
@@ -43,6 +76,24 @@ $(NAME): $(OBJS)
 $(BIN):
 	@mkdir -p $(BIN)
 
+val: readline.supp all
+	@valgrind -q --suppressions=readline.supp \
+				--leak-check=full \
+				--show-leak-kinds=all \
+				--track-origins=yes \
+				--track-fds=yes \
+				--trace-children=yes \
+				--trace-children-skip='*/bin/*,*/sbin/*,/usr/bin/*' \
+				./${NAME}
+
+readline.supp:
+	@echo '{' > $@
+	@echo '   ignore_libreadline_memory_errors' >> $@
+	@echo '   Memcheck:Leak' >> $@
+	@echo '   ...' >> $@
+	@echo '   obj:*/libreadline.so.*' >> $@
+	@echo '}' >> $@
+
 
 clean:
 	rm -rf $(BIN)
@@ -52,6 +103,8 @@ fclean: clean
 	rm -rf $(NAME) 
 	rm -rf ./libft/libft.a
 
+bonus:
+
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all bonus clean fclean re val

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
+/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 17:52:58 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/12 14:56:29 by nasser           ###   ########.fr       */
+/*   Updated: 2024/10/15 13:25:52 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tokenizer.h"
+#include "../../includes/tokenizer.h"
 
 void	token_clear_list(t_token_list **token_list)
 {

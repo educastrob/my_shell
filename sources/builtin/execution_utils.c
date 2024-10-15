@@ -1,5 +1,17 @@
-#include "minishell.h"
-#include "executor.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   execution_utils.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/15 13:07:33 by edcastro          #+#    #+#             */
+/*   Updated: 2024/10/15 13:29:41 by edcastro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../includes/minishell.h"
+#include "../../includes/executor.h"
 
 int	verify_built_in(char *command)
 {

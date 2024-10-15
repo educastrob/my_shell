@@ -6,13 +6,13 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:44:40 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/10 18:14:03 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/15 13:25:20 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tokenizer.h"
+#include "../../includes/tokenizer.h"
 
-int		get_token_type(int state)
+int	get_token_type(int state)
 {
 	int	type;
 
@@ -41,7 +41,7 @@ int		get_token_type(int state)
 	return (type);
 }
 
-int		token_state_requires_backtrack(int state)
+int	token_state_requires_backtrack(int state)
 {
 	if (state == 42
 		|| state == 62
@@ -51,7 +51,7 @@ int		token_state_requires_backtrack(int state)
 	return (0);
 }
 
-int		token_state_is_final(int state)
+int	token_state_is_final(int state)
 {
 	if (state == 20
 		|| state == 30
@@ -64,7 +64,7 @@ int		token_state_is_final(int state)
 	return (0);
 }
 
-int		token_get_next_state(int state, char c)
+int	token_get_next_state(int state, char c)
 {
 	int	new_state;
 

@@ -6,11 +6,11 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:20:14 by educastro         #+#    #+#             */
-/*   Updated: 2024/10/10 18:01:44 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/15 13:26:07 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "../../includes/parsing.h"
 
 int	index_to_close_parenthesis(t_token_list *token_list)
 {
