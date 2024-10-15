@@ -10,7 +10,7 @@ Repositorio para a criação do projeto minishell da 42 São Paulo
 - [x] pipe
 - [x] builtins
 - [x] redirect
-- [ ] verificar se o comando e executavel/ acessivel ou builtin
+- [x] verificar se o comando e executavel/ acessivel ou builtin
 - [x] expandir variaveis
 - [x] sinais
 - [x] transformar as envs em char **
