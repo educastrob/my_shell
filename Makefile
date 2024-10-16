@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: nasser <nasser@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/10 16:58:43 by fcaldas-          #+#    #+#              #
-#    Updated: 2024/10/15 13:52:24 by edcastro         ###   ########.fr        #
+#    Updated: 2024/10/16 02:39:36 by nasser           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,7 @@ $(BIN)%.o: ./sources/%.c
 	@$(CC) $(FLAGS) -o $@ -c $< $(INCLUDES) && printf "Compiling: $(notdir $<)\n"
 
 $(NAME): $(OBJS)
-	@$(CC) $(OBJS) $(HEADERS) -o $(NAME) $(LIB) -lreadline
+	@$(CC) $(FLAGS) $(OBJS) $(HEADERS) -o $(NAME) $(LIB) -lreadline && printf "Compiled minishell\n"
 
 $(BIN):
 	@mkdir -p $(BIN)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 13:07:26 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/15 13:29:46 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/16 02:35:11 by nasser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	process_redirections(t_tree *tree, t_minishell *data)
 		handle_redirections(tree, data, &builtin.fd_redir);
 		if (builtin.fd_redir == -1)
 		{
-			perror(tree->command->token.lexeme);
+			perror(tree->left->command->token.lexeme);
 			return (1);
 		}
 		if (tree->type == REDIRECT_INPUT)
