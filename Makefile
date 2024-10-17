@@ -6,13 +6,13 @@
 #    By: nasser <nasser@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/10 16:58:43 by fcaldas-          #+#    #+#              #
-#    Updated: 2024/10/17 11:17:19 by nasser           ###   ########.fr        #
+#    Updated: 2024/10/17 11:23:59 by nasser           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:= minishell
 CC			:= gcc
-FLAGS		:= -Wall -Wextra -Werror -g3
+CFLAGS		:= -Wall -Wextra -Werror -g3
 BIN			:= ./bin/
 LIB			:= ./libft/libft.a
 INCLUDES	:= -I ./includes/ -I ./libft
