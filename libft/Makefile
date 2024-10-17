@@ -68,8 +68,6 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
-# OBJS = $(SRCS:%.c=%.o)
-
 OBJS = $(addprefix $(BIN)/, $(SRCS:%.c=%.o))
 
 HEADER = libft.h
@@ -78,24 +76,13 @@ SUBDIRS := file lst mem nbr is str get_next_line ft_printf
 
 BIN_SUBDIRS := $(addprefix $(BIN)/,$(SUBDIRS))
 
-# all: $(NAME)
-
-# $(NAME): $(OBJS) $(HEADER)
-
-# %.o: %.c
-# 	$(CC) $(CFLAGS) -c $< -o $@ 
-# 	ar -rc $(NAME) $@
-
-# clean:
-# 	rm -f $(OBJS)
-
 all: $(BIN) $(BIN_SUBDIRS) $(OBJS) $(NAME)
 
 $(BIN)/%.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@  && printf "Compiling: $(notdir $<)\n"
 
 $(NAME): $(OBJS) $(HEADER)
-	@ar -rc $(NAME) $(OBJS) && printf "Compiling: $(notdir $<)\n"
+	@ar -rc $(NAME) $(OBJS)
 
 $(BIN):
 	@mkdir -p $(BIN)

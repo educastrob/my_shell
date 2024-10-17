@@ -6,7 +6,7 @@
 #    By: nasser <nasser@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/10 16:58:43 by fcaldas-          #+#    #+#              #
-#    Updated: 2024/10/16 02:39:36 by nasser           ###   ########.fr        #
+#    Updated: 2024/10/17 11:17:19 by nasser           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,24 +57,23 @@ SRCS		:= sources/expander/expand_heredoc.c \
 				sources/parser/make_tree.c \
 				sources/utils.c \
 				sources/main.c
-OBJS		:= $(patsubst ./sources/%.c,$(BIN)%.o,$(SRCS))
+OBJS		:= ${SRCS:sources/%.c=bin/%.o}
 
 # RULES
 
-all: libft/libft.a $(BIN) $(NAME)
+all: libft/libft.a $(NAME)
 
 libft/libft.a:
-	@make -sC ./libft 
+	@make -sC ./libft
 
-$(BIN)%.o: ./sources/%.c
+bin/%.o: sources/%.c
 	@mkdir -p $(dir $@)
-	@$(CC) $(FLAGS) -o $@ -c $< $(INCLUDES) && printf "Compiling: $(notdir $<)\n"
+	@$(CC) $(CFLAGS) -c $(HEADERS) $< -o $@
+	@printf "Compiling: $(notdir $<)\n"
 
 $(NAME): $(OBJS)
-	@$(CC) $(FLAGS) $(OBJS) $(HEADERS) -o $(NAME) $(LIB) -lreadline && printf "Compiled minishell\n"
-
-$(BIN):
-	@mkdir -p $(BIN)
+	@$(CC) $(CFLAGS) $(OBJS) $(HEADERS) -o $(NAME) $(LIB) -lreadline
+	@printf "COMPILED !!!\n"
 
 val: readline.supp all
 	@valgrind -q --suppressions=readline.supp \
