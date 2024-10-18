@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_string.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 21:31:49 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/10 20:28:49 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/17 22:44:09 by nasser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ char	*expand_string(char *str, t_env *head)
 	while (str && str[i] != '\0')
 	{
 		if (str[i] == '\'' && (in_quotes == 0 || in_quotes == 1))
-			in_quotes = ternary(in_quotes == 0, 1, 0);
+			in_quotes = 1;
 		else if (str[i] == '\"' && (in_quotes == 0 || in_quotes == 2))
-			in_quotes = ternary(in_quotes == 0, 2, 0);
+			in_quotes = 2;
 		else if (str[i] == '$' && in_quotes != 1 && (is_valid_var(str[i + 1])
 				|| str[i + 1] == '?'))
 			var_validation(&i, str, head, &new_str);

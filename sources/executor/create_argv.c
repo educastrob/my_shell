@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   create_argv.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:06:17 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/15 13:33:32 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/17 23:50:35 by nasser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-t_token_list	*get_expanded_list(t_token_list *token_list, t_env *envp)
+t_token_list	*get_command_list(t_token_list *token_list)
 {
 	char			*expanded_string;
 	t_token_list	*aux;
@@ -22,7 +22,7 @@ t_token_list	*get_expanded_list(t_token_list *token_list, t_env *envp)
 	expanded_list = NULL;
 	while (aux)
 	{
-		expanded_string = expand_string(aux->token.lexeme, envp);
+		expanded_string = aux->token.lexeme;
 		if (ft_strlen(expanded_string) != 0)
 			add_token_to_list(&expanded_list, ft_strdup(expanded_string), WORD);
 		free(expanded_string);
@@ -36,19 +36,19 @@ char	**create_argv(t_tree *tree, t_minishell *data)
 	int				i;
 	int				args_num;
 	char			**argv;
-	t_token_list	*expanded_list;
+	t_token_list	*command_list;
 
 	i = 0;
-	expanded_list = get_expanded_list(tree->command, data->envs);
-	args_num = token_list_size(expanded_list);
+	command_list = get_command_list(tree->command);
+	args_num = token_list_size(command_list);
 	argv = malloc((args_num + 1) * sizeof(char *));
 	argv[args_num] = NULL;
 	while (i < args_num)
 	{
 		argv[i] = expand_string(token_get_node_index(\
-			expanded_list, i)->token.lexeme, data->envs);
+			command_list, i)->token.lexeme, data->envs);
 		i++;
 	}
-	token_clear_list(&expanded_list);
+	token_clear_list(&command_list);
 	return (argv);
 }

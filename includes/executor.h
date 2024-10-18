@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 18:37:12 by educastro         #+#    #+#             */
-/*   Updated: 2024/10/15 14:58:48 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/17 23:52:45 by nasser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int				term_signal(int status);
 int				get_return_value(int status);
 
 // create_argv.c
-t_token_list	*get_expanded_list(t_token_list *token_list, t_env *envp);
+t_token_list	*get_command_list(t_token_list *token_list);
 char			**create_argv(t_tree *tree, t_minishell *data);
 
 // exec_pipe.c
