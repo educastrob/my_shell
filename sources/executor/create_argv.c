@@ -6,7 +6,7 @@
 /*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:06:17 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/18 03:20:29 by nasser           ###   ########.fr       */
+/*   Updated: 2024/10/18 03:46:48 by nasser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ t_token_list	*get_command_list(t_token_list *token_list)
 		expanded_string = aux->token.lexeme;
 		if (ft_strlen(expanded_string) != 0)
 			add_token_to_list(&expanded_list, ft_strdup(expanded_string), WORD);
-		// free(expanded_string);
 		aux = aux->next;
 	}
 	return (expanded_list);
