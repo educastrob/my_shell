@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_tree.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 20:33:38 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/15 15:18:58 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/18 04:45:00 by nasser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,11 @@ static int	execute_and_wait_pipe(t_tree *tree, t_minishell *data)
 	ret_code = 0;
 	while (1)
 	{
-		fd[0] = wait(&ret_code);
+		fd[0] = wait(&fd[1]);
 		if (fd[0] == -1)
 			break ;
 		if (fd[0] == pid)
-			ret_code = get_return_value(ret_code);
+			ret_code = get_return_value(fd[1]);
 	}
 	return (ret_code);
 }

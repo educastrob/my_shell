@@ -2,3 +2,4 @@ bin
 minishell
 .vscode
 libft.a
+minishell_tester/
