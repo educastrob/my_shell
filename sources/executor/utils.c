@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 19:09:58 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/15 13:34:09 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/18 14:41:05 by nasser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,12 @@ int	is_directory(char *path)
 	if (stat(path, &statbuf) == -1)
 		return (0);
 	return ((((statbuf.st_mode) & 0170000) == (0040000)));
+}
+
+void	specific_error(char *cmd, char *error)
+{
+	ft_putstr_fd(cmd, STDERR_FILENO);
+	ft_putstr_fd(" - ", STDERR_FILENO);
+	ft_putstr_fd(error, STDERR_FILENO);
+	ft_putstr_fd("\n", STDERR_FILENO);
 }

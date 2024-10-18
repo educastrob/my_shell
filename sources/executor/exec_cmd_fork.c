@@ -6,7 +6,7 @@
 /*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 21:08:43 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/16 03:13:15 by nasser           ###   ########.fr       */
+/*   Updated: 2024/10/18 14:40:51 by nasser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,18 @@ int	display_error(char *cmd)
 	if (access(cmd, F_OK) != 0 || ft_strchr(cmd, '/') == NULL)
 	{
 		if (ft_strchr(cmd, '/') == NULL)
-			printf("%s - Command not found\n", cmd);
+			specific_error(cmd, "Command not found");
 		else
-			printf("%s - No such file or directory\n", cmd);
+			specific_error(cmd, "No such file or directory");
 		ret_code = 127;
 	}
 	else if (access(cmd, F_OK | X_OK) != 0 || is_directory(cmd))
 	{
 		ret_code = 126;
 		if (is_directory(cmd))
-			printf("%s - Is a directory\n", cmd);
+			specific_error(cmd, "Is a directory");
 		else
-			printf("%s - Permission denied\n", cmd);
+			specific_error(cmd, "Permission denied");
 	}
 	else
 	{

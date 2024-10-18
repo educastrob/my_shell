@@ -6,7 +6,7 @@
 /*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 18:37:12 by educastro         #+#    #+#             */
-/*   Updated: 2024/10/17 23:52:45 by nasser           ###   ########.fr       */
+/*   Updated: 2024/10/18 14:41:42 by nasser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ void			fd_list_close_clear(t_list **fd_list);
 // utils.c
 int				open_redir(char *path_to_file, int type);
 int				is_directory(char *path);
+void			specific_error(char *cmd, char *error);
 
 // builtins
 int				builtin_echo(char **args);
