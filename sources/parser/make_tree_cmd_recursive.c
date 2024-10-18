@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 17:49:59 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/15 13:02:50 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/18 19:11:24 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ static void	make_subshell_or_command(t_token_list *args, t_tree **tree, \
 	}
 }
 
-// processa redirects e constrói a árvore
 static void	make_redirects(t_tree **tree, t_token_list *redir_list, \
 	t_token_list *args, t_minishell *data)
 {
