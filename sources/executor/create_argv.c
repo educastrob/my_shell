@@ -6,7 +6,7 @@
 /*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:06:17 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/18 03:46:48 by nasser           ###   ########.fr       */
+/*   Updated: 2024/10/18 05:28:29 by nasser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,51 @@ t_token_list	*get_command_list(t_token_list *token_list)
 	return (expanded_list);
 }
 
+static void	populate_new_argv(char **argv, char **new_argv)
+{
+	int	i;
+	int	valid_count;
+
+	i = 0;
+	valid_count = 0;
+	while (argv[i] != NULL)
+	{
+		if (argv[i][0] != '\0')
+		{
+			new_argv[valid_count] = argv[i];
+			valid_count++;
+		}
+		else
+			free(argv[i]);
+		i++;
+	}
+	new_argv[valid_count] = NULL;
+}
+
+static char	**remove_empty_args(char **argv)
+{
+	int		i;
+	int		valid_count;
+	char	**new_argv;
+
+	i = 0;
+	valid_count = 0;
+	while (argv[i] != NULL)
+	{
+		if (argv[i][0] != '\0')
+			valid_count++;
+		i++;
+	}
+	new_argv = malloc((valid_count + 1) * sizeof(char *));
+	if (!new_argv)
+	{
+		return (NULL);
+	}
+	populate_new_argv(argv, new_argv);
+	free(argv);
+	return (new_argv);
+}
+
 char	**create_argv(t_tree *tree, t_minishell *data)
 {
 	int				i;
@@ -49,5 +94,6 @@ char	**create_argv(t_tree *tree, t_minishell *data)
 		i++;
 	}
 	token_clear_list(&expanded_list);
+	argv = remove_empty_args(argv);
 	return (argv);
 }
