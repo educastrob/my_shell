@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_argv.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:06:17 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/18 05:28:29 by nasser           ###   ########.fr       */
+/*   Updated: 2024/10/18 19:19:19 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,15 @@ static void	populate_new_argv(char **argv, char **new_argv)
 
 	i = 0;
 	valid_count = 0;
+	while (argv[i] && argv[i][0] == '\0')
+	{
+		free(argv[i]);
+		i++;
+	}
 	while (argv[i] != NULL)
 	{
-		if (argv[i][0] != '\0')
-		{
-			new_argv[valid_count] = argv[i];
-			valid_count++;
-		}
-		else
-			free(argv[i]);
+		new_argv[valid_count] = argv[i];
+		valid_count++;
 		i++;
 	}
 	new_argv[valid_count] = NULL;
@@ -59,17 +59,16 @@ static char	**remove_empty_args(char **argv)
 
 	i = 0;
 	valid_count = 0;
+	while (argv[i] && argv[i][0] == '\0')
+		i++;
 	while (argv[i] != NULL)
 	{
-		if (argv[i][0] != '\0')
-			valid_count++;
+		valid_count++;
 		i++;
 	}
 	new_argv = malloc((valid_count + 1) * sizeof(char *));
 	if (!new_argv)
-	{
 		return (NULL);
-	}
 	populate_new_argv(argv, new_argv);
 	free(argv);
 	return (new_argv);
