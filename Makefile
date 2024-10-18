@@ -6,7 +6,7 @@
 #    By: nasser <nasser@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/10 16:58:43 by fcaldas-          #+#    #+#              #
-#    Updated: 2024/10/17 11:23:59 by nasser           ###   ########.fr        #
+#    Updated: 2024/10/17 21:09:03 by nasser           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,8 +72,8 @@ bin/%.o: sources/%.c
 	@printf "Compiling: $(notdir $<)\n"
 
 $(NAME): $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) $(HEADERS) -o $(NAME) $(LIB) -lreadline
-	@printf "COMPILED !!!\n"
+	@$(CC) $(CFLAGS) $(OBJS) $(HEADERS) -o $(NAME) $(LIB) -lreadline \
+		&& printf "\-\-\-\- COMPILED -/-/-/-/\n"
 
 val: readline.supp all
 	@valgrind -q --suppressions=readline.supp \
