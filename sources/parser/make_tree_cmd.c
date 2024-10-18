@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 15:43:44 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/15 13:03:38 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/18 19:11:15 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ static void	tree_inside_parentesis(t_aux_tree *aux_tree)
 		aux_tree->aux = NULL;
 }
 
-// add redirects em redir_list
 static void	put_redirect_on_list(t_aux_tree *aux_tree)
 {
 	add_token_to_list(&aux_tree->redir_list, NULL, aux_tree->aux->token.type);
@@ -47,7 +46,6 @@ static void	init_values(t_aux_tree *aux_tree, t_token_list *token_list)
 	aux_tree->aux = token_list;
 }
 
-// cria a árvore de execução de comandos
 t_tree	*make_tree_cmd(t_token_list *token_list, t_minishell *data)
 {
 	t_aux_tree	aux_tree;
