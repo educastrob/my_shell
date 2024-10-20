@@ -16,5 +16,3 @@ Repositorio para a criação do projeto minishell da 42 São Paulo
 - [x] transformar as envs em char **
 - [x] executar
 - [x] guardar o status da execução
-
-< in cmd |&&><)|>>(|"|><)"
