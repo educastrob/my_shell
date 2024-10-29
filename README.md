@@ -1,4 +1,4 @@
-# minishell
+# Minishell
 
 The objective of this project is to create a simple shell, like an own little bash.<br>
 It is the first group project in the 42 core curriculum.
