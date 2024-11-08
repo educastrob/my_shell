@@ -121,27 +121,6 @@ To check if your minishell build was succesful you can run a tester, which compa
 make test
 ```
 
-## Activate debug mode
-
-Enter minishell and export the DEBUG env:
-
-```
-export DEBUG=printer
-```
-
-For all next commands you will execute in the minishell you will see the different processing steps from the lexer and parser with syntax highlighting.
-
-## Change the command line prompt
-1. Enter the SHELL
-```
-./minishell
-```
-2. Export the PS1 env (also works in Bash and other similar shells)
-```
-export PS1='enter your prompt wish...$ '
-```
-
-
 <br>
 <hr>
 <b>*All 42 projects must be written in C (later C++) in accordance to the 42 School Norm.<br></b>
