@@ -53,7 +53,7 @@ The current version of minishell is developed and tested on macOS, but it should
 - GNU Readline library
 
 ```
-git clone https://github.com/tjensen42/42-minishell.git minishell
+git clone https://github.com/educastrob/my_shell.git minishell
 ```
 ```
 cd minishell && make release
@@ -113,12 +113,12 @@ echo 'export LIBRARY_PATH="$HOME/.brew/lib:$LIBRARY_PATH"' >> ~/.zshrc
 source ~/.zshrc
 ```
 
-## Run tests
+## Run Valgrind
 
-To check if your minishell build was succesful you can run a tester, which compares most of the features with your current Bash installation. The test compares the stdout and the exit-code directly and checks in case of an error if both print something in stderr. 
+To check if your minishell build was succesful you can run a valgrind tester.
 
 ```
-make test
+make val
 ```
 
 <br>
